@@ -23,75 +23,14 @@ namespace TJAPlayer3.ErrorReporting
         {
             var appInformationalVersion = TJAPlayer3.AppInformationalVersion;
 
-            using (SentrySdk.Init(o =>
-            {
-                o.Dsn = new Dsn("https://d13a7e78ae024f678e110c64bbf7e7f2@sentry.io/3365560");
-                o.Environment = GetEnvironment(appInformationalVersion);
-                o.ServerName = ToSha256InBase64(Environment.MachineName);
-                o.ShutdownTimeout = TimeSpan.FromSeconds(5);
-            }))
-            {
                 try
                 {
-                    SentrySdk.ConfigureScope(scope =>
-                    {
-                        scope.User.Username = ToSha256InBase64(Environment.UserName);
-                    });
-
-                    Application.ThreadException += (sender, args) =>
-                    {
-                        ReportError(args.Exception);
-                    };
-
-                    TaskScheduler.UnobservedTaskException += (sender, args) =>
-                    {
-                        ReportError(args.Exception);
-                    };
-
                     action();
                 }
                 catch (Exception e)
                 {
-                    ReportError(e);
-
-                    SentrySdk.FlushAsync(TimeSpan.FromSeconds(5));
-
                     NotifyUserOfError(e);
                 }
-            }
-        }
-
-        public static string ToSha256InBase64(string value)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var utf8Bytes = Encoding.UTF8.GetBytes(value);
-                var sha256Bytes = sha256.ComputeHash(utf8Bytes);
-                return Convert.ToBase64String(sha256Bytes);
-            }
-        }
-
-        public static string GetEnvironment(string informationalVersion)
-        {
-            switch (Regex.Match(informationalVersion, @"(?<=^.+?[+-])\w+").Value)
-            {
-                case "Branch":
-                {
-                    return EnvironmentProduction;
-                }
-                case "beta":
-                {
-                    return EnvironmentBeta;
-                }
-                case "alpha":
-                {
-                    return EnvironmentAlpha;
-                }
-                default:
-                {
-                    return EnvironmentDevelopment;
-                }
-            }
         }
 
         private static void ReportError(Exception e)
@@ -100,30 +39,6 @@ namespace TJAPlayer3.ErrorReporting
             Trace.WriteLine(e);
             Trace.WriteLine("");
             Trace.WriteLine("エラーだゴメン！（涙");
-
-#if !DEBUG
-            try
-            {
-                SentrySdk.WithScope(scope =>
-                {
-                    var skinName = GetCurrentSkinNameOrNull();
-                    if (skinName != null)
-                    {
-                        scope.SetTag("skin.name", ToSha256InBase64(skinName));
-                    }
-
-                    SentrySdk.CaptureException(e);
-                });
-            }
-            catch (TimeoutException)
-            {
-                Trace.WriteLine("Timeout encountered when attempting to report an error to Sentry");
-            }
-            catch (Exception exception)
-            {
-                Trace.WriteLine("Unexpected exception encountered when attempting to report an error: " + exception);
-            }
-#endif
         }
 
         private static string GetCurrentSkinNameOrNull()
@@ -156,13 +71,8 @@ namespace TJAPlayer3.ErrorReporting
             var dialogResult = MessageBox.Show(
                 messageBoxText,
                 $"{TJAPlayer3.AppDisplayNameWithThreePartVersion} Error",
-                MessageBoxButtons.YesNo,
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Clipboard.SetText(exception.ToString());
-                Process.Start("https://github.com/twopointzero/TJAPlayer3/issues");
-            }
         }
     }
 }
