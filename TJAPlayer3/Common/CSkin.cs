@@ -317,6 +317,7 @@ namespace TJAPlayer3
         public Cシステムサウンド sound決定音 = null;
         public Cシステムサウンド sound取消音 = null;
         public Cシステムサウンド sound変更音 = null;
+        public Cシステムサウンド sound数字回転音 = null;
         //add
         public Cシステムサウンド bgmリザルト = null;
         public Cシステムサウンド bgmリザルトループ = null;
@@ -543,6 +544,7 @@ namespace TJAPlayer3
             this.soundフルコンボ音 = new Cシステムサウンド(@"Sounds\Full combo.ogg", false, false, ESoundGroup.Voice);
             this.sound曲読込開始音 = new Cシステムサウンド(@"Sounds\Now loading.ogg", false, true, ESoundGroup.Unknown);
             this.soundタイトル音 = new Cシステムサウンド(@"Sounds\Title.ogg", false, true, ESoundGroup.SongPlayback);
+            this.sound数字回転音 = new Cシステムサウンド(@"Sounds\Rotation.ogg", true, false, ESoundGroup.SoundEffect);
             this.bgm起動画面 = new Cシステムサウンド(@"Sounds\Setup BGM.ogg", true, true, ESoundGroup.SongPlayback);
             this.bgmオプション画面 = new Cシステムサウンド(@"Sounds\Option BGM.ogg", true, true, ESoundGroup.SongPlayback);
             this.bgmコンフィグ画面 = new Cシステムサウンド(@"Sounds\Config BGM.ogg", true, true,  ESoundGroup.SongPlayback);
@@ -2235,7 +2237,30 @@ namespace TJAPlayer3
                                     Result_NamePlate_Y[i] = int.Parse(strSplit[i]);
                                 }
                             }
-
+                            else if (strCommand == "NumberRotationSpeed")
+                            {
+                                dbNumberRotationSpeed = Convert.ToDouble(strParam);
+                            }
+                            else if (strCommand == "ScoreWaitingTime")
+                            {
+                                dbScoreWaitingTime = Convert.ToDouble(strParam);
+                            }
+                            else if (strCommand == "ScoreEndTime")
+                            {
+                                dbScoreEndTime = Convert.ToDouble(strParam);
+                            }
+                            else if (strCommand == "ScoreAnimeStartValue")
+                            {
+                                nScoreAnimeStartValue = Convert.ToInt32(strParam);
+                            }
+                            else if (strCommand == "ScoreEndValueOfWaitingTime")
+                            {
+                                nScoreEndValueOfWaitingTime = Convert.ToInt32(strParam);
+                            }
+                            else if (strCommand == "ScoreEndValueOfEndTime")
+                            {
+                                nScoreEndValueOfEndTime = Convert.ToInt32(strParam);
+                            }
                             else if (strCommand == nameof(Result_Dan))
                             {
                                 Result_Dan = strParam.Split(',').Select(int.Parse).ToArray();
@@ -2718,6 +2743,13 @@ namespace TJAPlayer3
         public int[] Result_Dan = new int[] { 500, 500 };
         public int[] Result_Dan_XY = new int[] { 100, 0 };
         public int[] Result_Dan_Plate_XY = new int[] { 149, 416 };
+
+        public int nScoreAnimeStartValue = 1500;
+        public double dbNumberRotationSpeed = 1.3D;
+        public double dbScoreWaitingTime = 16.35D;
+        public double dbScoreEndTime = 16D;
+        public int nScoreEndValueOfWaitingTime = 32;
+        public int nScoreEndValueOfEndTime = 36;
         #endregion
         #region Font
         public int Font_Edge_Ratio = 30;

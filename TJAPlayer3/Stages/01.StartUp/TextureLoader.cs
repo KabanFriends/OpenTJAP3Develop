@@ -113,7 +113,7 @@ namespace TJAPlayer3
             {
                 SongSelect_Bar_Genre[i] = TxC(SONGSELECT + @"Bar_Genre_" + i.ToString() + ".png");
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < SongSelect_Frame_Box.Length; i++)
             {
                 SongSelect_Frame_Box[i] = TxC(SONGSELECT + @"Frame_Box_" + i.ToString() + ".png");
             }

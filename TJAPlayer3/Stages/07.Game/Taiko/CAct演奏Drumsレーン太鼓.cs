@@ -58,7 +58,7 @@ namespace TJAPlayer3
             if (base.b初めての進行描画)
             {
                 for (int i = 0; i < 4; i++)
-                    this.stBranch[i].nフラッシュ制御タイマ = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
+                    this.stBranch[i].nフラッシュ制御タイマ = (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0));
                 base.b初めての進行描画 = false;
             }
 
@@ -117,23 +117,23 @@ namespace TJAPlayer3
                 if (TJAPlayer3.stage演奏ドラム画面.bUseBranch[i] == true)
                 {
                     #region[ 動いていない ]
-                    switch (TJAPlayer3.stage演奏ドラム画面.n次回のコース[i])
+                    switch (TJAPlayer3.stage演奏ドラム画面.nレーン用表示コース[i])
                     {
-                        case 0:
+                        case CDTX.ECourse.eNormal:
                             if (TJAPlayer3.Tx.Lane_Base[0] != null)
                             {
                                 TJAPlayer3.Tx.Lane_Base[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Base[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                             }
                             break;
-                        case 1:
+                        case CDTX.ECourse.eExpert:
                             if (TJAPlayer3.Tx.Lane_Base[1] != null)
                             {
                                 TJAPlayer3.Tx.Lane_Base[1].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Base[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                             }
                             break;
-                        case 2:
+                        case CDTX.ECourse.eMaster:
                             if (TJAPlayer3.Tx.Lane_Base[2] != null)
                             {
                                 TJAPlayer3.Tx.Lane_Base[2].Opacity = 255;
@@ -158,7 +158,7 @@ namespace TJAPlayer3
 
                             #region[ 普通譜面_レベルアップ ]
                             //普通→玄人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 1)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eNormal && this.stBranch[i].nAfter == CDTX.ECourse.eExpert)
                             {
                                 if (TJAPlayer3.Tx.Lane_Base[0] != null && TJAPlayer3.Tx.Lane_Base[1] != null)
                                 {
@@ -168,7 +168,7 @@ namespace TJAPlayer3
                                 }
                             }
                             //普通→達人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eNormal && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 if (this.stBranch[i].ct分岐アニメ進行.n現在の値 < 100)
                                 {
@@ -183,7 +183,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 玄人譜面_レベルアップ ]
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 if (TJAPlayer3.Tx.Lane_Base[1] != null && TJAPlayer3.Tx.Lane_Base[2] != null)
                                 {
@@ -194,7 +194,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 玄人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 if (TJAPlayer3.Tx.Lane_Base[1] != null && TJAPlayer3.Tx.Lane_Base[0] != null)
                                 {
@@ -205,7 +205,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 達人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 2 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eMaster && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 if (TJAPlayer3.Tx.Lane_Base[2] != null && TJAPlayer3.Tx.Lane_Base[0] != null)
                                 {
@@ -272,17 +272,17 @@ namespace TJAPlayer3
                     {
                         if (!this.stBranch[i].ct分岐アニメ進行.b進行中)
                         {
-                            switch (TJAPlayer3.stage演奏ドラム画面.n次回のコース[i])
+                            switch (TJAPlayer3.stage演奏ドラム画面.nレーン用表示コース[i])
                             {
-                                case 0:
+                                case CDTX.ECourse.eNormal:
                                     TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
-                                case 1:
+                                case CDTX.ECourse.eExpert:
                                     TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
-                                case 2:
+                                case CDTX.ECourse.eMaster:
                                     TJAPlayer3.Tx.Lane_Text[2].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
@@ -292,7 +292,7 @@ namespace TJAPlayer3
                         {
                             #region[ 普通譜面_レベルアップ ]
                             //普通→玄人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 1)
+                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == CDTX.ECourse.eExpert)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -316,7 +316,7 @@ namespace TJAPlayer3
                             }
 
                             //普通→達人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -358,7 +358,7 @@ namespace TJAPlayer3
                             #endregion
                             #region[ 玄人譜面_レベルアップ ]
                             //玄人→達人
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -378,7 +378,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 玄人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -398,7 +398,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 達人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 2 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eMaster && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -431,7 +431,7 @@ namespace TJAPlayer3
                                     TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                 }
                             }
-                            if (this.stBranch[i].nBefore == 2 && this.stBranch[i].nAfter == 1)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eMaster && this.stBranch[i].nAfter == CDTX.ECourse.eExpert)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                 TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
@@ -462,17 +462,17 @@ namespace TJAPlayer3
 
                         if (this.stBranch[i].nY座標 == 0)
                         {
-                            switch (TJAPlayer3.stage演奏ドラム画面.n次回のコース[0])
+                            switch (TJAPlayer3.stage演奏ドラム画面.nレーン用表示コース[0])
                             {
-                                case 0:
+                                case CDTX.ECourse.eNormal:
                                     TJAPlayer3.Tx.Lane_Text[0].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
-                                case 1:
+                                case CDTX.ECourse.eExpert:
                                     TJAPlayer3.Tx.Lane_Text[1].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
-                                case 2:
+                                case CDTX.ECourse.eMaster:
                                     TJAPlayer3.Tx.Lane_Text[2].Opacity = 255;
                                     TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i]);
                                     break;
@@ -484,14 +484,14 @@ namespace TJAPlayer3
                         {
                             #region[ 普通譜面_レベルアップ ]
                             //普通→玄人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 1)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eNormal && this.stBranch[i].nAfter == CDTX.ECourse.eExpert)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + 20 - this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[0].Opacity = this.stBranch[i].nBranchレイヤー透明度;
                             }
                             //普通→達人
-                            if (this.stBranch[i].nBefore == 0 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eNormal && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + 20 - this.stBranch[i].nY座標);
@@ -500,7 +500,7 @@ namespace TJAPlayer3
                             #endregion
                             #region[ 玄人譜面_レベルアップ ]
                             //玄人→達人
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 2)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eMaster)
                             {
                                 TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + 20 - this.stBranch[i].nY座標);
@@ -508,7 +508,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 玄人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 1 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eExpert && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - 24 + this.stBranch[i].nY座標);
@@ -516,13 +516,13 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region[ 達人譜面_レベルダウン ]
-                            if (this.stBranch[i].nBefore == 2 && this.stBranch[i].nAfter == 0)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eMaster && this.stBranch[i].nAfter == CDTX.ECourse.eNormal)
                             {
                                 TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - 24 + this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[2].Opacity = this.stBranch[i].nBranchレイヤー透明度;
                             }
-                            if (this.stBranch[i].nBefore == 2 && this.stBranch[i].nAfter == 1)
+                            if (this.stBranch[i].nBefore == CDTX.ECourse.eMaster && this.stBranch[i].nAfter == CDTX.ECourse.eExpert)
                             {
                                 TJAPlayer3.Tx.Lane_Text[2].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] + this.stBranch[i].nY座標);
                                 TJAPlayer3.Tx.Lane_Text[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[i], TJAPlayer3.Skin.Game_Lane_Background_Y[i] - 24 + this.stBranch[i].nY座標);
@@ -563,26 +563,28 @@ namespace TJAPlayer3
                     }
                 }
             }
+            var nTime = (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0));
+
 
 
             if (this.n総移動時間 != -1)
             {
                 if (n移動方向 == 1)
                 {
-                    TJAPlayer3.Skin.Game_Lane_Field_X[0] = this.n移動開始X + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
-                    TJAPlayer3.Skin.Game_Lane_Field_Y[0] = this.n移動開始Y + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[0] = this.n移動開始X + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[0] = this.n移動開始Y + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx) + (130 / 2);
+                    TJAPlayer3.Skin.Game_Lane_Field_X[0] = this.n移動開始X + (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
+                    TJAPlayer3.Skin.Game_Lane_Field_Y[0] = this.n移動開始Y + (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[0] = this.n移動開始X + (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[0] = this.n移動開始Y + (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx) + (130 / 2);
                 }
                 else
                 {
-                    TJAPlayer3.Skin.Game_Lane_Field_X[0] = this.n移動開始X - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
-                    TJAPlayer3.Skin.Game_Lane_Field_Y[0] = this.n移動開始Y - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[0] = this.n移動開始X - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[0] = this.n移動開始Y - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx) + (130 / 2);
+                    TJAPlayer3.Skin.Game_Lane_Field_X[0] = this.n移動開始X - (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
+                    TJAPlayer3.Skin.Game_Lane_Field_Y[0] = this.n移動開始Y - (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[0] = this.n移動開始X - (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離px);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[0] = this.n移動開始Y - (int)((((int)nTime - this.n移動開始時刻) / (double)(this.n総移動時間)) * this.n移動距離Ypx) + (130 / 2);
                 }
 
-                if (((int)CSound管理.rc演奏用タイマ.n現在時刻ms) > this.n移動開始時刻 + this.n総移動時間)
+                if (((int)nTime) > this.n移動開始時刻 + this.n総移動時間)
                 {
                     this.n総移動時間 = -1;
                 }
@@ -591,21 +593,21 @@ namespace TJAPlayer3
             {
                 if (n移動方向2 == 1)
                 {
-                    TJAPlayer3.Skin.Game_Lane_Field_X[1] = this.n移動開始X2 + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
-                    TJAPlayer3.Skin.Game_Lane_Field_Y[1] = this.n移動開始Y2 + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[1] = this.n移動開始X2 + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[1] = this.n移動開始Y2 + (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2) + (130 / 2);
+                    TJAPlayer3.Skin.Game_Lane_Field_X[1] = this.n移動開始X2 + (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
+                    TJAPlayer3.Skin.Game_Lane_Field_Y[1] = this.n移動開始Y2 + (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[1] = this.n移動開始X2 + (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[1] = this.n移動開始Y2 + (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2) + (130 / 2);
                 }
                 else
                 {
-                    TJAPlayer3.Skin.Game_Lane_Field_X[1] = this.n移動開始X2 - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
-                    TJAPlayer3.Skin.Game_Lane_Field_Y[1] = this.n移動開始Y2 - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[1] = this.n移動開始X2 - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
-                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[1] = this.n移動開始Y2 - (int)((((int)CSound管理.rc演奏用タイマ.n現在時刻ms - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2) + (130 / 2);
+                    TJAPlayer3.Skin.Game_Lane_Field_X[1] = this.n移動開始X2 - (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
+                    TJAPlayer3.Skin.Game_Lane_Field_Y[1] = this.n移動開始Y2 - (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointX[1] = this.n移動開始X2 - (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離px2);
+                    TJAPlayer3.stage演奏ドラム画面.FlyingNotes.StartPointY[1] = this.n移動開始Y2 - (int)((((int)nTime - this.n移動開始時刻2) / (double)(this.n総移動時間2)) * this.n移動距離Ypx2) + (130 / 2);
                 }
 
 
-                if (((int)CSound管理.rc演奏用タイマ.n現在時刻ms) > this.n移動開始時刻2 + this.n総移動時間2)
+                if (((int)nTime) > this.n移動開始時刻2 + this.n総移動時間2)
                 {
                     this.n総移動時間2 = -1;
                 }
@@ -825,7 +827,7 @@ namespace TJAPlayer3
         }
 
 
-        public void t分岐レイヤー_コース変化(int n現在, int n次回, int nPlayer)
+        public void t分岐レイヤー_コース変化(CDTX.ECourse n現在, CDTX.ECourse n次回, int nPlayer)
         {
             if (n現在 == n次回)
             {
@@ -862,7 +864,7 @@ namespace TJAPlayer3
 
         public void t判定枠移動XY(double db移動時間, int n移動px, int n移動Ypx, int n移動方向)
         {
-            this.n移動開始時刻 = (int)CSound管理.rc演奏用タイマ.n現在時刻ms;
+            this.n移動開始時刻 = (int)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0));
             this.n移動開始X = TJAPlayer3.Skin.Game_Lane_Field_X[0];
             this.n移動開始Y = TJAPlayer3.Skin.Game_Lane_Field_Y[0];
             this.n総移動時間 = (int)(db移動時間 * 1000);
@@ -873,7 +875,7 @@ namespace TJAPlayer3
 
         public void t判定枠移動XY2(double db移動時間, int n移動px, int n移動Ypx, int n移動方向)
         {
-            this.n移動開始時刻2 = (int)CSound管理.rc演奏用タイマ.n現在時刻ms;
+            this.n移動開始時刻2 = (int)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0));
             this.n移動開始X2 = TJAPlayer3.Skin.Game_Lane_Field_X[1];
             this.n移動開始Y2 = TJAPlayer3.Skin.Game_Lane_Field_Y[1];
             this.n総移動時間2 = (int)(db移動時間 * 1000);
@@ -922,13 +924,13 @@ namespace TJAPlayer3
 
 
 
-        protected STBRANCH[] stBranch = new STBRANCH[4];
+        public STBRANCH[] stBranch = new STBRANCH[4];
         [StructLayout(LayoutKind.Sequential)]
-        protected struct STBRANCH
+        public struct STBRANCH
         {
             public CCounter ct分岐アニメ進行;
-            public int nBefore;
-            public int nAfter;
+            public CDTX.ECourse nBefore;
+            public CDTX.ECourse nAfter;
 
             public long nフラッシュ制御タイマ;
             public int nBranchレイヤー透明度;
