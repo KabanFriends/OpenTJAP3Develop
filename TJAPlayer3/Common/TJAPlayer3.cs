@@ -50,7 +50,7 @@ namespace TJAPlayer3
 				.Cast<AssemblyInformationalVersionAttribute>()
 				.FirstOrDefault()
 				?.InformationalVersion
-			?? $"{GetAppDisplayThreePartVersion()} (unknown informational version)";
+			?? $"{GetAppDisplayThreePartVersion()}";
 
 		public static readonly string AppDisplayNameWithThreePartVersion = $"{AppDisplayName} {AppDisplayThreePartVersion}";
 		public static readonly string AppDisplayNameWithInformationalVersion = $"{AppDisplayName} {AppInformationalVersion}";
