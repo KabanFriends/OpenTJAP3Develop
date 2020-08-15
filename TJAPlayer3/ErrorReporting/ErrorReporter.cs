@@ -16,8 +16,7 @@ namespace TJAPlayer3.ErrorReporting
         private const string EnvironmentDevelopment = "development";
         private const string EnvironmentProduction = "production";
 
-        public const string GetCurrentSkinNameOrNullFallbackForNullSkin = "[GetCurrentSkinNameOrNull null skin]";
-        public const string GetCurrentSkinNameOrNullFallbackForExceptionEncountered = "[GetCurrentSkinNameOrNull exception encountered]";
+        public const string GetCurrentSkinNameOrFallbackFallbackForExceptionEncountered = "[GetCurrentSkinNameOrNull exception encountered]";
 
         public static void WithErrorReporting(Action action)
         {

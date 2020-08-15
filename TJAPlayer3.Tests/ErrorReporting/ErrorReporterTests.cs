@@ -6,5 +6,6 @@ namespace TJAPlayer3.Tests.ErrorReporting
     [TestFixture]
     public sealed class ErrorReporterTests
     {
+
     }
 }
