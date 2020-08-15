@@ -15,3 +15,9 @@ jobs:
     - run: MSBuild.exe $Env:GITHUB_WORKSPACE\TJAPlayer3.sln -p:Configuration=Release
       timeout-minutes: 5
     - uses: actions/upload-artifact@v1.0.0
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifacts
+        path: $Env:GITHUB_WORKSPACE\Test
+      
