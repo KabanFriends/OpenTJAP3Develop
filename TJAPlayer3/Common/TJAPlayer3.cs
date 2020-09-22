@@ -1990,14 +1990,15 @@ for (int i = 0; i < 3; i++) {
 					}
 				}
 				CAvi.t終了();
-				//---------------------
-				#endregion
-				#region TextureLoaderの処理
-				Tx.DisposeTexture();
-				#endregion
-				#region [ スキンの終了処理 ]
-				//---------------------
-				if (Skin != null)
+                //---------------------
+                #endregion
+                #region TextureLoaderの処理
+                Tx.Dispose();
+                Tx = null;
+                #endregion
+                #region [ スキンの終了処理 ]
+                //---------------------
+                if (Skin != null)
 				{
 					Trace.TraceInformation("スキンの終了処理を行います。");
 					Trace.Indent();
@@ -2273,9 +2274,9 @@ for (int i = 0; i < 3; i++) {
 			TJAPlayer3.Skin = null;
 			TJAPlayer3.Skin = new CSkin(TJAPlayer3.ConfigIni.strSystemSkinSubfolderFullName, false);
 
-
-			TJAPlayer3.Tx.DisposeTexture();
-			TJAPlayer3.Tx.LoadTexture();
+            TJAPlayer3.Tx.Dispose();
+            TJAPlayer3.Tx = new TextureLoader();
+            TJAPlayer3.Tx.Load();
 
 			TJAPlayer3.act文字コンソール.On活性化();
 		}
