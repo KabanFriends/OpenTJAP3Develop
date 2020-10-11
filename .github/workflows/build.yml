@@ -24,14 +24,14 @@ jobs:
       timeout-minutes: 5
     - name: Create Archive
       run: |
-        tar -a -cf OpenTJAP3Develop.zip $Env:GITHUB_WORKSPACE\Test
+        tar -a -cf $Env:GITHUB_WORKSPACE\OpenTJAP3Develop.zip $Env:GITHUB_WORKSPACE\Test
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.sha }}
+        tag_name: release-${{ github.sha }}
         release_name: Release ${{ github.sha }}
         draft: false
         prerelease: false
