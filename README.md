@@ -1,4 +1,4 @@
-# OpenTJAPlayer3-Develop
+# OpenTJAP3Develop
 [@touhou_renren](https://twitter.com/ren43723591/)氏製作のTJAPlayer3-Developの非公式な開発継続プロジェクトです。
 元のソフトウェアの配布・開発が終了する直前の状態のソースコードを使用しています。
 
