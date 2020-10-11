@@ -26,9 +26,9 @@ jobs:
         tar -a -cvf OpenTJAP3Develop.zip -C Test *
     - name: Get Current Time
       id: time
+      shell: pwsh
       run: |
-        set datetime=%date%%time%
-        echo "::set-output name=time::%datetime%"
+        echo "::set-output name=time::$(Get-Date)"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -36,7 +36,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: release-${{ github.sha }}
-        release_name: Release at ${{ steps.time.outputs.time }}
+        release_name: Release on ${{ steps.time.outputs.time }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
