@@ -2,6 +2,9 @@ name: build
 
 on: [push]
 
+env:
+  TZ: Asia/Tokyo
+
 jobs:
   build:
 
