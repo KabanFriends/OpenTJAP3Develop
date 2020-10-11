@@ -1,8 +1,10 @@
-# TJAPlayer3-Develop
-DTXManiaをいじってtja再生プログラムにしちゃった[TJAPlayer2fPC](https://github.com/kairera0467/TJAP2fPC)をForkしてグリーン風に改造したアレをForkしてニジイロ風に改造したアレ。
-この改造者[@touhou_renren](https://twitter.com/ren43723591/)はプログラミングが大変苦手なので、スパゲッティコードと化していると思います...すみません
+# OpenTJAPlayer3-Develop
+[@touhou_renren](https://twitter.com/ren43723591/)氏製作のTJAPlayer3-Developの非公式な開発継続プロジェクトです。
+元のソフトウェアの配布・開発が終了する直前の状態のソースコードを使用しています。
 
 このプログラムを使用した不具合・問題については責任を負いかねます。
+
+※TJAPlayer3-Developは[AioiLight/TJAPlayer3](https://github.com/AioiLight/TJAPlayer3)のフォークです。
 
 ## How 2 Build
 - VisualStudio 2017 & C# 7.3
