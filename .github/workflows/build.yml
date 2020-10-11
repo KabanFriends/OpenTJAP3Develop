@@ -25,5 +25,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: TJAPlayer3-Develop
+        name: OpenTJAP3Develop
         path: Test
