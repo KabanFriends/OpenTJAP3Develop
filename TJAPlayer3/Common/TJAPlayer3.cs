@@ -24,9 +24,11 @@ namespace TJAPlayer3
         public static readonly string VERSION = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, Assembly.GetExecutingAssembly().GetName().Version.ToString().Length - 2);
 
         public static readonly string SLIMDXDLL = "c_net20x86_Jun2010";
-		public static readonly string D3DXDLL = "d3dx9_43.dll";		// June 2010
-        //public static readonly string D3DXDLL = "d3dx9_42.dll";	// February 2010
-        //public static readonly string D3DXDLL = "d3dx9_41.dll";	// March 2009
+		public static readonly string D3DXDLL = "d3dx9_43.dll";     // June 2010
+																	//public static readonly string D3DXDLL = "d3dx9_42.dll";	// February 2010
+																	//public static readonly string D3DXDLL = "d3dx9_41.dll";	// March 2009
+
+		public static readonly string AppDisplayName = Assembly.GetExecutingAssembly().GetName().Name;
 
 		public static TJAPlayer3 app
 		{
@@ -2302,7 +2304,7 @@ for (int i = 0; i < 3; i++) {
             #endregion
 
             #region Discordの処理
-            Discord.Initialize("753220258961293373");
+            Discord.Initialize("764870299879079947");
             StartupTime = Discord.GetUnixTime();
             Discord.UpdatePresence("", Properties.Discord.Stage_StartUp, StartupTime);
             #endregion

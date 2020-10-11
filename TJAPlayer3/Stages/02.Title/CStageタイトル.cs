@@ -214,7 +214,8 @@ namespace TJAPlayer3
 #if DEBUG
                 TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "DEBUG BUILD");
 #endif
-                TJAPlayer3.act文字コンソール.tPrint(4, (720 - 24), C文字コンソール.Eフォント種別.白, "TJAPlayer3-Develop Create touhou-renren(@ren43723591)");
+                TJAPlayer3.act文字コンソール.tPrint(4, (720 - 48), C文字コンソール.Eフォント種別.白, $"{TJAPlayer3.AppDisplayName} - Created by KabanFriends");
+				TJAPlayer3.act文字コンソール.tPrint(4, (720 - 24), C文字コンソール.Eフォント種別.白, $"(An unofficial continuation of TJAPlayer3-Develop by touhou-renren)");
 				#endregion
 
 				TJAPlayer3.NamePlate.tNamePlateDraw(0, 0);
@@ -254,17 +255,6 @@ namespace TJAPlayer3
                     TJAPlayer3.Tx.Title_Menu.t2D描画( TJAPlayer3.app.Device, MENU_X, MENU_Y + MENU_H, new Rectangle( 0, MENU_H * 2, MENU_W, MENU_H * 2 ) );
 				}
 
-                // URLの座標が押されたらブラウザで開いてやる 兼 マウスクリックのテスト
-                // クライアント領域内のカーソル座標を取得する。
-                // point.X、point.Yは負の値になることもある。
-                var point = TJAPlayer3.app.Window.PointToClient(System.Windows.Forms.Cursor.Position);
-                // クライアント領域の横幅を取得して、1280で割る。もちろんdouble型。
-                var scaling = 1.000 * TJAPlayer3.app.Window.ClientSize.Width / 1280;
-                if(TJAPlayer3.Input管理.Mouse.bキーが押された((int) MouseObject.Button1))
-                {
-                    if (point.X >= 0 * scaling && point.X <= 190 * scaling && point.Y >= 700 && point.Y <= 720 * scaling)
-                        System.Diagnostics.Process.Start(strCreator);
-                }
 
                 //CDTXMania.act文字コンソール.tPrint(0, 80, C文字コンソール.Eフォント種別.白, point.X.ToString());
                 //CDTXMania.act文字コンソール.tPrint(0, 100, C文字コンソール.Eフォント種別.白, point.Y.ToString());
