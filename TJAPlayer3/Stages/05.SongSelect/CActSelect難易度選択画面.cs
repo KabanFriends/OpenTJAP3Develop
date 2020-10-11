@@ -235,7 +235,7 @@ namespace TJAPlayer3
                         }
                         else if (n現在の選択行 == -2)
                         {
-                            this.b曲選択 = false;
+                            this.b曲選択 = true;
                             this.bIsDifficltSelect = false;
                             TJAPlayer3.Skin.sound決定音.t再生する();
                             TJAPlayer3.stage選曲.ctDiffSelect移動待ち.n現在の値 = 0;
@@ -255,7 +255,6 @@ namespace TJAPlayer3
                 TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1f, 1f, 1f);
                 TJAPlayer3.Tx.Difficulty_Bar.Opacity = TJAPlayer3.stage選曲.ctDiffSelect移動待ち.n現在の値 - 935;
                 TJAPlayer3.Tx.Difficulty_Bar.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 515 - 150, 380, new Rectangle(0, 0, 163, 228));
-
 
                 if (b裏譜面)
                 {
