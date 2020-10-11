@@ -1,6 +1,6 @@
 name: build
 
-on: [push, pull_request]
+on: [push]
 
 env:
   TZ: Asia/Tokyo
@@ -27,7 +27,8 @@ jobs:
     - name: Get Current Time
       id: time
       run: |
-        echo "::set-output name=time::%date%%time%"
+        set datetime=%date%%time%
+        echo "::set-output name=time::%datetime%"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
