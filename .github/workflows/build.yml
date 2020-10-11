@@ -22,12 +22,10 @@ jobs:
     - name: Build the Solution
       run: MSBuild.exe $Env:GITHUB_WORKSPACE\TJAPlayer3.sln -p:Configuration=Release
       timeout-minutes: 5
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: OpenTJAP3Develop
-        path: Test
-    - name: Create a Release
+    - name: Create Archive
+      run: |
+        tar -a -cf $Env:GITHUB_WORKSPACE\Test\OpenTJAP3Develop.zip $Env:GITHUB_WORKSPACE\Test
+    - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
