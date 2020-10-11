@@ -4,6 +4,7 @@
 */bin
 */obj
 *.exe
+*.exe.config
 *.log
 *.pdb
 *.db
