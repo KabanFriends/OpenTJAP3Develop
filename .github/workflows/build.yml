@@ -1,15 +1,13 @@
 name: build
 
-on: [push]
+on: [push, pull_request]
 
 env:
   TZ: Asia/Tokyo
 
 jobs:
   build:
-
     runs-on: windows-2019
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
@@ -24,7 +22,12 @@ jobs:
       timeout-minutes: 5
     - name: Create Archive
       run: |
-        tar -a -cf $Env:GITHUB_WORKSPACE\OpenTJAP3Develop.zip $Env:GITHUB_WORKSPACE\Test
+        cd $Env:GITHUB_WORKSPACE
+        tar -a -cvf OpenTJAP3Develop.zip -C Test *
+    - name: Get Current Time
+      id: time
+      run: |
+        echo "::set-output name=time::%date%%time%"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -32,7 +35,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: release-${{ github.sha }}
-        release_name: Release ${{ github.sha }}
+        release_name: Release at ${{ steps.time.outputs.time }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
