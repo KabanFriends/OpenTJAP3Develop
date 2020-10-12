@@ -322,10 +322,27 @@ namespace TJAPlayer3
             int nEdgePt = (bEdge) ? (10 * _pt / TJAPlayer3.Skin.Font_Edge_Ratio) : 0; //SkinConfigにて設定可能に(rhimm)
 
             // 描画サイズを測定する
-            Size stringSize = System.Windows.Forms.TextRenderer.MeasureText( drawstr, this._font, new Size( int.MaxValue, int.MaxValue ),
-				System.Windows.Forms.TextFormatFlags.NoPrefix |
-				System.Windows.Forms.TextFormatFlags.NoPadding
-			);
+            Size stringSize;
+            using (Bitmap bmptmp = new Bitmap(1, 1))
+            {
+                using (Graphics gtmp = Graphics.FromImage(bmptmp))
+                {
+                    using (
+                    StringFormat sf = new StringFormat()
+                    {
+                        LineAlignment = StringAlignment.Far, // 画面下部（垂直方向位置）
+                        Alignment = StringAlignment.Center,  // 画面中央（水平方向位置）     
+                        FormatFlags = StringFormatFlags.NoWrap, // どんなに長くて単語の区切りが良くても改行しない (AioiLight)
+                        Trimming = StringTrimming.None, // どんなに長くてもトリミングしない (AioiLight)
+                    })
+                    {
+                        //float to int
+                        SizeF fstringSize = gtmp.MeasureString(drawstr, this._font, new PointF(0, 0), sf);
+                        stringSize = new Size((int)fstringSize.Width, (int)fstringSize.Height);
+                        stringSize.Width += 10; //2015.04.01 kairera0467 ROTTERDAM NATIONの描画サイズがうまくいかんので。
+                    }
+                }
+            }
             stringSize.Width += 10; //2015.04.01 kairera0467 ROTTERDAM NATIONの描画サイズがうまくいかんので。
 
 			//取得した描画サイズを基に、描画先のbitmapを作成する
@@ -334,19 +351,20 @@ namespace TJAPlayer3
 			Graphics g = Graphics.FromImage( bmp );
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-			StringFormat sf = new StringFormat();
-			sf.LineAlignment = StringAlignment.Far;	// 画面下部（垂直方向位置）
-			sf.Alignment = StringAlignment.Center;	// 画面中央（水平方向位置）     
-            sf.FormatFlags = StringFormatFlags.NoWrap; // どんなに長くて単語の区切りが良くても改行しない (AioiLight)
-            sf.Trimming = StringTrimming.None; // どんなに長くてもトリミングしない (AioiLight)
 			// レイアウト枠
 			Rectangle r = new Rectangle( 0, 0, stringSize.Width + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_X * stringSize.Width / 100), stringSize.Height + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_Y * stringSize.Height / 100));
 
 			if ( bEdge )	// 縁取り有りの描画
-			{
-				// DrawPathで、ポイントサイズを使って描画するために、DPIを使って単位変換する
-				// (これをしないと、単位が違うために、小さめに描画されてしまう)
-				float sizeInPixels = _font.SizeInPoints * g.DpiY / 72;  // 1 inch = 72 points
+			{  
+	    		StringFormat sf = new StringFormat();
+                sf.LineAlignment = StringAlignment.Far; // 画面下部（垂直方向位置）
+                sf.Alignment = StringAlignment.Center;  // 画面中央（水平方向位置）     
+                sf.FormatFlags = StringFormatFlags.NoWrap; // どんなに長くて単語の区切りが良くても改行しない (AioiLight)
+                sf.Trimming = StringTrimming.None; // どんなに長くてもトリミングしない (AioiLight)
+
+                // DrawPathで、ポイントサイズを使って描画するために、DPIを使って単位変換する
+                // (これをしないと、単位が違うために、小さめに描画されてしまう)
+                float sizeInPixels = _font.SizeInPoints * g.DpiY / 72;  // 1 inch = 72 points
 
 				System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
 				gp.AddString( drawstr, this._fontfamily, (int) this._font.Style, sizeInPixels, r, sf );
@@ -371,7 +389,8 @@ namespace TJAPlayer3
 				if ( br != null ) br.Dispose(); br = null;
 				if ( p != null ) p.Dispose(); p = null;
 				if ( gp != null ) gp.Dispose(); gp = null;
-			}
+                if (sf != null) sf.Dispose(); sf = null;
+            }
 			else
 			{
 				// 縁取りなしの描画
@@ -386,7 +405,6 @@ namespace TJAPlayer3
 			
 
 			#region [ リソースを解放する ]
-			if ( sf != null )	sf.Dispose();	sf = null;
 			if ( g != null )	g.Dispose();	g = null;
 			#endregion
 
