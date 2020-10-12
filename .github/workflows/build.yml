@@ -28,7 +28,7 @@ jobs:
       id: time
       shell: pwsh
       run: |
-        echo "::set-output name=time::$(Get-Date)"
+        echo "::set-output name=time::$((Get-Date).addHours(9))"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
