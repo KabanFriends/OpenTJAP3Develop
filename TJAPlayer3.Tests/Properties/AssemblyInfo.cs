@@ -22,6 +22,7 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("aed28a93-4a8e-4e71-aabd-1a86ed00b248")]
 
+<<<<<<< HEAD
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
@@ -34,3 +35,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+=======
+// Version information is now managed via GitVersion integration with the official build process
+>>>>>>> twopointzero/develop

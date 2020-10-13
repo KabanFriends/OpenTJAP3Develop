@@ -1,14 +1,19 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
 	public static class BitmapUtil
 	{
+<<<<<<< HEAD
 		// 定数
 
 		public const uint DIB_PAL_COLORS = 1;
@@ -27,6 +32,8 @@ namespace FDK
 			public uint bfOffBits;
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		[StructLayout( LayoutKind.Sequential, Pack = 1 )]
 		public struct BITMAPINFOHEADER
 		{
@@ -43,6 +50,7 @@ namespace FDK
 			public uint biClrUsed色テーブルのインデックス数;
 			public uint biClrImportant表示に必要な色インデックスの数;
 		}
+<<<<<<< HEAD
 
 
 		// メソッド
@@ -70,5 +78,7 @@ namespace FDK
 			writer.BaseStream.Position = 0L;
 			return new Bitmap( writer.BaseStream );
 		}
+=======
+>>>>>>> twopointzero/develop
 	}
 }

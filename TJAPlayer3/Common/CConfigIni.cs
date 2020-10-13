@@ -7,6 +7,10 @@ using System.IO;
 using System.Diagnostics;
 using FDK;
 using FDK.ExtensionMethods;
+<<<<<<< HEAD
+=======
+using TJAPlayer3.Common;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -724,7 +728,10 @@ namespace TJAPlayer3
 		public string strDTXManiaのバージョン;
 		public string str曲データ検索パス;
         public string FontName;
+<<<<<<< HEAD
         public string BoxFontName;
+=======
+>>>>>>> twopointzero/develop
         public bool bBranchGuide;
         public int nScoreMode;
         public int nDefaultCourse; //2017.01.30 DD デフォルトでカーソルをあわせる難易度
@@ -748,10 +755,19 @@ namespace TJAPlayer3
         public bool ShowMob;
         public bool ShowPuchiChara; // リザーブ
         //
+<<<<<<< HEAD
 
         public EScrollMode eScrollMode = EScrollMode.Normal;
         public bool bスクロールモードを上書き = false;
 
+=======
+        public EScrollMode eScrollMode = EScrollMode.Normal;
+        public bool bスクロールモードを上書き = false;
+
+        public EGaugeMode eGaugeMode = EGaugeMode.Normal;
+        public bool bゲージモードを上書き = false;
+
+>>>>>>> twopointzero/develop
         public bool bHispeedRandom;
         public Eステルスモード eSTEALTH;
         public bool bNoInfo;
@@ -779,7 +795,11 @@ namespace TJAPlayer3
 		{
 			get
 			{
+<<<<<<< HEAD
 				return ( !this.bConfigIniが存在している || !TJAPlayer3.VERSION.Equals( this.strDTXManiaのバージョン ) );
+=======
+				return ( !this.bConfigIniが存在している || !TJAPlayer3.AppNumericThreePartVersion.Equals( this.strDTXManiaのバージョン ) );
+>>>>>>> twopointzero/develop
 			}
 		}
 		public bool bEnterがキー割り当てのどこにも使用されていない
@@ -846,11 +866,17 @@ namespace TJAPlayer3
 				}
 			}
 		}
+<<<<<<< HEAD
 		public string strNamePlateName;
 		public string strNamePlateTitle;
 		public int nRisky;						// #23559 2011.6.20 yyagi Riskyでの残ミス数。0で閉店
 		public bool bIsAllowedDoubleClickFullscreen;	// #26752 2011.11.27 yyagi ダブルクリックしてもフルスクリーンに移行しない
 		public bool bAutoPlay;
+=======
+		public int nRisky;						// #23559 2011.6.20 yyagi Riskyでの残ミス数。0で閉店
+		public bool bIsAllowedDoubleClickFullscreen;	// #26752 2011.11.27 yyagi ダブルクリックしてもフルスクリーンに移行しない
+		public STAUTOPLAY bAutoPlay;
+>>>>>>> twopointzero/develop
 		public int nSoundDeviceType;				// #24820 2012.12.23 yyagi 出力サウンドデバイス(0=ACM(にしたいが設計がきつそうならDirectShow), 1=ASIO, 2=WASAPI)
 		public int nWASAPIBufferSizeMs;				// #24820 2013.1.15 yyagi WASAPIのバッファサイズ
 //		public int nASIOBufferSizeMs;				// #24820 2012.12.28 yyagi ASIOのバッファサイズ
@@ -861,11 +887,14 @@ namespace TJAPlayer3
 		public STDGBVALUE<EInvisible> eInvisible;	// #32072 2013.9.20 yyagi チップを非表示にする
 		public int nDisplayTimesMs, nFadeoutTimeMs;
 
+<<<<<<< HEAD
 		public STDGBVALUE<int> nViewerScrollSpeed;
 		public bool bViewerVSyncWait;
 		public bool bViewerShowDebugStatus;
 		public bool bViewerTimeStretch;
 		public bool bViewerDrums有効, bViewerGuitar有効;
+=======
+>>>>>>> twopointzero/develop
 		//public bool bNoMP3Streaming;				// 2014.4.14 yyagi; mp3のシーク位置がおかしくなる場合は、これをtrueにすることで、wavにデコードしてからオンメモリ再生する
 		public int nMasterVolume;
         public bool ShinuchiMode; // 真打モード
@@ -1279,8 +1308,12 @@ namespace TJAPlayer3
 			this.n表示可能な最小コンボ数.Guitar = 2;
 			this.n表示可能な最小コンボ数.Bass = 2;
 			this.n表示可能な最小コンボ数.Taiko = 3;
+<<<<<<< HEAD
             this.FontName = "MS UI Gothic";
             this.BoxFontName = "MS UI Gothic";
+=======
+            this.FontName = FontUtilities.FallbackFontName;
+>>>>>>> twopointzero/develop
 		    this.ApplyLoudnessMetadata = true;
 
 		    // 2018-08-28 twopointzero:
@@ -1331,13 +1364,20 @@ namespace TJAPlayer3
 				this.n譜面スクロール速度[ i ] = 1;
 				this.nJudgeLinePosOffset[ i ] = 0;
 				this.eInvisible[ i ] = EInvisible.OFF;
+<<<<<<< HEAD
 				this.nViewerScrollSpeed[ i ] = 1;
+=======
+>>>>>>> twopointzero/develop
 				this.e判定位置[ i ] = E判定位置.標準;
 				//this.e判定表示優先度[ i ] = E判定表示優先度.Chipより下;
 			}
 			this.n演奏速度 = 20;
 			#region [ AutoPlay ]
+<<<<<<< HEAD
 			this.bAutoPlay = false;
+=======
+			this.bAutoPlay = new STAUTOPLAY();
+>>>>>>> twopointzero/develop
 
             this.b太鼓パートAutoPlay = true;
             this.b太鼓パートAutoPlay2P = true;
@@ -1374,8 +1414,11 @@ namespace TJAPlayer3
 														// #24820 2013.1.17 yyagi 初期値を4に戻した。動的なミキサー制御がうまく動作しているため。
 			this.bIsEnabledSystemMenu = true;			// #28200 2012.5.1 yyagi System Menuの利用可否切替(使用可)
 			this.strSystemSkinSubfolderFullName = "";	// #28195 2012.5.2 yyagi 使用中のSkinサブフォルダ名
+<<<<<<< HEAD
 			this.strNamePlateName = "";
 			this.strNamePlateTitle = "";
+=======
+>>>>>>> twopointzero/develop
 			this.bTight = false;                        // #29500 2012.9.11 kairera0467 TIGHTモード
 			#region [ WASAPI/ASIO ]
 			this.nSoundDeviceType = FDK.COS.bIsVistaOrLater ?
@@ -1390,6 +1433,7 @@ namespace TJAPlayer3
 			this.nDisplayTimesMs = 3000;				// #32072 2013.10.24 yyagi Semi-Invisibleでの、チップ再表示期間
 			this.nFadeoutTimeMs = 2000;					// #32072 2013.10.24 yyagi Semi-Invisibleでの、チップフェードアウト時間
 
+<<<<<<< HEAD
 			bViewerVSyncWait = true;
 			bViewerShowDebugStatus = true;
 			bViewerTimeStretch = false;
@@ -1398,6 +1442,8 @@ namespace TJAPlayer3
             
             
 
+=======
+>>>>>>> twopointzero/develop
             this.bBranchGuide = false;
             this.nScoreMode = 2;
             this.nDefaultCourse = 3;
@@ -1435,12 +1481,15 @@ namespace TJAPlayer3
             this.bDirectShowMode = false;
             #endregion
         }
+<<<<<<< HEAD
 		public CConfigIni( string iniファイル名 )
 			: this()
 		{
 			this.tファイルから読み込み( iniファイル名 );
 		}
 
+=======
+>>>>>>> twopointzero/develop
 
 		// メソッド
 
@@ -1491,7 +1540,11 @@ namespace TJAPlayer3
 			#region [ Version ]
 			sw.WriteLine( "; リリースバージョン" );
 			sw.WriteLine( "; Release Version." );
+<<<<<<< HEAD
 			sw.WriteLine( "Version={0}", TJAPlayer3.VERSION );
+=======
+			sw.WriteLine( "Version={0}", TJAPlayer3.AppNumericThreePartVersion );
+>>>>>>> twopointzero/develop
 			sw.WriteLine();
 			#endregion
 			#region [ TJAPath ]
@@ -1507,8 +1560,11 @@ namespace TJAPlayer3
 			Uri uriRoot = new Uri( System.IO.Path.Combine( TJAPlayer3.strEXEのあるフォルダ, "System" + System.IO.Path.DirectorySeparatorChar ) );
 			if ( strSystemSkinSubfolderFullName != null && strSystemSkinSubfolderFullName.Length == 0 )
 			{
+<<<<<<< HEAD
 				// Config.iniが空の状態でDTXManiaをViewerとして起動_終了すると、strSystemSkinSubfolderFullName が空の状態でここに来る。
 				// → 初期値として Default/ を設定する。
+=======
+>>>>>>> twopointzero/develop
 				strSystemSkinSubfolderFullName = System.IO.Path.Combine( TJAPlayer3.strEXEのあるフォルダ, "System" + System.IO.Path.DirectorySeparatorChar + "Default" + System.IO.Path.DirectorySeparatorChar );
 			}
 			Uri uriPath = new Uri( System.IO.Path.Combine( this.strSystemSkinSubfolderFullName, "." + System.IO.Path.DirectorySeparatorChar ) );
@@ -1561,6 +1617,7 @@ namespace TJAPlayer3
 			sw.WriteLine( "; A sleep time[ms] while the window is inactive." );	//
 			sw.WriteLine( "BackSleep={0}", this.n非フォーカス時スリープms );		// そのまま引用（苦笑）
 			sw.WriteLine();                                                             //
+<<<<<<< HEAD
 			#endregion
 			#region [ NamePlate関連 ]
 			sw.WriteLine("ネームプレートに表示する名前");//strNamePlateName
@@ -1581,6 +1638,14 @@ namespace TJAPlayer3
             sw.WriteLine("; Font name used for font rendering of Box text");
             sw.WriteLine("BoxFontName={0}", this.BoxFontName);
             sw.WriteLine();
+=======
+            #endregion
+            #region [ フォント ]
+            sw.WriteLine("; フォントレンダリングに使用するフォント名");
+            sw.WriteLine("; Font name used for font rendering.");
+            sw.WriteLine("FontName={0}", this.FontName);
+            sw.WriteLine();
+>>>>>>> twopointzero/develop
             #endregion
             #region [ フレーム処理関連(VSync, フレーム毎のsleep) ]
             sw.WriteLine("; 垂直帰線同期(0:OFF,1:ON)");
@@ -1850,8 +1915,17 @@ namespace TJAPlayer3
             sw.WriteLine( "ScrollMode={0}", (int)this.eScrollMode );
             sw.WriteLine();
             */
+<<<<<<< HEAD
 			#region [ SUDDEN ]
 			sw.WriteLine( "; ドラムSUDDENモード(0:OFF, 1:ON)" );
+=======
+            sw.WriteLine("; ゲージモード(※β版)");
+            sw.WriteLine("; (0:通常, 1:グルーブゲージ, 2:ハードゲージ)");
+            sw.WriteLine("GaugeMode={0}", (int)this.eGaugeMode);
+            sw.WriteLine();
+            #region [ SUDDEN ]
+            sw.WriteLine( "; ドラムSUDDENモード(0:OFF, 1:ON)" );
+>>>>>>> twopointzero/develop
 			sw.WriteLine( "DrumsSudden={0}", this.bSudden.Drums ? 1 : 0 );
 			sw.WriteLine();
 			#endregion
@@ -2080,10 +2154,13 @@ namespace TJAPlayer3
 							{
 								unknown = Eセクション種別.PlayOption;
 							}
+<<<<<<< HEAD
 							else if ( str2.Equals( "ViewerOption" ) )
 							{
 								unknown = Eセクション種別.ViewerOption;
 							}
+=======
+>>>>>>> twopointzero/develop
 							else if ( str2.Equals( "GUID" ) )
 							{
 								unknown = Eセクション種別.GUID;
@@ -2158,6 +2235,7 @@ namespace TJAPlayer3
 												this.strDTXManiaのバージョン = str4;
 											}
 											#endregion
+<<<<<<< HEAD
 											#region [ NamePlate関連 ]
 											else if (str3.Equals("NamePlateName"))
 											{
@@ -2170,6 +2248,10 @@ namespace TJAPlayer3
 											#endregion
 											#region [ TJAPath ]
 											else if ( str3.Equals( "TJAPath" ) )
+=======
+											#region [ TJAPath ]
+											else if( str3.Equals( "TJAPath" ) )
+>>>>>>> twopointzero/develop
 											{
 												this.str曲データ検索パス = str4;
 											}
@@ -2280,10 +2362,13 @@ namespace TJAPlayer3
                                             {
                                                 this.FontName = str4;
                                             }
+<<<<<<< HEAD
                                             else if (str3.Equals("BoxFontName"))
                                             {
                                                 this.BoxFontName = str4;
                                             }
+=======
+>>>>>>> twopointzero/develop
                                             #endregion
 
                                             else if ( str3.Equals( "VSyncWait" ) )
@@ -2611,6 +2696,13 @@ namespace TJAPlayer3
                                             {
                                                 this.eScrollMode = ( EScrollMode )C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 0, 2, 0 );
                                             }
+<<<<<<< HEAD
+=======
+                                            else if( str3.Equals( "GaugeMode" ))
+                                            {
+                                                this.eGaugeMode = (EGaugeMode)C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 3, 0);
+                                            }
+>>>>>>> twopointzero/develop
                                             /*
 											else if( str3.Equals( "DrumsGraph" ) )  // #24074 2011.01.23 addikanick
 											{
@@ -2748,6 +2840,7 @@ namespace TJAPlayer3
 									//-----------------------------
 									#endregion
 
+<<<<<<< HEAD
 									#region [ [ViewerOption] ]
 									//-----------------------------
 									case Eセクション種別.ViewerOption:
@@ -2789,6 +2882,8 @@ namespace TJAPlayer3
 									//-----------------------------
 									#endregion
 
+=======
+>>>>>>> twopointzero/develop
 									#region [ [GUID] ]
 									//-----------------------------
 									case Eセクション種別.GUID:
@@ -2897,7 +2992,10 @@ namespace TJAPlayer3
 			System,
 			Log,
 			PlayOption,
+<<<<<<< HEAD
 			ViewerOption,
+=======
+>>>>>>> twopointzero/develop
 			AutoPlay,
 			HitRange,
 			GUID,

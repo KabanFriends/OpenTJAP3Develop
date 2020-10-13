@@ -51,7 +51,11 @@ namespace TJAPlayer3
                         this.n表示側終了位置X = n表示側終了位置X;
                         this.n表示側終了位置Y = n表示側終了位置Y;
                         this.n総移動時間ms = n総移動時間ms;
+<<<<<<< HEAD
                         this.n移動開始時刻ms = (n移動開始時刻ms != -1) ? n移動開始時刻ms : (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0)); ;
+=======
+                        this.n移動開始時刻ms = (n移動開始時刻ms != -1) ? n移動開始時刻ms : CSound管理.rc演奏用タイマ.n現在時刻;
+>>>>>>> twopointzero/develop
                         this.n前回表示したフレーム番号 = -1;
 
                         this.vclip = new Vector3(1.42f, 1.42f, 1f);
@@ -178,6 +182,7 @@ namespace TJAPlayer3
                 this.bDShowクリップを再生している = false;
             }
 		}
+<<<<<<< HEAD
 		public void Cont( int n再開時刻ms )
 		{
 			if ( ( this.rAVI != null ) && ( this.rAVI.avi != null ) )
@@ -185,6 +190,9 @@ namespace TJAPlayer3
 				this.n移動開始時刻ms = n再開時刻ms;
 			}
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		public unsafe int t進行描画( int x, int y )
 		{
 			if ( !base.b活性化してない )
@@ -548,12 +556,17 @@ namespace TJAPlayer3
 		{
 			if ( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 				this.tx描画用 = new CTexture( CDTXMania.app.Device, 320, 355, CDTXMania.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.Default, Usage.Dynamic );
 #else
 				this.tx描画用 = new CTexture( TJAPlayer3.app.Device, 1280, 720, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.Managed );
 				this.tx窓描画用 = new CTexture( TJAPlayer3.app.Device, 1280, 720, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.Managed );
 #endif
+=======
+				this.tx描画用 = new CTexture( TJAPlayer3.app.Device, 1280, 720, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.Managed );
+				this.tx窓描画用 = new CTexture( TJAPlayer3.app.Device, 1280, 720, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.Managed );
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの作成();
 			}
 		}

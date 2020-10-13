@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
 using System.Diagnostics;
+=======
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
@@ -81,6 +84,7 @@ namespace FDK
 		{
 			return false;
 		}
+<<<<<<< HEAD
 		public bool bキーが離された( int nKey )
 		{
 			return false;
@@ -89,6 +93,8 @@ namespace FDK
 		{
 			return false;
 		}
+=======
+>>>>>>> twopointzero/develop
 		//-----------------
 		#endregion
 

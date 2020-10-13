@@ -8,7 +8,11 @@ namespace TJAPlayer3
 	/// <summary>
 	/// 判定ライン関係の座標処理をまとめたクラス
 	/// </summary>
+<<<<<<< HEAD
 	internal class C演奏判定ライン座標共通
+=======
+	internal class C演奏判定ライン座標共通 // TODO Effectively dead code?
+>>>>>>> twopointzero/develop
 	{
 		/// <summary>
 		/// 判定ラインのy座標
@@ -117,6 +121,7 @@ namespace TJAPlayer3
 			nJudgeLinePosY_delta.Guitar = 0;
 			nJudgeLinePosY_delta.Bass   = 0;
 		}
+<<<<<<< HEAD
 
 
 	
@@ -199,4 +204,7 @@ namespace TJAPlayer3
 			}
 		}
 	}
+=======
+    }
+>>>>>>> twopointzero/develop
 }

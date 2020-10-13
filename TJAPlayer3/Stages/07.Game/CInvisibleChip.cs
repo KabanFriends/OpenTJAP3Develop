@@ -1,7 +1,10 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+=======
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -26,10 +29,13 @@ namespace TJAPlayer3
 
 
 		#region [ コンストラクタ ]
+<<<<<<< HEAD
 		public CInvisibleChip()
 		{
 			Initialize( 3000, 2000 );
 		}
+=======
+>>>>>>> twopointzero/develop
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -85,6 +91,7 @@ namespace TJAPlayer3
 			ccounter[ (int) eInst ].t開始( 0, nDisplayTimeMs + nFadeoutTimeMs + 1, 1, TJAPlayer3.Timer );
 		}
 
+<<<<<<< HEAD
 		/// <summary>
 		/// チップの表示/非表示の状態
 		/// </summary>
@@ -155,6 +162,8 @@ namespace TJAPlayer3
 			return retcode;
 		}
 		
+=======
+>>>>>>> twopointzero/develop
 		#region [ Dispose-Finalize パターン実装 ]
 		//-----------------
 		public void Dispose()

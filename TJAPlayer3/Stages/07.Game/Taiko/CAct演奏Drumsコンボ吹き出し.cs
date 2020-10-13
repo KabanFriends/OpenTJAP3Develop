@@ -86,7 +86,11 @@ namespace TJAPlayer3
                         }
                     }
 
+<<<<<<< HEAD
                     if( TJAPlayer3.Tx.Balloon_Combo[ i ] != null )
+=======
+                    if( TJAPlayer3.Tx.Balloon_Combo[ i ] != null && TJAPlayer3.Tx.Balloon_Number_Combo != null)
+>>>>>>> twopointzero/develop
                     {
                         //半透明4f
                         if( this.ct進行[ i ].n現在の値 == 1 || this.ct進行[ i ].n現在の値 == 103 )
@@ -173,10 +177,14 @@ namespace TJAPlayer3
 					if( this.st小文字位置[ i ].ch == ch )
 					{
 						Rectangle rectangle = new Rectangle( this.st小文字位置[ i ].pt.X, this.st小文字位置[ i ].pt.Y, 44, 54 );
+<<<<<<< HEAD
 						if(TJAPlayer3.Tx.Balloon_Number_Combo != null )
 						{
                             TJAPlayer3.Tx.Balloon_Number_Combo.t2D描画( TJAPlayer3.app.Device, x, y, rectangle );
 						}
+=======
+                        TJAPlayer3.Tx.Balloon_Number_Combo?.t2D描画( TJAPlayer3.app.Device, x, y, rectangle );
+>>>>>>> twopointzero/develop
 						break;
 					}
 				}

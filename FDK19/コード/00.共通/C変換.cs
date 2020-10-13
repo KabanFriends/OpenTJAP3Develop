@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
 
 namespace FDK
 {
 	public class C変換
+=======
+
+namespace FDK
+{
+	public static class C変換
+>>>>>>> twopointzero/develop
 	{
 		// プロパティ
 
@@ -23,14 +30,18 @@ namespace FDK
 		{
 			return ( ( Math.PI * angle ) / 180.0 );
 		}
+<<<<<<< HEAD
 		public static double RadianToDegree( double angle )
 		{
 			return ( angle * 180.0 / Math.PI );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public static float DegreeToRadian( float angle )
 		{
 			return (float) DegreeToRadian( (double) angle );
 		}
+<<<<<<< HEAD
 		public static float RadianToDegree( float angle )
 		{
 			return (float) RadianToDegree( (double) angle );
@@ -46,6 +57,9 @@ namespace FDK
 
 			return n値;
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		public static int n値を文字列から取得して範囲内に丸めて返す( string str数値文字列, int n最小値, int n最大値, int n取得失敗時のデフォルト値 )
 		{
 			int num;
@@ -153,6 +167,7 @@ namespace FDK
 			}
 			return -1;
 		}
+<<<<<<< HEAD
 		
 		public static string str小節番号を文字列3桁に変換して返す( int num )
 		{
@@ -185,6 +200,8 @@ namespace FDK
 			char ch1 = str36進数文字[ num % 36 ];
 			return ( ch2.ToString() + ch1.ToString() );
 		}
+=======
+>>>>>>> twopointzero/develop
 
         public static int[] ar配列形式のstringをint配列に変換して返す( string str )
         {
@@ -209,7 +226,10 @@ namespace FDK
             return nArray;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> twopointzero/develop
         /// <summary>
         /// 百分率数値を255段階数値に変換するメソッド。透明度用。
         /// </summary>
@@ -219,6 +239,7 @@ namespace FDK
         {
             return (int)(255.0 * num);
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// 255段階数値を百分率に変換するメソッド。
@@ -249,4 +270,7 @@ namespace FDK
 		//-----------------
 		#endregion
 	} 
+=======
+    }
+>>>>>>> twopointzero/develop
 }

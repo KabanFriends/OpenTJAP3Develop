@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using DirectShowLib;
 using SlimDX;
+=======
+﻿using System.Diagnostics;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -55,12 +59,15 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
     //            this.tx文字 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\9_text.png" ) );
     //            this.tx文字2 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\9_text.png" ) );
     //            this.tx文字3 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\9_text.png" ) );
 				//this.tx背景 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\9_background.jpg" ), false );
     //            this.tx白 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\Tile white 64x64.png" ), false );
     //            this.ds背景 = CDTXMania.t失敗してもスキップ可能なDirectShowを生成する( CSkin.Path( @"Graphics\9_background.mp4" ), CDTXMania.app.WindowHandle, true );
+=======
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの作成();
 			}
 		}
@@ -68,12 +75,15 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 				//CDTXMania.tテクスチャの解放( ref this.tx背景 );
     //            CDTXMania.tテクスチャの解放( ref this.tx文字 );
     //            CDTXMania.tテクスチャの解放( ref this.tx文字2 );
     //            CDTXMania.tテクスチャの解放( ref this.tx文字3 );
     //            CDTXMania.tテクスチャの解放( ref this.tx白 );
     //            CDTXMania.t安全にDisposeする( ref this.ds背景 );
+=======
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの解放();
 			}
 		}
@@ -83,12 +93,16 @@ namespace TJAPlayer3
             {
                 return 1;
             }
+<<<<<<< HEAD
             //if( this.ds背景 != null )
             //{
             //    this.ds背景.t再生開始();
                 
             //    this.ds背景.t現時点における最新のスナップイメージをTextureに転写する( this.tx背景 );
             //}
+=======
+
+>>>>>>> twopointzero/develop
 			if( !base.b活性化してない )
 			{
 				if( base.b初めての進行描画 )
@@ -101,6 +115,7 @@ namespace TJAPlayer3
 
 				this.ct時間稼ぎ.t進行();
 
+<<<<<<< HEAD
 				if( TJAPlayer3.Tx.Exit_Background != null )
 				{
                     //if( this.ds背景 != null )
@@ -155,6 +170,9 @@ namespace TJAPlayer3
 				       // }
 			        //}
            //     }
+=======
+                TJAPlayer3.Tx.Exit_Background?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+>>>>>>> twopointzero/develop
 
                 if( this.ct時間稼ぎ.b終了値に達した && !TJAPlayer3.Skin.soundゲーム終了音.b再生中 )
 				{
@@ -164,6 +182,7 @@ namespace TJAPlayer3
 			return 0;
 		}
 
+<<<<<<< HEAD
 
 		// その他
 
@@ -178,5 +197,8 @@ namespace TJAPlayer3
   //      private CTexture tx白;
 		//-----------------
 		#endregion
+=======
+		private CCounter ct時間稼ぎ;
+>>>>>>> twopointzero/develop
 	}
 }

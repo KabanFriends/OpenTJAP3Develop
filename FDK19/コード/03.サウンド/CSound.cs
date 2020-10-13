@@ -9,8 +9,11 @@ using FDK.ExtensionMethods;
 using SlimDX.DirectSound;
 using SlimDX.Multimedia;
 using Un4seen.Bass;
+<<<<<<< HEAD
 using Un4seen.BassAsio;
 using Un4seen.BassWasapi;
+=======
+>>>>>>> twopointzero/develop
 using Un4seen.Bass.AddOn.Mix;
 using Un4seen.Bass.AddOn.Fx;
 
@@ -31,7 +34,10 @@ namespace FDK
 		public static CSoundTimer rc演奏用タイマ = null;
 		public static bool bUseOSTimer = false;		// OSのタイマーを使うか、CSoundTimerを使うか。DTXCではfalse, DTXManiaではtrue。
 													// DTXC(DirectSound)でCSoundTimerを使うと、内部で無音のループサウンドを再生するため
+<<<<<<< HEAD
 													// サウンドデバイスを占有してしまい、Viewerとして呼び出されるDTXManiaで、ASIOが使えなくなる。
+=======
+>>>>>>> twopointzero/develop
 
 													// DTXMania単体でこれをtrueにすると、WASAPI/ASIO時に演奏タイマーとしてFDKタイマーではなく
 													// システムのタイマーを使うようになる。こうするとスクロールは滑らかになるが、音ズレが出るかもしれない。
@@ -106,6 +112,7 @@ namespace FDK
 		//public static bool bIsMP3DecodeByWindowsCodec = false;
 
 		public static int nMixing = 0;
+<<<<<<< HEAD
 		public int GetMixingStreams()
 		{
 			return nMixing;
@@ -115,12 +122,17 @@ namespace FDK
 		{
 			return nStreams;
 		}
+=======
+		public static int nStreams = 0;
+
+>>>>>>> twopointzero/develop
 		#region [ WASAPI/ASIO/DirectSound設定値 ]
 		/// <summary>
 		/// <para>WASAPI 排他モード出力における再生遅延[ms]（の希望値）。最終的にはこの数値を基にドライバが決定する）。</para>
 		/// <para>0以下の値を指定すると、この数値はWASAPI初期化時に自動設定する。正数を指定すると、その値を設定しようと試みる。</para>
 		/// </summary>
 		public static int SoundDelayExclusiveWASAPI = 0;		// SSTでは、50ms
+<<<<<<< HEAD
 		public int GetSoundExclusiveWASAPI()
 		{
 			return SoundDelayExclusiveWASAPI;
@@ -133,6 +145,12 @@ namespace FDK
 		/// <para>WASAPI 共有モード出力における再生遅延[ms]。ユーザが決定する。</para>
 		/// </summary>
 		public static int SoundDelaySharedWASAPI = 0;
+=======
+		/// <summary>
+		/// <para>WASAPI 共有モード出力における再生遅延[ms]。ユーザが決定する。</para>
+		/// </summary>
+		public static int SoundDelaySharedWASAPI = 100;
+>>>>>>> twopointzero/develop
 		/// <summary>
 		/// <para>排他WASAPIバッファの更新間隔。出力間隔ではないので注意。</para>
 		/// <para>→ 自動設定されるのでSoundDelay よりも小さい値であること。（小さすぎる場合はBASSによって自動修正される。）</para>
@@ -151,6 +169,7 @@ namespace FDK
 		/// <para>ASIO 出力におけるバッファサイズ。</para>
 		/// </summary>
 		public static int SoundDelayASIO = 0;						// 0にすると、デバイスの設定値をそのまま使う。
+<<<<<<< HEAD
 		public int GetSoundDelayASIO()
 		{
 			return SoundDelayASIO;
@@ -168,6 +187,9 @@ namespace FDK
 		{
 			ASIODevice = value;
 		}
+=======
+		public static int ASIODevice = 0;
+>>>>>>> twopointzero/develop
 		/// <summary>
 		/// <para>DirectSound 出力における再生遅延[ms]。ユーザが決定する。</para>
 		/// </summary>
@@ -208,6 +230,7 @@ namespace FDK
 			t終了();
 		}
 
+<<<<<<< HEAD
 		//public static void t初期化()
 		//{
 		//    t初期化( ESoundDeviceType.DirectSound, 0, 0, 0 );
@@ -227,6 +250,8 @@ namespace FDK
 			t初期化( soundDeviceType, _nSoundDelayExclusiveWASAPI, _nSoundDelayASIO, _nASIODevice, false );
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		public void t初期化( ESoundDeviceType soundDeviceType, int _nSoundDelayExclusiveWASAPI, int _nSoundDelayASIO, int _nASIODevice, bool _bUseOSTimer )
 		{
 			//SoundDevice = null;						// 後で再初期化することがあるので、null初期化はコンストラクタに回す
@@ -290,6 +315,7 @@ namespace FDK
 			}
 		}
 
+<<<<<<< HEAD
 		public void tDisableUpdateBufferAutomatically()
 		{
 			//Bass.BASS_SetConfig( BASSConfig.BASS_CONFIG_UPDATETHREADS, 0 );
@@ -300,6 +326,8 @@ namespace FDK
 		}
 
 
+=======
+>>>>>>> twopointzero/develop
 		public static void t終了()
 		{
 			C共通.tDisposeする( SoundDevice ); SoundDevice = null;
@@ -331,7 +359,11 @@ namespace FDK
 			switch ( SoundDeviceType )
 			{
 				case ESoundDeviceType.ExclusiveWASAPI:
+<<<<<<< HEAD
 					SoundDevice = new CSoundDeviceWASAPI( CSoundDeviceWASAPI.Eデバイスモード.共有, SoundDelayExclusiveWASAPI, SoundUpdatePeriodSharedWASAPI);
+=======
+					SoundDevice = new CSoundDeviceWASAPI( CSoundDeviceWASAPI.Eデバイスモード.排他, SoundDelayExclusiveWASAPI, SoundUpdatePeriodExclusiveWASAPI );
+>>>>>>> twopointzero/develop
 					break;
 
 				case ESoundDeviceType.SharedWASAPI:
@@ -376,6 +408,7 @@ namespace FDK
 			return SoundDevice.tサウンドを作成する( filename, soundGroup );
 		}
 
+<<<<<<< HEAD
 		private static DateTime lastUpdateTime = DateTime.MinValue;
 		public void t再生中の処理をする( object o )			// #26122 2011.9.1 yyagi; delegate経由の呼び出し用
 		{
@@ -398,11 +431,14 @@ namespace FDK
 			//}
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		public void tサウンドを破棄する( CSound csound )
 		{
 		    csound?.t解放する( true );			// インスタンスは存続→破棄にする。
 		}
 
+<<<<<<< HEAD
 		public float GetCPUusage()
 		{
 			float f;
@@ -426,6 +462,9 @@ namespace FDK
 		}
 
 		public string GetCurrentSoundDeviceType()
+=======
+		public static string GetCurrentSoundDeviceType()
+>>>>>>> twopointzero/develop
 		{
 			switch ( SoundDeviceType )
 			{
@@ -440,6 +479,7 @@ namespace FDK
 					return "Unknown";
 			}
 		}
+<<<<<<< HEAD
 
 		public void AddMixer( CSound cs, double db再生速度, bool _b演奏終了後も再生が続くチップである )
 		{
@@ -461,12 +501,19 @@ namespace FDK
 			cs.tBASSサウンドをミキサーから削除する();
 		}
 	}
+=======
+    }
+>>>>>>> twopointzero/develop
 	#endregion
 
 	// CSound は、サウンドデバイスが変更されたときも、インスタンスを再作成することなく、新しいデバイスで作り直せる必要がある。
 	// そのため、デバイスごとに別のクラスに分割するのではなく、１つのクラスに集約するものとする。
 
+<<<<<<< HEAD
 	public class CSound : IDisposable
+=======
+	public sealed class CSound : IDisposable
+>>>>>>> twopointzero/develop
 	{
 	    public const int MinimumSongVol = 0;
 	    public const int MaximumSongVol = 200; // support an approximate doubling in volume.
@@ -526,10 +573,22 @@ namespace FDK
 					}
 					else
 					{
+<<<<<<< HEAD
 //						if ( b再生中 )	// #30838 2012.2.24 yyagi (delete b再生中)
 //						{
 							this.Buffer.Frequency = ( int ) ( _db周波数倍率 * _db再生速度 * nオリジナルの周波数 );
 //						}
+=======
+						try
+						{
+							this.Buffer.Frequency = (int)(_db周波数倍率 * _db再生速度 * nオリジナルの周波数);
+						}
+						catch
+						{
+							//例外処理は出さない
+							this.b速度上げすぎ問題 = true;
+						}
+>>>>>>> twopointzero/develop
 					}
 				}
 			}
@@ -559,13 +618,21 @@ namespace FDK
 
 						if ( CSound管理.bIsTimeStretch )
 						{
+<<<<<<< HEAD
 							Bass.BASS_ChannelSetAttribute(this.hBassStream, BASSAttribute.BASS_ATTRIB_TEMPO, (float)(db再生速度 * 100 - 100));
+=======
+							Bass.BASS_ChannelSetAttribute( this.hBassStream, BASSAttribute.BASS_ATTRIB_TEMPO, (float) ( db再生速度 * 100 - 100 ) );
+>>>>>>> twopointzero/develop
 							//double seconds = Bass.BASS_ChannelBytes2Seconds( this.hTempoStream, nBytes );
 							//this.n総演奏時間ms = (int) ( seconds * 1000 );
 						}
 						else
 						{
+<<<<<<< HEAD
 							Bass.BASS_ChannelSetAttribute(this.hBassStream, BASSAttribute.BASS_ATTRIB_FREQ, (float)(_db周波数倍率 * _db再生速度 * nオリジナルの周波数));
+=======
+							Bass.BASS_ChannelSetAttribute( this.hBassStream, BASSAttribute.BASS_ATTRIB_FREQ, ( float ) ( _db周波数倍率 * _db再生速度 * nオリジナルの周波数 ) );
+>>>>>>> twopointzero/develop
 						}
 					}
 					else
@@ -573,6 +640,7 @@ namespace FDK
 //						if ( b再生中 )	// #30838 2012.2.24 yyagi (delete b再生中)
 //						{
 							this.Buffer.Frequency = ( int ) ( _db周波数倍率 * _db再生速度 * nオリジナルの周波数 );
+<<<<<<< HEAD
 						//						}
 						try
 						{
@@ -583,11 +651,18 @@ namespace FDK
 							//例外処理は出さない
 							this.b速度上げすぎ問題 = true;
 						}
+=======
+//						}
+>>>>>>> twopointzero/develop
 					}
 				}
 			}
 		}
 		#endregion
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
 		public bool b速度上げすぎ問題 = false;
 		public bool b演奏終了後も再生が続くチップである = false;	// これがtrueなら、本サウンドの再生終了のコールバック時に自動でミキサーから削除する
 
@@ -595,6 +670,21 @@ namespace FDK
 		private SYNCPROC _cbEndofStream;	// ストリームの終端まで再生されたときに呼び出されるコールバック
 //		private WaitCallback _cbRemoveMixerChannel;
 
+<<<<<<< HEAD
+=======
+        public void AddMixer( double db再生速度, bool _b演奏終了後も再生が続くチップである )
+        {
+            b演奏終了後も再生が続くチップである = _b演奏終了後も再生が続くチップである;
+            this.db再生速度 = db再生速度;
+            tBASSサウンドをミキサーに追加する();
+        }
+
+        public void RemoveMixer()
+        {
+            tBASSサウンドをミキサーから削除する();
+        }
+
+>>>>>>> twopointzero/develop
 	    /// <summary>
 	    /// Gain is applied "first" to the audio data, much as in a physical or
 	    /// software mixer. Later steps in the flow of audio apply "channel" level
@@ -602,8 +692,12 @@ namespace FDK
 	    /// the audio is output.
 	    /// 
 	    /// This method, taking an integer representing a percent value, is used
+<<<<<<< HEAD
 	    /// for mixing in the SONGVOL value, when available. It is also used for
 	    /// DTXViewer preview mode.
+=======
+	    /// for mixing in the SONGVOL value, when available.
+>>>>>>> twopointzero/develop
 	    /// </summary>
 	    public void SetGain(int songVol)
 	    {
@@ -830,6 +924,7 @@ namespace FDK
 		/// </summary>
 		public static readonly ObservableCollection<CSound> listインスタンス = new ObservableCollection<CSound>();
 
+<<<<<<< HEAD
 		public static void ShowAllCSoundFiles()
 		{
 			int i = 0;
@@ -839,6 +934,8 @@ namespace FDK
 			}
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		public CSound(ESoundGroup soundGroup)
 		{
 		    SoundGroup = soundGroup;
@@ -1105,10 +1202,13 @@ namespace FDK
 
 		#region [ DTXMania用の変換 ]
 
+<<<<<<< HEAD
 		public void tサウンドを破棄する( CSound cs )
 		{
 			cs.t解放する();
 		}
+=======
+>>>>>>> twopointzero/develop
 		public void t再生を開始する()
 		{
 			t再生位置を先頭に戻す();
@@ -1214,7 +1314,11 @@ namespace FDK
 		public void tサウンドを再生する()
 		{
 			if (!b速度上げすぎ問題)
+<<<<<<< HEAD
 				tサウンドを再生する( false );
+=======
+			tサウンドを再生する( false );
+>>>>>>> twopointzero/develop
 		}
 		private void tサウンドを再生する( bool bループする )
 		{

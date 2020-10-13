@@ -1,8 +1,12 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
@@ -13,6 +17,7 @@ namespace FDK
 		public const int S_OK = 0x00000000;
 		public const int S_FALSE = 0x00000001;
 		public const int E_FAIL = unchecked( (int) 0x80004005 );
+<<<<<<< HEAD
 		public const int E_ABORT = unchecked( (int) 0x80004004 );
 
 		public const int BROADCAST_QUERY_DENY = 0x424d5144;
@@ -310,6 +315,25 @@ namespace FDK
 			MOREDATA
 		}
 		[FlagsAttribute]
+=======
+
+		#region [ MIDIメッセージ ]
+		public const uint MIM_DATA = 0x3c3;
+		#endregion
+
+        #region [ DirectShow, VFW 関連 ]
+		//-----------------
+		public const int VFW_E_NOT_CONNECTED = unchecked( (int) 0x80040209 );
+        public const int VFW_S_STATE_INTERMEDIATE = 0x00040237;
+        //-----------------
+		#endregion
+
+		#region [ Windowsメッセージ ]
+        public const uint WM_APP = 0x00008000;
+        #endregion
+
+		[Flags]
+>>>>>>> twopointzero/develop
 		internal enum ExecutionState : uint
 		{
 			Null = 0,					// 関数が失敗した時の戻り値
@@ -322,6 +346,7 @@ namespace FDK
 
 		#region [ Win32 関数 ]
 		//-----------------
+<<<<<<< HEAD
 		[return: MarshalAs( UnmanagedType.Bool )]
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
 		public static extern bool AdjustWindowRect( ref RECT lpRect, uint dwStyle, [MarshalAs( UnmanagedType.Bool )] bool bMenu );
@@ -342,13 +367,18 @@ namespace FDK
 		[return: MarshalAs( UnmanagedType.Bool )]
 		[DllImport( "user32.dll", CharSet = CharSet.Auto )]
 		public static extern bool IsZoomed( IntPtr hWnd );
+=======
+>>>>>>> twopointzero/develop
 		[DllImport( "winmm.dll" )]
 		public static extern uint midiInClose( uint hMidiIn );
 		[DllImport( "winmm.dll" )]
 		public static extern uint midiInGetDevCaps( uint uDeviceID, ref MIDIINCAPS lpMidiInCaps, uint cbMidiInCaps );
 		[DllImport( "winmm.dll" )]
+<<<<<<< HEAD
 		public static extern uint midiInGetID( uint hMidiIn, ref uint puDeviceID );
 		[DllImport( "winmm.dll" )]
+=======
+>>>>>>> twopointzero/develop
 		public static extern uint midiInGetNumDevs();
 		[DllImport( "winmm.dll" )]
 		public static extern uint midiInOpen( ref uint phMidiIn, uint uDeviceID, MidiInProc dwCallback, int dwInstance, int fdwOpen );
@@ -358,6 +388,7 @@ namespace FDK
 		public static extern uint midiInStart( uint hMidiIn );
 		[DllImport( "winmm.dll" )]
 		public static extern uint midiInStop( uint hMidiIn );
+<<<<<<< HEAD
 		[DllImport( "user32.dll", CharSet = CharSet.Auto )]
 		public static extern IntPtr MonitorFromWindow( IntPtr hwnd, uint dwFlags );
 		[return: MarshalAs( UnmanagedType.Bool )]
@@ -384,6 +415,11 @@ namespace FDK
 		public static extern bool SystemParametersInfo( uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni );
 		[DllImport( "kernel32.dll" )]
 		public static extern void GetSystemInfo( ref SYSTEM_INFO ptmpsi );
+=======
+		[DllImport( "Kernel32.Dll" )]
+		public static unsafe extern void CopyMemory( void* pDest, void* pSrc, uint numOfBytes );
+
+>>>>>>> twopointzero/develop
 		[DllImport( "kernel32.dll" )]
 		internal static extern ExecutionState SetThreadExecutionState( ExecutionState esFlags );
 		//-----------------
@@ -391,12 +427,15 @@ namespace FDK
 
 		#region [ Win32 構造体 ]
 		//-----------------
+<<<<<<< HEAD
 		[StructLayout( LayoutKind.Sequential )]
 		private struct FILTERKEYS
 		{
 			public int cbSize;
 			public int dwFlags;
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		[StructLayout( LayoutKind.Sequential )]
 		public struct MIDIINCAPS
@@ -410,6 +449,7 @@ namespace FDK
 		}
 
 		[StructLayout( LayoutKind.Sequential )]
+<<<<<<< HEAD
 		public struct RECT
 		{
 			public int left;
@@ -433,6 +473,8 @@ namespace FDK
 		}
 
 		[StructLayout( LayoutKind.Sequential )]
+=======
+>>>>>>> twopointzero/develop
 		public struct WAVEFORMATEX
 		{
 			public ushort wFormatTag;
@@ -444,6 +486,7 @@ namespace FDK
 			public ushort cbSize;
 		}
 
+<<<<<<< HEAD
 		[StructLayout( LayoutKind.Sequential )]
 		public struct WindowMessage
 		{
@@ -655,6 +698,12 @@ namespace FDK
 
 
 		// Win32 メッセージ処理デリゲート
+=======
+        //-----------------
+		#endregion
+
+        // Win32 メッセージ処理デリゲート
+>>>>>>> twopointzero/develop
 
 		public delegate void MidiInProc( uint hMidiIn, uint wMsg, int dwInstance, int dwParam1, int dwParam2 );
 	}

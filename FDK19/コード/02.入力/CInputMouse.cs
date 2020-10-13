@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 using SlimDX;
 using SlimDX.DirectInput;
@@ -164,6 +167,7 @@ namespace FDK
 		{
 			return ( ( ( 0 <= nButton ) && ( nButton < 8 ) ) && this.bMouseState[ nButton ] );
 		}
+<<<<<<< HEAD
 		public bool bキーが離された( int nButton )
 		{
 			return ( ( ( 0 <= nButton ) && ( nButton < 8 ) ) && this.bMousePullUp[ nButton ] );
@@ -172,6 +176,8 @@ namespace FDK
 		{
 			return ( ( ( 0 <= nButton ) && ( nButton < 8 ) ) && !this.bMouseState[ nButton ] );
 		}
+=======
+>>>>>>> twopointzero/develop
 		//-----------------
 		#endregion
 

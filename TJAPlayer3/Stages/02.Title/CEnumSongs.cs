@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -10,6 +11,12 @@ using SlimDX;
 using SlimDX.Direct3D9;
 using FDK;
 using SampleFramework;
+=======
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -120,17 +127,24 @@ namespace TJAPlayer3
 		public void StartEnumFromCache()
 		{
 			this.thDTXFileEnumerate = new Thread( new ThreadStart( this.t曲リストの構築1 ) );
+<<<<<<< HEAD
 			this.thDTXFileEnumerate.Name = "曲リストの構築";
+=======
+			this.thDTXFileEnumerate.Name = "曲リストの構築1 (\"StartEnumFromCache\")";
+>>>>>>> twopointzero/develop
 			this.thDTXFileEnumerate.IsBackground = true;
 			this.thDTXFileEnumerate.Start();
 		}
 
 		/// <summary>
+<<<<<<< HEAD
 		/// 
 		/// </summary>
 		public delegate void AsyncDelegate();
 
 		/// <summary>
+=======
+>>>>>>> twopointzero/develop
 		/// 曲検索スレッドの開始
 		/// </summary>
 		public void StartEnumFromDisk()
@@ -149,7 +163,11 @@ namespace TJAPlayer3
 					this.Songs管理 = new CSongs管理();
 				}
 				this.thDTXFileEnumerate = new Thread( new ThreadStart( this.t曲リストの構築2 ) );
+<<<<<<< HEAD
 				this.thDTXFileEnumerate.Name = "曲リストの構築";
+=======
+				this.thDTXFileEnumerate.Name = "曲リストの構築2 (\"StartEnumFromDisk\")";
+>>>>>>> twopointzero/develop
 				this.thDTXFileEnumerate.IsBackground = true;
 				this.thDTXFileEnumerate.Priority = System.Threading.ThreadPriority.Lowest;
 				this.thDTXFileEnumerate.Start();
@@ -231,10 +249,17 @@ namespace TJAPlayer3
 		/// <summary>
 		/// songlist.dbからの曲リスト構築
 		/// </summary>
+<<<<<<< HEAD
 		public void t曲リストの構築1()
 		{
 			// ！注意！
 			// 本メソッドは別スレッドで動作するが、プラグイン側でカレントディレクトリを変更しても大丈夫なように、
+=======
+		private void t曲リストの構築1()
+		{
+			// ！注意！
+			// 本メソッドは別スレッドで動作するが、
+>>>>>>> twopointzero/develop
 			// すべてのファイルアクセスは「絶対パス」で行うこと。(2010.9.16)
 			// 構築が完了したら、DTXEnumerateState state を DTXEnumerateState.Done にすること。(2012.2.9)
 			DateTime now = DateTime.Now;
@@ -249,6 +274,7 @@ namespace TJAPlayer3
 				Trace.Indent();
 
 				try
+<<<<<<< HEAD
 				{
 					TJAPlayer3.Skin.bgm起動画面.t再生する();
 					for ( int i = 0; i < TJAPlayer3.Skin.nシステムサウンド数; i++ )
@@ -279,6 +305,12 @@ namespace TJAPlayer3
 							}
 						}
 					}
+=======
+                {
+                    TJAPlayer3.Skin.bgm起動画面.t再生する();
+                    TJAPlayer3.Skin.ReloadSkin();
+
+>>>>>>> twopointzero/develop
 					lock ( TJAPlayer3.stage起動.list進行文字列 )
 					{
 						TJAPlayer3.stage起動.list進行文字列.Add( "SYSTEM SOUND...OK" );
@@ -291,12 +323,15 @@ namespace TJAPlayer3
 				//-----------------------------
 				#endregion
 
+<<<<<<< HEAD
 				if ( TJAPlayer3.bコンパクトモード )
 				{
 					Trace.TraceInformation( "コンパクトモードなので残りの起動処理は省略します。" );
 					return;
 				}
 
+=======
+>>>>>>> twopointzero/develop
 				#region [ 00) songlist.dbの読み込みによる曲リストの構築  ]
 				//-----------------------------
 				TJAPlayer3.stage起動.eフェーズID = CStage.Eフェーズ.起動00_songlistから曲リストを作成する;
@@ -396,15 +431,23 @@ namespace TJAPlayer3
 			}
 		}
 
+<<<<<<< HEAD
 
 		/// <summary>
+=======
+        /// <summary>
+>>>>>>> twopointzero/develop
 		/// 起動してタイトル画面に遷移した後にバックグラウンドで発生させる曲検索
 		/// #27060 2012.2.6 yyagi
 		/// </summary>
 		private void t曲リストの構築2()
 		{
 			// ！注意！
+<<<<<<< HEAD
 			// 本メソッドは別スレッドで動作するが、プラグイン側でカレントディレクトリを変更しても大丈夫なように、
+=======
+			// 本メソッドは別スレッドで動作するが、
+>>>>>>> twopointzero/develop
 			// すべてのファイルアクセスは「絶対パス」で行うこと。(2010.9.16)
 			// 構築が完了したら、DTXEnumerateState state を DTXEnumerateState.Done にすること。(2012.2.9)
 

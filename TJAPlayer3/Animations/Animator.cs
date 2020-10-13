@@ -1,15 +1,24 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TJAPlayer3;
+=======
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3.Animations
 {
+<<<<<<< HEAD
     class Animator : IAnimatable
     {
         public Animator(int startValue, int endValue, int tickInterval, bool isLoop)
+=======
+    internal abstract class Animator : IAnimatable
+    {
+        protected Animator(int startValue, int endValue, int tickInterval, bool isLoop)
+>>>>>>> twopointzero/develop
         {
             Type = CounterType.Normal;
             StartValue = startValue;
@@ -18,7 +27,11 @@ namespace TJAPlayer3.Animations
             IsLoop = isLoop;
             Counter = new CCounter();
         }
+<<<<<<< HEAD
         public Animator(double startValue, double endValue, double tickInterval, bool isLoop)
+=======
+        protected Animator(double startValue, double endValue, double tickInterval, bool isLoop)
+>>>>>>> twopointzero/develop
         {
             Type = CounterType.Double;
             StartValue = startValue;

@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using FDK;
+=======
+﻿using FDK;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -17,6 +21,7 @@ namespace TJAPlayer3
             base.b活性化してない = true;
         }
 
+<<<<<<< HEAD
         public override void On活性化()
         {
             base.On活性化();
@@ -50,5 +55,13 @@ namespace TJAPlayer3
         //-----------------
         //-----------------
         #endregion
+=======
+        public override int On進行描画()
+        {
+            TJAPlayer3.Tx.Mob_Footer?.t2D描画(TJAPlayer3.app.Device, 0, 720 - TJAPlayer3.Tx.Mob_Footer.szテクスチャサイズ.Height);
+
+            return base.On進行描画();
+        }
+>>>>>>> twopointzero/develop
     }
 }

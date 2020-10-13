@@ -1,6 +1,9 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Drawing;
 using System.Runtime.InteropServices;
 using SlimDX;
@@ -20,6 +23,7 @@ namespace TJAPlayer3
 		
 		// メソッド
 
+<<<<<<< HEAD
         /// <summary>
         /// 大音符の花火エフェクト
         /// </summary>
@@ -99,6 +103,8 @@ namespace TJAPlayer3
             }
         }
 
+=======
+>>>>>>> twopointzero/develop
         public virtual void Start( int nLane, E判定 judge, int player )
 		{
             for (int j = 0; j < 3 * 4; j++)
@@ -132,6 +138,7 @@ namespace TJAPlayer3
 			    }
             }
 		}
+<<<<<<< HEAD
 		public void Start紙吹雪()
 		{
             return;
@@ -175,6 +182,8 @@ namespace TJAPlayer3
                 }
             }  */
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		// CActivity 実装
 
@@ -259,8 +268,13 @@ namespace TJAPlayer3
 					        if( TJAPlayer3.Tx.Effects_Hit_Explosion != null && !TJAPlayer3.IsPerformingCalibration )
 					        {
                                 int n = this.st状態[ i ].nIsBig == 1 ? 520 : 0;
+<<<<<<< HEAD
                                 int nX = ( TJAPlayer3.Skin.nScrollFieldX[ this.st状態[ i ].nPlayer ] ) - ( (TJAPlayer3.Tx.Effects_Hit_Explosion.sz画像サイズ.Width / 7 ) / 2 );
                                 int nY = ( TJAPlayer3.Skin.nJudgePointY[ this.st状態[ i ].nPlayer ] ) - ( (TJAPlayer3.Tx.Effects_Hit_Explosion.sz画像サイズ.Height / 4 ) / 2 );
+=======
+                                int nX = ( TJAPlayer3.Skin.Game_Lane_Field_X[ this.st状態[ i ].nPlayer ] ) - ( (TJAPlayer3.Tx.Effects_Hit_Explosion.sz画像サイズ.Width / 7 ) / 2 );
+                                int nY = ( TJAPlayer3.Skin.Game_Lane_Field_Y[ this.st状態[ i ].nPlayer ] ) + (130/2) - ( (TJAPlayer3.Tx.Effects_Hit_Explosion.sz画像サイズ.Height / 4 ) / 2 );
+>>>>>>> twopointzero/develop
 
                                 switch( st状態[ i ].judge )
                                 {
@@ -307,7 +321,11 @@ namespace TJAPlayer3
                                     if( this.st状態_大[ i ].nIsBig == 1 )
                                     {
                                         float fX = 415 - ((TJAPlayer3.Tx.Effects_Hit_Explosion_Big.sz画像サイズ.Width * TJAPlayer3.Tx.Effects_Hit_Explosion_Big.vc拡大縮小倍率.X ) / 2.0f);
+<<<<<<< HEAD
                                         float fY = TJAPlayer3.Skin.nJudgePointY[ this.st状態_大[ i ].nPlayer ] - ((TJAPlayer3.Tx.Effects_Hit_Explosion_Big.sz画像サイズ.Height * TJAPlayer3.Tx.Effects_Hit_Explosion_Big.vc拡大縮小倍率.Y ) / 2.0f);
+=======
+                                        float fY = TJAPlayer3.Skin.Game_Lane_Field_Y[ this.st状態_大[ i ].nPlayer ] + (130/2) - ((TJAPlayer3.Tx.Effects_Hit_Explosion_Big.sz画像サイズ.Height * TJAPlayer3.Tx.Effects_Hit_Explosion_Big.vc拡大縮小倍率.Y ) / 2.0f);
+>>>>>>> twopointzero/develop
                                         //float fY = 257 - ((this.txアタックエフェクトUpper_big.sz画像サイズ.Height * this.txアタックエフェクトUpper_big.vc拡大縮小倍率.Y ) / 2.0f);
 
                                         ////7
@@ -319,7 +337,11 @@ namespace TJAPlayer3
 
                                         Matrix mat = Matrix.Identity;
                                         mat *= Matrix.Scaling( f倍率, f倍率, f倍率 );
+<<<<<<< HEAD
                                         mat *= Matrix.Translation( TJAPlayer3.Skin.nScrollFieldX[0] - SampleFramework.GameWindowSize.Width / 2.0f, -(TJAPlayer3.Skin.nJudgePointY[ this.st状態[ i ].nPlayer ] - SampleFramework.GameWindowSize.Height / 2.0f), 0f );
+=======
+                                        mat *= Matrix.Translation( TJAPlayer3.Skin.Game_Lane_Field_X[0] - SampleFramework.GameWindowSize.Width / 2.0f, -(TJAPlayer3.Skin.Game_Lane_Field_Y[ this.st状態[ i ].nPlayer ] + (130 / 2) - SampleFramework.GameWindowSize.Height / 2.0f), 0f );
+>>>>>>> twopointzero/develop
                                         //mat *= Matrix.Billboard( new Vector3( 15, 15, 15 ), new Vector3(0, 0, 0), new Vector3( 0, 0, 0 ), new Vector3( 0, 0, 0 ) );
                                         //mat *= Matrix.Translation( 0f, 0f, 0f );
 
@@ -342,7 +364,11 @@ namespace TJAPlayer3
 
                 for (int i = 0; i < 45; i++)
                 {
+<<<<<<< HEAD
                     if( TJAPlayer3.Skin.nScrollFieldX[0] != 414 )
+=======
+                    if( TJAPlayer3.Skin.Game_Lane_Field_X[0] != 414 )
+>>>>>>> twopointzero/develop
                         break;
 
                     if (this.st大音符花火[i].b使用中)

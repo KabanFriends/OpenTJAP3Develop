@@ -1,11 +1,18 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Diagnostics;
 using FDK;
+<<<<<<< HEAD
+=======
+using TJAPlayer3.Common;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -58,6 +65,7 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+<<<<<<< HEAD
 				this.n現在のメニュー番号 = 0;                                                    //
                 if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
                 {
@@ -72,6 +80,15 @@ namespace TJAPlayer3
 					this.ctキー反復用[ i ] = new CCounter( 0, 0, 0, TJAPlayer3.Timer );			//
 				}																				//
 				this.bメニューにフォーカス中 = true;											// ここまでOPTIONと共通
+=======
+				this.n現在のメニュー番号 = 0;
+                this.ftフォント = new Font(FontUtilities.GetFontFamilyOrFallback(TJAPlayer3.ConfigIni.FontName), 18.0f, FontStyle.Bold, GraphicsUnit.Pixel);
+				for( int i = 0; i < 4; i++ )
+				{
+					this.ctキー反復用[ i ] = new CCounter( 0, 0, 0, TJAPlayer3.Timer );
+				}
+				this.bメニューにフォーカス中 = true;
+>>>>>>> twopointzero/develop
 				this.eItemPanelモード = EItemPanelモード.パッド一覧;
 			}
 			finally
@@ -116,6 +133,7 @@ namespace TJAPlayer3
 				Trace.Unindent();
 			}
 		}
+<<<<<<< HEAD
 		public override void OnManagedリソースの作成()											// OPTIONと画像以外共通
 		{
 			if( !base.b活性化してない )
@@ -152,6 +170,44 @@ namespace TJAPlayer3
 				base.OnManagedリソースの作成();
 			}
 		}
+=======
+
+        public override void OnManagedリソースの作成()
+        {
+            if (!b活性化してない)
+            {
+                string[] strMenuItem = {"System", "Drums", "Exit"};
+                txMenuItemLeft = new CTexture[strMenuItem.Length, 2];
+                using (var prvFont = new CPrivateFastFont(CSkin.Path(@"mplus-1p-heavy.ttf"), 20))
+                {
+                    for (var i = 0; i < strMenuItem.Length; i++)
+                    {
+                        using (var bmpStr = prvFont.DrawPrivateFont(strMenuItem[i], Color.White, Color.Black))
+                        {
+                            txMenuItemLeft[i, 0] = TJAPlayer3.tテクスチャの生成(bmpStr, false);
+                        }
+
+                        using (var bmpStr = prvFont.DrawPrivateFont(strMenuItem[i], Color.White, Color.Black, Color.Yellow, Color.OrangeRed))
+                        {
+                            txMenuItemLeft[i, 1] = TJAPlayer3.tテクスチャの生成(bmpStr, false);
+                        }
+                    }
+                }
+
+                if (bメニューにフォーカス中)
+                {
+                    t説明文パネルに現在選択されているメニューの説明を描画する();
+                }
+                else
+                {
+                    t説明文パネルに現在選択されている項目の説明を描画する();
+                }
+
+                base.OnManagedリソースの作成();
+            }
+        }
+
+>>>>>>> twopointzero/develop
 		public override void OnManagedリソースの解放()											// OPTIONと同じ(COnfig.iniの書き出しタイミングのみ異なるが、無視して良い)
 		{
 			if( !base.b活性化してない )
@@ -160,7 +216,11 @@ namespace TJAPlayer3
 				//CDTXMania.tテクスチャの解放( ref this.tx上部パネル );
 				//CDTXMania.tテクスチャの解放( ref this.tx下部パネル );
 				//CDTXMania.tテクスチャの解放( ref this.txMenuカーソル );
+<<<<<<< HEAD
 				TJAPlayer3.tテクスチャの解放( ref this.tx説明文パネル );
+=======
+				TJAPlayer3.t安全にDisposeする(ref this.tx説明文パネル);
+>>>>>>> twopointzero/develop
 				for ( int i = 0; i < txMenuItemLeft.GetLength( 0 ); i++ )
 				{
 					txMenuItemLeft[ i, 0 ].Dispose();
@@ -188,8 +248,12 @@ namespace TJAPlayer3
 
 			#region [ 背景 ]
 			//---------------------
+<<<<<<< HEAD
 			if(TJAPlayer3.Tx.Config_Background != null )
                 TJAPlayer3.Tx.Config_Background.t2D描画( TJAPlayer3.app.Device, 0, 0 );
+=======
+            TJAPlayer3.Tx.Config_Background?.t2D描画( TJAPlayer3.app.Device, 0, 0 );
+>>>>>>> twopointzero/develop
 			//---------------------
 			#endregion
 			#region [ メニューカーソル ]
@@ -229,7 +293,11 @@ namespace TJAPlayer3
 				//txMenuItemLeft = CDTXMania.tテクスチャの生成( bmpStr, false );
 				int flag = ( this.n現在のメニュー番号 == i ) ? 1 : 0;
 				int num4 = txMenuItemLeft[ i, flag ].sz画像サイズ.Width;
+<<<<<<< HEAD
                 txMenuItemLeft[i, flag].t2D描画(TJAPlayer3.app.Device, 282 - (num4 / 2) + TJAPlayer3.Skin.Config_ItemText_Correction_X, menuY + TJAPlayer3.Skin.Config_ItemText_Correction_Y ); //55
+=======
+                txMenuItemLeft[i, flag].t2D描画(TJAPlayer3.app.Device, 282 - (num4 / 2) + TJAPlayer3.Skin.Config_ItemText_Correction_XY[0], menuY + TJAPlayer3.Skin.Config_ItemText_Correction_XY[1] ); //55
+>>>>>>> twopointzero/develop
 				//txMenuItem.Dispose();
 				menuY += stepY;
 			}
@@ -301,8 +369,12 @@ namespace TJAPlayer3
 			// キー入力
 
 			if( ( base.eフェーズID != CStage.Eフェーズ.共通_通常状態 )
+<<<<<<< HEAD
 				|| this.actKeyAssign.bキー入力待ちの最中である
 				|| TJAPlayer3.act現在入力を占有中のプラグイン != null )
+=======
+				|| this.actKeyAssign.bキー入力待ちの最中である )
+>>>>>>> twopointzero/develop
 				return 0;
 
 			// 曲データの一覧取得中は、キー入力を無効化する

@@ -1,8 +1,12 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using SlimDX;
 
 namespace FDK
@@ -76,6 +80,7 @@ namespace FDK
 			AVIFileExit();
 		}
 		
+<<<<<<< HEAD
 		public Bitmap GetFrame( int no )
 		{
 			if( this.aviStream == IntPtr.Zero )
@@ -83,6 +88,8 @@ namespace FDK
 
 			return BitmapUtil.ToBitmap( AVIStreamGetFrame( this.frame, no ) );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public int GetFrameNoFromTime( int time )
 		{
 			return (int) ( time * ( ( (double) this.dwレート ) / ( 1000.0 * this.dwスケール ) ) );

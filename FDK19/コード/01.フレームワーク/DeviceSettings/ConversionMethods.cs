@@ -19,9 +19,13 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
+<<<<<<< HEAD
 using SlimDX;
 using SlimDX.Direct3D9;
 using DXGI = SlimDX.DXGI;
+=======
+using SlimDX.Direct3D9;
+>>>>>>> twopointzero/develop
 
 namespace SampleFramework
 {
@@ -106,6 +110,7 @@ namespace SampleFramework
                     return 0;
             }
         }
+<<<<<<< HEAD
 
         public static int GetColorBits(DXGI.Format format)
         {
@@ -200,5 +205,7 @@ namespace SampleFramework
                 denom = rational.Denominator;
             return rational.Numerator / denom;
         }
+=======
+>>>>>>> twopointzero/develop
     }
 }

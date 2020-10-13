@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using TJAPlayer3.C曲リストノードComparers;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -21,6 +25,12 @@ namespace TJAPlayer3
 			lci.Add( new CItemList( "BPM",			CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "300,200,...",	"70,80,90,..." } ) );
 #endif
 			lci.Add( new CItemList( "ジャンル",			CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "AC15",	"AC8-14" } ) );
+<<<<<<< HEAD
+=======
+
+		    lci.Add( new CItemList( "Rating",			CItemBase.Eパネル種別.通常, 0, "", "", C曲リストノードComparerRating.GetItemListValues()) );
+
+>>>>>>> twopointzero/develop
 			lci.Add( new CItemList( "戻る",		CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "", 				"" } ) );
 			
 			base.Initialize( lci, false, "SORT MENU" );
@@ -39,6 +49,7 @@ namespace TJAPlayer3
 		//}
 
 
+<<<<<<< HEAD
 		public override void tEnter押下Main( int nSortOrder )
 		{
 			nSortOrder *= 2;	// 0,1  => -1, 1
@@ -48,46 +59,86 @@ namespace TJAPlayer3
 				case EOrder.Path:
 					this.act曲リスト.t曲リストのソート(
 					    CSongs管理.t曲リストのソート1_絶対パス順, eInst, nSortOrder
+=======
+		public override void tEnter押下Main( int itemIndex )
+		{
+		    int ItemIndexToSortOrder(int nSortOrder)
+		    {
+		        return nSortOrder * 2 - 1; // 0,1  => -1, 1
+		    }
+
+		    switch ( (EOrder)n現在の選択行 )
+			{
+				case EOrder.Path:
+					this.act曲リスト.t曲リストのソート(
+					    CSongs管理.t曲リストのソート1_絶対パス順, eInst, ItemIndexToSortOrder(itemIndex)
+>>>>>>> twopointzero/develop
 					);
 					this.act曲リスト.t選択曲が変更された(true);
 					break;
 				case EOrder.Title:
 					this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
 					    CSongs管理.t曲リストのソート2_タイトル順, eInst, nSortOrder
+=======
+					    CSongs管理.t曲リストのソート2_タイトル順, eInst, ItemIndexToSortOrder(itemIndex)
+>>>>>>> twopointzero/develop
 					);
 					this.act曲リスト.t選択曲が変更された(true);
 					break;
                 //case (int) EOrder.Level:
                 //    this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
                 //        CSongs管理.t曲リストのソート4_LEVEL順, eInst, nSortOrder,
+=======
+                //        CSongs管理.t曲リストのソート4_LEVEL順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
                 //        this.act曲リスト.n現在のアンカ難易度レベル
                 //    );
                 //    this.act曲リスト.t選択曲が変更された( true );
                 //    break;
                 //case (int) EOrder.BestRank:
                 //    this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
                 //        CSongs管理.t曲リストのソート5_BestRank順, eInst, nSortOrder,
+=======
+                //        CSongs管理.t曲リストのソート5_BestRank順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
                 //        this.act曲リスト.n現在のアンカ難易度レベル
                 //    );
                 //    break;
                 //case (int) EOrder.PlayCount:
+<<<<<<< HEAD
                 //    // this.act曲リスト.t曲リストのソート3_演奏回数の多い順( eInst, nSortOrder );
                 //    this.act曲リスト.t曲リストのソート(
                 //        CSongs管理.t曲リストのソート3_演奏回数の多い順, eInst, nSortOrder,
+=======
+                //    // this.act曲リスト.t曲リストのソート3_演奏回数の多い順( eInst, ItemIndexToSortOrder(itemIndex) );
+                //    this.act曲リスト.t曲リストのソート(
+                //        CSongs管理.t曲リストのソート3_演奏回数の多い順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
                 //        this.act曲リスト.n現在のアンカ難易度レベル
                 //    );
                 //    this.act曲リスト.t選択曲が変更された( true );
                 //    break;
                 //case (int) EOrder.Author:
                 //    this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
                 //        CSongs管理.t曲リストのソート8_アーティスト名順, eInst, nSortOrder,
+=======
+                //        CSongs管理.t曲リストのソート8_アーティスト名順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
                 //        this.act曲リスト.n現在のアンカ難易度レベル
                 //    );
                 //    this.act曲リスト.t選択曲が変更された( true );
                 //    break;
                 //case (int) EOrder.SkillPoint:
                 //    this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
                 //        CSongs管理.t曲リストのソート6_SkillPoint順, eInst, nSortOrder,
+=======
+                //        CSongs管理.t曲リストのソート6_SkillPoint順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
                 //        this.act曲リスト.n現在のアンカ難易度レベル
                 //    );
                 //    this.act曲リスト.t選択曲が変更された( true );
@@ -95,7 +146,11 @@ namespace TJAPlayer3
 #if TEST_SORTBGM
 						case (int) ESortItem.BPM:
 						this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
 							CSongs管理.t曲リストのソート9_BPM順, eInst, nSortOrder,
+=======
+							CSongs管理.t曲リストのソート9_BPM順, eInst, ItemIndexToSortOrder(itemIndex),
+>>>>>>> twopointzero/develop
 							this.act曲リスト.n現在のアンカ難易度レベル
 						);
 					this.act曲リスト.t選択曲が変更された(true);
@@ -104,12 +159,27 @@ namespace TJAPlayer3
                 //ジャンル順
 				case EOrder.Genre:
 					this.act曲リスト.t曲リストのソート(
+<<<<<<< HEAD
                         //CDTXMania.Songs管理.t曲リストのソート7_更新日時順, eInst, nSortOrder,
                         //this.act曲リスト.n現在のアンカ難易度レベル
                         CSongs管理.t曲リストのソート9_ジャンル順, eInst, nSortOrder, 0
 					);
 					this.act曲リスト.t選択曲が変更された( true );
 					break;
+=======
+                        //CDTXMania.Songs管理.t曲リストのソート7_更新日時順, eInst, ItemIndexToSortOrder(itemIndex),
+                        //this.act曲リスト.n現在のアンカ難易度レベル
+                        CSongs管理.t曲リストのソート9_ジャンル順, eInst, ItemIndexToSortOrder(itemIndex), 0
+					);
+					this.act曲リスト.t選択曲が変更された( true );
+					break;
+                case EOrder.Rating:
+			        this.act曲リスト.t曲リストのソート(
+			            CSongs管理.t曲リストのソート10_Rating順, eInst, itemIndex, 0
+			        );
+			        this.act曲リスト.t選択曲が変更された( true );
+			        break;
+>>>>>>> twopointzero/develop
 				case EOrder.Return:
 					this.tDeativatePopupMenu();
 					break;
@@ -117,8 +187,13 @@ namespace TJAPlayer3
 					break;
 			}
 		}
+<<<<<<< HEAD
 		
 		// CActivity 実装
+=======
+
+	    // CActivity 実装
+>>>>>>> twopointzero/develop
 
 		public override void On活性化()
 		{
@@ -154,7 +229,12 @@ namespace TJAPlayer3
             Path = 0,
 			Title = 1,
 		    Genre = 2,
+<<<<<<< HEAD
             Return = 3
+=======
+		    Rating = 3,
+            Return = 4
+>>>>>>> twopointzero/develop
 		}
 
 		//-----------------

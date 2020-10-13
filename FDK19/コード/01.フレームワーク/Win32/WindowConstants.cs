@@ -29,14 +29,20 @@ namespace SampleFramework
         public const int WM_SYSCOMMAND = 0x112;
         public const int WM_ACTIVATEAPP = 0x001C;
         public const int WM_POWERBROADCAST = 0x0218;
+<<<<<<< HEAD
 		public const int WM_COPYDATA = 0x004A;
+=======
+>>>>>>> twopointzero/develop
 
         public const int SC_SCREENSAVE = 0xF140;
         public const int SC_MONITORPOWER = 0xF170;
 
+<<<<<<< HEAD
         public const int VK_LWIN = 0x5B;
         public const int VK_RWIN = 0x5C;
 
+=======
+>>>>>>> twopointzero/develop
         public static readonly IntPtr SIZE_MINIMIZED = new IntPtr(1);
         public static readonly IntPtr SIZE_MAXIMIZED = new IntPtr(2);
         public static readonly IntPtr SIZE_RESTORED = new IntPtr(0);
@@ -48,30 +54,44 @@ namespace SampleFramework
 
         public const int SW_RESTORE = 9;
         public const int SW_SHOWMINIMIZED = 2;
+<<<<<<< HEAD
         public const int SW_MAXIMIZE = 3;
+=======
+>>>>>>> twopointzero/develop
         public const int SW_SHOW = 5;
         public const int SW_MINIMIZE = 6;
 
         public const int GWL_STYLE = -16;
+<<<<<<< HEAD
         public const int GWL_EXSTYLE = -20;
+=======
+>>>>>>> twopointzero/develop
 
         public const long WS_MAXIMIZE = 0x01000000;
         public const long WS_MINIMIZE = 0x20000000;
         public const long WS_POPUP = 0x80000000;
         public const long WS_SYSMENU = 0x00080000;
 
+<<<<<<< HEAD
         public const long WS_EX_TOPMOST = 0x00000008;
 
         public const uint SWP_NOSIZE = 0x0001;
         public const uint SWP_NOMOVE = 0x0002;
         public const uint SWP_NOZORDER = 0x0004;
         public const uint SWP_NOREDRAW = 0x0008;
+=======
+        public const uint SWP_NOMOVE = 0x0002;
+        public const uint SWP_NOZORDER = 0x0004;
+>>>>>>> twopointzero/develop
 
         public const uint ES_CONTINUOUS = 0x80000000;
         public const uint ES_DISPLAY_REQUIRED = 0x00000002;
 
         public const int MONITOR_DEFAULTTOPRIMARY = 1;
+<<<<<<< HEAD
 
 		public const int WM_USER = 0x400;
+=======
+>>>>>>> twopointzero/develop
 	}
 }

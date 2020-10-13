@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+=======
+﻿using System.Globalization;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -25,7 +29,10 @@ namespace TJAPlayer3
 		{
 			基本形,
 			ONorOFFトグル,
+<<<<<<< HEAD
 			ONorOFFor不定スリーステート,
+=======
+>>>>>>> twopointzero/develop
 			整数,
 			リスト,
 			切替リスト
@@ -42,6 +49,7 @@ namespace TJAPlayer3
 			this.str項目名 = "";
 			this.str説明文 = "";
 		}
+<<<<<<< HEAD
 		public CItemBase( string str項目名 )
 			: this()
 		{
@@ -51,11 +59,15 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, str説明文jp);
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		public CItemBase(string str項目名,  string str説明文jp, string str説明文en)
 			: this() {
 			this.t初期化(str項目名, str説明文jp, str説明文en);
 		}
 
+<<<<<<< HEAD
 		public CItemBase(string str項目名, Eパネル種別 eパネル種別)
 			: this()
 		{
@@ -65,6 +77,8 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, eパネル種別, str説明文jp);
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CItemBase(string str項目名, Eパネル種別 eパネル種別, string str説明文jp, string str説明文en)
 			: this() {
 			this.t初期化(str項目名, eパネル種別, str説明文jp, str説明文en);
@@ -82,6 +96,7 @@ namespace TJAPlayer3
 		public virtual void t項目値を前へ移動()
 		{
 		}
+<<<<<<< HEAD
 		public virtual void t初期化( string str項目名 )
 		{
 			this.t初期化( str項目名, Eパネル種別.通常 );
@@ -89,6 +104,8 @@ namespace TJAPlayer3
 		public virtual void t初期化(string str項目名, string str説明文jp) {
 			this.t初期化(str項目名, Eパネル種別.通常, str説明文jp, str説明文jp);
 		}
+=======
+>>>>>>> twopointzero/develop
 		public virtual void t初期化(string str項目名, string str説明文jp, string str説明文en) {
 			this.t初期化(str項目名, Eパネル種別.通常, str説明文jp, str説明文en);
 		}
@@ -97,9 +114,12 @@ namespace TJAPlayer3
 		{
 			this.t初期化(str項目名, eパネル種別, "", "");
 		}
+<<<<<<< HEAD
 		public virtual void t初期化(string str項目名, Eパネル種別 eパネル種別, string str説明文jp) {
 			this.t初期化(str項目名, eパネル種別, str説明文jp, str説明文jp);
 		}
+=======
+>>>>>>> twopointzero/develop
 		public virtual void t初期化(string str項目名, Eパネル種別 eパネル種別, string str説明文jp, string str説明文en) {
 			this.str項目名 = str項目名;
 			this.eパネル種別 = eパネル種別;

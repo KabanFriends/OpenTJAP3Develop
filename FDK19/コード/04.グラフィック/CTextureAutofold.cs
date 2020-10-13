@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
@@ -6,6 +7,10 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Diagnostics;
 using SlimDX;
+=======
+using System.Drawing;
+using System.IO;
+>>>>>>> twopointzero/develop
 using SlimDX.Direct3D9;
 
 using Device = SampleFramework.DeviceCache;
@@ -49,15 +54,23 @@ namespace FDK
 		/// <param name="b黒を透過する">画像の黒（0xFFFFFFFF）を透過させるなら true。</param>
 		/// <param name="pool">テクスチャの管理方法。</param>
 		/// <exception cref="CTextureCreateFailedException">テクスチャの作成に失敗しました。</exception>
+<<<<<<< HEAD
 		public CTextureAf( Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool )
+=======
+        private CTextureAf( Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool )
+>>>>>>> twopointzero/develop
 		{
 			MakeTexture( device, strファイル名, format, b黒を透過する, pool );
 		}
 
+<<<<<<< HEAD
 
 
 
 		public new void MakeTexture( Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool )
+=======
+        private new void MakeTexture( Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool )
+>>>>>>> twopointzero/develop
 		{
 			if ( !File.Exists( strファイル名 ) )		// #27122 2012.1.13 from: ImageInformation では FileNotFound 例外は返ってこないので、ここで自分でチェックする。わかりやすいログのために。
 				throw new FileNotFoundException( string.Format( "ファイルが存在しません。\n[{0}]", strファイル名 ) );
@@ -291,6 +304,7 @@ namespace FDK
 			t2D描画( device, (int) x, (int) y, rc );
 		}
 
+<<<<<<< HEAD
         /// <summary>
 		/// テクスチャを 2D 画像と見なして描画する。
 		/// </summary>
@@ -368,6 +382,8 @@ namespace FDK
 
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		#region [ private ]
 		//-----------------
 		private bool b横長のテクスチャである;

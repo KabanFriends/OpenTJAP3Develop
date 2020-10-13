@@ -185,9 +185,15 @@ namespace TJAPlayer3
 				y += num5;
 				TJAPlayer3.stageコンフィグ.actFont.t文字列描画( x + 20, y, "<< Returnto List", this.n現在の選択行 == 0x11, 0.75f );
 				y += num5;
+<<<<<<< HEAD
 				if( this.bキー入力待ち && ( TJAPlayer3.Tx.Config_KeyAssign != null ) )
 				{
                     TJAPlayer3.Tx.Config_KeyAssign.t2D描画( TJAPlayer3.app.Device, 0x185, 0xd7 );
+=======
+				if( this.bキー入力待ち )
+				{
+                    TJAPlayer3.Tx.Config_KeyAssign?.t2D描画( TJAPlayer3.app.Device, 0x185, 0xd7 );
+>>>>>>> twopointzero/develop
 				}
 			}
 			return 0;

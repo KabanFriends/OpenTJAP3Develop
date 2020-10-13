@@ -1,10 +1,16 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Diagnostics;
+=======
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+>>>>>>> twopointzero/develop
 using SlimDX;
 using SlimDX.Direct3D9;
 
@@ -20,12 +26,22 @@ namespace FDK
             get;
             set;
         }
+<<<<<<< HEAD
         public bool b乗算合成
+=======
+
+        private bool b乗算合成
+>>>>>>> twopointzero/develop
         {
             get;
             set;
         }
+<<<<<<< HEAD
         public bool b減算合成
+=======
+
+        private bool b減算合成
+>>>>>>> twopointzero/develop
         {
             get;
             set;
@@ -40,7 +56,11 @@ namespace FDK
             get;
             set;
         }
+<<<<<<< HEAD
         public float Opacity
+=======
+        public int Opacity
+>>>>>>> twopointzero/develop
         {
             get
             {
@@ -80,24 +100,41 @@ namespace FDK
         public Format Format
         {
             get;
+<<<<<<< HEAD
             protected set;
+=======
+            private set;
+>>>>>>> twopointzero/develop
         }
         public Vector3 vc拡大縮小倍率;
 
         // 画面が変わるたび以下のプロパティを設定し治すこと。
 
+<<<<<<< HEAD
         public static Size sz論理画面 = Size.Empty;
         public static Size sz物理画面 = Size.Empty;
         public static Rectangle rc物理画面描画領域 = Rectangle.Empty;
+=======
+        private static Rectangle rc物理画面描画領域 = Rectangle.Empty;
+
+>>>>>>> twopointzero/develop
         /// <summary>
         /// <para>論理画面を1とする場合の物理画面の倍率。</para>
         /// <para>論理値×画面比率＝物理値。</para>
         /// </summary>
+<<<<<<< HEAD
         public static float f画面比率 = 1.0f;
 
         // コンストラクタ
 
         public CTexture()
+=======
+        private const float f画面比率 = 1.0f; // Keep this element to later help decouple coordinate systems, screen from world.
+
+        // コンストラクタ
+
+        protected CTexture()
+>>>>>>> twopointzero/develop
         {
             this.sz画像サイズ = new Size(0, 0);
             this.szテクスチャサイズ = new Size(0, 0);
@@ -121,7 +158,11 @@ namespace FDK
         /// <param name="bitmap">作成元のビットマップ。</param>
         /// <param name="format">テクスチャのフォーマット。</param>
         /// <exception cref="CTextureCreateFailedException">テクスチャの作成に失敗しました。</exception>
+<<<<<<< HEAD
         public CTexture(Device device, Bitmap bitmap, Format format)
+=======
+        public CTexture(Device device, Bitmap bitmap, Format format, Pool pool = Pool.Managed)
+>>>>>>> twopointzero/develop
             : this()
         {
             try
@@ -136,7 +177,11 @@ namespace FDK
                     bitmap.Save(stream, ImageFormat.Bmp);
                     stream.Seek(0L, SeekOrigin.Begin);
                     int colorKey = unchecked((int)0xFF000000);
+<<<<<<< HEAD
                     this.texture = Texture.FromStream(device.UnderlyingDevice, stream, this.szテクスチャサイズ.Width, this.szテクスチャサイズ.Height, 1, Usage.None, format, poolvar, Filter.Point, Filter.None, colorKey);
+=======
+                    this.texture = Texture.FromStream(device.UnderlyingDevice, stream, this.szテクスチャサイズ.Width, this.szテクスチャサイズ.Height, 1, Usage.None, format, pool, Filter.Point, Filter.None, colorKey);
+>>>>>>> twopointzero/develop
                 }
             }
             catch (Exception e)
@@ -147,6 +192,7 @@ namespace FDK
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// <para>空の Managed テクスチャを作成する。</para>
         /// <para>テクスチャのサイズは、指定された希望サイズ以上、かつ、D3D9デバイスで生成可能な最小のサイズに自動的に調節される。
         /// その際、テクスチャの調節後のサイズにあわせた画像の拡大縮小は行わない。</para>
@@ -187,6 +233,8 @@ namespace FDK
         }
 
         /// <summary>
+=======
+>>>>>>> twopointzero/develop
         /// <para>空のテクスチャを作成する。</para>
         /// <para>テクスチャのサイズは、指定された希望サイズ以上、かつ、D3D9デバイスで生成可能な最小のサイズに自動的に調節される。
         /// その際、テクスチャの調節後のサイズにあわせた画像の拡大縮小は行わない。</para>
@@ -200,12 +248,16 @@ namespace FDK
         /// <param name="format">テクスチャのフォーマット。</param>
         /// <param name="pool">テクスチャの管理方法。</param>
         /// <exception cref="CTextureCreateFailedException">テクスチャの作成に失敗しました。</exception>
+<<<<<<< HEAD
         public CTexture(Device device, int n幅, int n高さ, Format format, Pool pool)
             : this(device, n幅, n高さ, format, pool, Usage.None)
         {
         }
 
         public CTexture(Device device, int n幅, int n高さ, Format format, Pool pool, Usage usage)
+=======
+        public CTexture(Device device, int n幅, int n高さ, Format format, Pool pool, Usage usage = Usage.None)
+>>>>>>> twopointzero/develop
             : this()
         {
             try
@@ -225,9 +277,12 @@ namespace FDK
                     {
                         bitmap.Save(stream, ImageFormat.Bmp);
                         stream.Seek(0L, SeekOrigin.Begin);
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 						pool = poolvar;
 #endif
+=======
+>>>>>>> twopointzero/develop
                         // 中で更にメモリ読み込みし直していて無駄なので、Streamを使うのは止めたいところ
                         this.texture = Texture.FromStream(device.UnderlyingDevice, stream, n幅, n高さ, 1, usage, format, pool, Filter.Point, Filter.None, 0);
                     }
@@ -253,12 +308,21 @@ namespace FDK
         /// <param name="b黒を透過する">画像の黒（0xFFFFFFFF）を透過させるなら true。</param>
         /// <param name="pool">テクスチャの管理方法。</param>
         /// <exception cref="CTextureCreateFailedException">テクスチャの作成に失敗しました。</exception>
+<<<<<<< HEAD
         public CTexture(Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool)
+=======
+        public CTexture(Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool = Pool.Managed)
+>>>>>>> twopointzero/develop
             : this()
         {
             MakeTexture(device, strファイル名, format, b黒を透過する, pool);
         }
+<<<<<<< HEAD
         public void MakeTexture(Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool)
+=======
+
+        protected void MakeTexture(Device device, string strファイル名, Format format, bool b黒を透過する, Pool pool)
+>>>>>>> twopointzero/develop
         {
             if (!File.Exists(strファイル名))     // #27122 2012.1.13 from: ImageInformation では FileNotFound 例外は返ってこないので、ここで自分でチェックする。わかりやすいログのために。
                 throw new FileNotFoundException(string.Format("ファイルが存在しません。\n[{0}]", strファイル名));
@@ -267,16 +331,21 @@ namespace FDK
             MakeTexture(device, _txData, format, b黒を透過する, pool);
         }
 
+<<<<<<< HEAD
         public CTexture(Device device, byte[] txData, Format format, bool b黒を透過する, Pool pool)
             : this()
         {
             MakeTexture(device, txData, format, b黒を透過する, pool);
         }
         public void MakeTexture(Device device, byte[] txData, Format format, bool b黒を透過する, Pool pool)
+=======
+        private void MakeTexture(Device device, byte[] txData, Format format, bool b黒を透過する, Pool pool)
+>>>>>>> twopointzero/develop
         {
             try
             {
                 var information = ImageInformation.FromMemory(txData);
+<<<<<<< HEAD
                 this.Format = format;
                 this.sz画像サイズ = new Size(information.Width, information.Height);
                 this.rc全画像 = new Rectangle(0, 0, this.sz画像サイズ.Width, this.sz画像サイズ.Height);
@@ -291,21 +360,43 @@ namespace FDK
                 this.texture = Texture.FromMemory(device.UnderlyingDevice, txData, this.sz画像サイズ.Width, this.sz画像サイズ.Height, 1, Usage.None, format, pool, Filter.Point, Filter.None, colorKey);
                 //Trace.TraceInformation( "CTexture() end:   " );
                 //				}
+=======
+
+                this.Format = format;
+                this.sz画像サイズ = new Size(information.Width, information.Height);
+                this.rc全画像 = new Rectangle(0, 0, this.sz画像サイズ.Width, this.sz画像サイズ.Height);
+                this.szテクスチャサイズ = this.t指定されたサイズを超えない最適なテクスチャサイズを返す(device, this.sz画像サイズ);
+
+                int colorKey = (b黒を透過する) ? unchecked((int)0xFF000000) : 0;
+                this.texture = Texture.FromMemory(device.UnderlyingDevice, txData, this.sz画像サイズ.Width, this.sz画像サイズ.Height, 1, Usage.None, format, pool, Filter.Point, Filter.None, colorKey);
+>>>>>>> twopointzero/develop
             }
             catch
             {
                 this.Dispose();
+<<<<<<< HEAD
                 // throw new CTextureCreateFailedException( string.Format( "テクスチャの生成に失敗しました。\n{0}", strファイル名 ) );
+=======
+>>>>>>> twopointzero/develop
                 throw new CTextureCreateFailedException(string.Format("テクスチャの生成に失敗しました。\n"));
             }
         }
 
+<<<<<<< HEAD
         public CTexture(Device device, Bitmap bitmap, Format format, bool b黒を透過する, Pool pool)
+=======
+        public CTexture(Device device, Bitmap bitmap, Format format, bool b黒を透過する, Pool pool = Pool.Managed)
+>>>>>>> twopointzero/develop
             : this()
         {
             MakeTexture(device, bitmap, format, b黒を透過する, pool);
         }
+<<<<<<< HEAD
         public void MakeTexture(Device device, Bitmap bitmap, Format format, bool b黒を透過する, Pool pool)
+=======
+
+        protected void MakeTexture(Device device, Bitmap bitmap, Format format, bool b黒を透過する, Pool pool)
+>>>>>>> twopointzero/develop
         {
             try
             {
@@ -314,6 +405,7 @@ namespace FDK
                 this.rc全画像 = new Rectangle(0, 0, this.sz画像サイズ.Width, this.sz画像サイズ.Height);
                 int colorKey = (b黒を透過する) ? unchecked((int)0xFF000000) : 0;
                 this.szテクスチャサイズ = this.t指定されたサイズを超えない最適なテクスチャサイズを返す(device, this.sz画像サイズ);
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 				pool = poolvar;
 #endif
@@ -352,6 +444,16 @@ namespace FDK
                     IntPtr src_scan0 = (IntPtr)((Int64)srcBufData.Scan0);
                     destDataRectangle.Data.WriteRange(src_scan0, this.sz画像サイズ.Width * 4 * this.sz画像サイズ.Height);
 #endif
+=======
+                //Trace.TraceInformation( "CTExture() start: " );
+                unsafe  // Bitmapの内部データ(a8r8g8b8)を自前でゴリゴリコピーする
+                {
+                    this.texture = new Texture(device.UnderlyingDevice, this.sz画像サイズ.Width, this.sz画像サイズ.Height, 1, Usage.None, format, pool);
+                    BitmapData srcBufData = bitmap.LockBits(new Rectangle(0, 0, this.sz画像サイズ.Width, this.sz画像サイズ.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+                    DataRectangle destDataRectangle = texture.LockRectangle(0, LockFlags.Discard);  // None
+                    IntPtr src_scan0 = (IntPtr)((Int64)srcBufData.Scan0);
+                    destDataRectangle.Data.WriteRange(src_scan0, this.sz画像サイズ.Width * 4 * this.sz画像サイズ.Height);
+>>>>>>> twopointzero/develop
                     texture.UnlockRectangle(0);
                     bitmap.UnlockBits(srcBufData);
                 }
@@ -370,48 +472,74 @@ namespace FDK
         // Rectangleを使う場合、座標調整のためにテクスチャサイズの値をそのまま使うとまずいことになるため、Rectragleから幅を取得して調整をする。
         public void t2D中心基準描画(Device device, int x, int y)
         {
+<<<<<<< HEAD
             this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2), y - (this.szテクスチャサイズ.Height / 2), 1f, this.rc全画像);
         }
+=======
+            this.t2D描画(device, x, y, HorizontalReferencePoint.Center, VerticalReferencePoint.Center);
+        }
+
+>>>>>>> twopointzero/develop
         public void t2D中心基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, x - (rc画像内の描画領域.Width / 2), y - (rc画像内の描画領域.Height / 2), 1f, rc画像内の描画領域);
         }
+<<<<<<< HEAD
         public void t2D中心基準描画(Device device, float x, float y)
         {
             this.t2D描画(device, (int)x - (this.szテクスチャサイズ.Width / 2), (int)y - (this.szテクスチャサイズ.Height / 2), 1f, this.rc全画像);
         }
+=======
+
+>>>>>>> twopointzero/develop
         public void t2D中心基準描画(Device device, float x, float y, float depth, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, (int)x - (rc画像内の描画領域.Width / 2), (int)y - (rc画像内の描画領域.Height / 2), depth, rc画像内の描画領域);
         }
 
+<<<<<<< HEAD
         // 下を基準にして描画する(拡大率考慮)メソッドを追加。 (AioiLight)
         public void t2D拡大率考慮下基準描画(Device device, int x, int y)
         {
             this.t2D描画(device, x, y - (szテクスチャサイズ.Height * this.vc拡大縮小倍率.Y), 1f, this.rc全画像);
         }
+=======
+>>>>>>> twopointzero/develop
         public void t2D拡大率考慮下基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, x, y - (rc画像内の描画領域.Height * this.vc拡大縮小倍率.Y), 1f, rc画像内の描画領域);
         }
+<<<<<<< HEAD
         public void t2D拡大率考慮下中心基準描画(Device device, int x, int y)
         {
             this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2), y - (szテクスチャサイズ.Height * this.vc拡大縮小倍率.Y), 1f, this.rc全画像);
         }
+=======
+
+        private void t2D拡大率考慮下中心基準描画(Device device, int x, int y)
+        {
+            this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2), y - (szテクスチャサイズ.Height * this.vc拡大縮小倍率.Y), 1f, this.rc全画像);
+        }
+
+>>>>>>> twopointzero/develop
         public void t2D拡大率考慮下中心基準描画(Device device, float x, float y)
         {
             this.t2D拡大率考慮下中心基準描画(device, (int)x, (int)y);
         }
 
+<<<<<<< HEAD
         public void t2D拡大率考慮上中心基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, x - (((rc画像内の描画領域.Width / 2) * this.vc拡大縮小倍率.X)), y, 1f, rc画像内の描画領域);
         }
 
+=======
+>>>>>>> twopointzero/develop
         public void t2D拡大率考慮下中心基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, x - ((rc画像内の描画領域.Width / 2)), y - (rc画像内の描画領域.Height * this.vc拡大縮小倍率.Y), 1f, rc画像内の描画領域);
         }
+<<<<<<< HEAD
         public void t2D拡大率考慮下中心基準描画(Device device, float x, float y, Rectangle rc画像内の描画領域)
         {
             this.t2D拡大率考慮下中心基準描画(device, (int)x, (int)y, rc画像内の描画領域);
@@ -427,11 +555,25 @@ namespace FDK
         }
 
 
+=======
+
+        public void t2D下中央基準描画(Device device, int x, int y)
+        {
+            this.t2D描画(device, x, y, HorizontalReferencePoint.Center, VerticalReferencePoint.Bottom);
+        }
+
+        public void t2D下中央基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
+        {
+            this.t2D描画(device, x - (rc画像内の描画領域.Width / 2), y - (rc画像内の描画領域.Height), rc画像内の描画領域);
+        }
+
+>>>>>>> twopointzero/develop
         public void t2D拡大率考慮中央基準描画(Device device, int x, int y)
         {
             this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2 * this.vc拡大縮小倍率.X), y - (szテクスチャサイズ.Height / 2 * this.vc拡大縮小倍率.Y), 1f, this.rc全画像);
         }
 
+<<<<<<< HEAD
         public void t2D拡大率考慮中央基準描画(Device device, int x, int y, RectangleF rec)
         {
             this.t2D描画(device, x - ((rec.Width / 2) * this.vc拡大縮小倍率.X), y - ((rec.Height / 2) * this.vc拡大縮小倍率.Y), 1f, rec);
@@ -445,6 +587,59 @@ namespace FDK
             this.t2D描画(device, x - ((rec.Width / 2) * this.vc拡大縮小倍率.X), y - ((rec.Height / 2) * this.vc拡大縮小倍率.Y), 1f, rec);
         }
 
+=======
+        public void t2D描画(
+            Device device,
+            int x,
+            int y,
+            HorizontalReferencePoint horizontalReferencePoint,
+            VerticalReferencePoint verticalReferencePoint = VerticalReferencePoint.Top)
+        {
+            t2D描画(device, x, y, rc全画像, horizontalReferencePoint, verticalReferencePoint);
+        }
+
+        // TODO Funnel overloads toward these this method, inline the overloads, and then push this logic further down toward its lower-level callee
+        private void t2D描画(
+            Device device,
+            int x,
+            int y,
+            Rectangle rc画像内の描画領域,
+            HorizontalReferencePoint horizontalReferencePoint,
+            VerticalReferencePoint verticalReferencePoint = VerticalReferencePoint.Top)
+        {
+            t2D描画(device, x + GetTruncatedOffset(horizontalReferencePoint), y + GetTruncatedOffset(verticalReferencePoint), 1f, rc画像内の描画領域);
+        }
+
+        private int GetTruncatedOffset(HorizontalReferencePoint horizontalReferencePoint)
+        {
+            switch (horizontalReferencePoint)
+            {
+                case HorizontalReferencePoint.Center:
+                    return -(szテクスチャサイズ.Width / 2);
+                case HorizontalReferencePoint.Left:
+                    return 0;
+                case HorizontalReferencePoint.Right:
+                    return -szテクスチャサイズ.Width;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(horizontalReferencePoint), horizontalReferencePoint, null);
+            }
+        }
+
+        private int GetTruncatedOffset(VerticalReferencePoint verticalReferencePoint)
+        {
+            switch (verticalReferencePoint)
+            {
+                case VerticalReferencePoint.Center:
+                    return -(szテクスチャサイズ.Height / 2);
+                case VerticalReferencePoint.Top:
+                    return 0;
+                case VerticalReferencePoint.Bottom:
+                    return -szテクスチャサイズ.Height;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(verticalReferencePoint), verticalReferencePoint, null);
+            }
+        }
+>>>>>>> twopointzero/develop
 
         /// <summary>
         /// テクスチャを 2D 画像と見なして描画する。
@@ -452,6 +647,7 @@ namespace FDK
         /// <param name="device">Direct3D9 デバイス。</param>
         /// <param name="x">描画位置（テクスチャの左上位置の X 座標[dot]）。</param>
         /// <param name="y">描画位置（テクスチャの左上位置の Y 座標[dot]）。</param>
+<<<<<<< HEAD
         public void t2D描画(Device device, int x, int y)
         {
             this.t2D描画(device, x, y, 1f, this.rc全画像);
@@ -480,10 +676,21 @@ namespace FDK
             this.t2D描画(device, x - (rc画像内の描画領域.Width * vc拡大縮小倍率.X), y, 1f, rc画像内の描画領域);
         }
 
+=======
+        public void t2D描画(Device device, int x, int y) // Watch out for this overload. It's one that the CTextureAf "new" methods intended to hit but which production code never called because it referenced CTexture types, not CTextureAf.
+        {
+            this.t2D描画(device, x, y, 1f, this.rc全画像);
+        }
+        public void t2D描画(Device device, int x, int y, Rectangle rc画像内の描画領域) // Watch out for this overload. It's one that the CTextureAf "new" methods intended to hit but which production code never called because it referenced CTexture types, not CTextureAf.
+        {
+            this.t2D描画(device, x, y, 1f, rc画像内の描画領域);
+        }
+>>>>>>> twopointzero/develop
         public void t2D描画(Device device, float x, float y)
         {
             this.t2D描画(device, (int)x, (int)y, 1f, this.rc全画像);
         }
+<<<<<<< HEAD
         public void t2D描画(Device device, float x, float y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, (int)x, (int)y, 1f, rc画像内の描画領域);
@@ -493,6 +700,9 @@ namespace FDK
             this.t2D描画(device, (int)x, (int)y, 1f, rc画像内の描画領域);
         }
         public void t2D描画(Device device, float x, float y, float depth, RectangleF rc画像内の描画領域)
+=======
+        public void t2D描画(Device device, float x, float y, float depth, Rectangle rc画像内の描画領域)
+>>>>>>> twopointzero/develop
         {
             if (this.texture == null)
                 return;
@@ -758,7 +968,12 @@ namespace FDK
         {
             this.t2D上下反転描画(device, x, y, 1f, rc画像内の描画領域);
         }
+<<<<<<< HEAD
         public void t2D上下反転描画(Device device, int x, int y, float depth, Rectangle rc画像内の描画領域)
+=======
+
+        private void t2D上下反転描画(Device device, int x, int y, float depth, Rectangle rc画像内の描画領域)
+>>>>>>> twopointzero/develop
         {
             if (this.texture == null)
                 throw new InvalidOperationException("テクスチャは生成されていません。");
@@ -817,6 +1032,7 @@ namespace FDK
             device.VertexFormat = TransformedColoredTexturedVertex.Format;
             device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvTransformedColoredVertexies);
         }
+<<<<<<< HEAD
         public void t2D上下反転描画(Device device, Point pt)
         {
             this.t2D上下反転描画(device, pt.X, pt.Y, 1f, this.rc全画像);
@@ -853,6 +1069,8 @@ namespace FDK
                 (-(v3論理画面座標.Y - (CTexture.sz論理画面.Height / 2.0f)) * CTexture.f画面比率),
                 v3論理画面座標.Z);
         }
+=======
+>>>>>>> twopointzero/develop
 
         /// <summary>
         /// テクスチャを 3D 画像と見なして描画する。
@@ -917,6 +1135,7 @@ namespace FDK
             device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvPositionColoredVertexies);
         }
 
+<<<<<<< HEAD
         public void t3D左上基準描画(Device device, Matrix mat)
         {
             this.t3D左上基準描画(device, mat, this.rc全画像);
@@ -984,6 +1203,8 @@ namespace FDK
             device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvPositionColoredVertexies);
         }
 
+=======
+>>>>>>> twopointzero/develop
         #region [ IDisposable 実装 ]
         //-----------------
         public void Dispose()
@@ -1008,16 +1229,25 @@ namespace FDK
 
         #region [ private ]
         //-----------------
+<<<<<<< HEAD
         private float _opacity;
         private bool bDispose完了済み;
         private PositionColoredTexturedVertex[] cvPositionColoredVertexies;
         protected TransformedColoredTexturedVertex[] cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[]
+=======
+        private int _opacity;
+        private bool bDispose完了済み;
+        private PositionColoredTexturedVertex[] cvPositionColoredVertexies;
+
+        private TransformedColoredTexturedVertex[] cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[]
+>>>>>>> twopointzero/develop
         {
             new TransformedColoredTexturedVertex(),
             new TransformedColoredTexturedVertex(),
             new TransformedColoredTexturedVertex(),
             new TransformedColoredTexturedVertex(),
         };
+<<<<<<< HEAD
         private const Pool poolvar =                                                // 2011.4.25 yyagi
 #if TEST_Direct3D9Ex
 			Pool.Default;
@@ -1026,6 +1256,9 @@ namespace FDK
 #endif
         //		byte[] _txData;
         static object lockobj = new object();
+=======
+        //		byte[] _txData;
+>>>>>>> twopointzero/develop
 
         /// <summary>
         /// どれか一つが有効になります。

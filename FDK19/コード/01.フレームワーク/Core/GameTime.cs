@@ -94,6 +94,7 @@ namespace SampleFramework
             get { return m_IsRunningSlowly; }
             internal set { m_IsRunningSlowly = value; }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameTime"/> class.
@@ -116,5 +117,7 @@ namespace SampleFramework
             TotalGameTime = totalGameTime;
             ElapsedGameTime = elapsedGameTime;
         }
+=======
+>>>>>>> twopointzero/develop
     }
 }

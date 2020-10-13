@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,9 @@ using System.Drawing;
 using SlimDX;
 using SlimDX.Direct3D9;
 using FDK;
+=======
+﻿using FDK;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -33,11 +37,14 @@ namespace TJAPlayer3
 
 		// CActivity 実装
 
+<<<<<<< HEAD
 		public override void On活性化()
 		{
 
 			base.On活性化();
 		}
+=======
+>>>>>>> twopointzero/develop
 		public override void On非活性化()
 		{
 			if( this.ct登場用 != null )
@@ -91,6 +98,7 @@ namespace TJAPlayer3
 		private CTexture r表示するリザルト画像;
 		private CTexture txリザルト画像;
 
+<<<<<<< HEAD
 		private bool tプレビュー画像の指定があれば構築する()
 		{
 			if( string.IsNullOrEmpty( TJAPlayer3.DTX.PREIMAGE ) )
@@ -109,6 +117,8 @@ namespace TJAPlayer3
 			this.r表示するリザルト画像 = this.txリザルト画像;
 			return ( this.r表示するリザルト画像 != null );
 		}
+=======
+>>>>>>> twopointzero/develop
 		//-----------------
 		#endregion
 	}

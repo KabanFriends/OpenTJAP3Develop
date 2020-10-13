@@ -140,8 +140,13 @@ namespace TJAPlayer3
 		{
 			if ( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 				TJAPlayer3.tテクスチャの解放( ref this.txパネル本体 );
 				TJAPlayer3.tテクスチャの解放( ref this.tx文字列パネル );
+=======
+				TJAPlayer3.t安全にDisposeする(ref this.txパネル本体);
+				TJAPlayer3.t安全にDisposeする(ref this.tx文字列パネル);
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの解放();
 			}
 		}

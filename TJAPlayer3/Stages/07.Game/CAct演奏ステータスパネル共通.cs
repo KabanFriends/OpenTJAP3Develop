@@ -1,9 +1,13 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Diagnostics;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3

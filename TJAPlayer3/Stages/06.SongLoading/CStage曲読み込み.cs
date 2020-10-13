@@ -1,12 +1,19 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using SlimDX;
 using System.Drawing.Text;
 using FDK;
+<<<<<<< HEAD
+=======
+using TJAPlayer3.Common;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -34,6 +41,7 @@ namespace TJAPlayer3
 			{
 				this.str曲タイトル = "";
 				this.strSTAGEFILE = "";
+<<<<<<< HEAD
                 if( !string.IsNullOrEmpty( TJAPlayer3.ConfigIni.FontName ) )
                 {
                     this.pfTITLE = new CPrivateFastFont( new FontFamily( TJAPlayer3.ConfigIni.FontName ), TJAPlayer3.Skin.SongLoading_Title_FontSize );
@@ -44,6 +52,13 @@ namespace TJAPlayer3
                     this.pfTITLE = new CPrivateFastFont( new FontFamily("MS UI Gothic"), TJAPlayer3.Skin.SongLoading_Title_FontSize);
                     this.pfSUBTITLE = new CPrivateFastFont( new FontFamily("MS UI Gothic" ), TJAPlayer3.Skin.SongLoading_SubTitle_FontSize);
                 }
+=======
+
+                var fontFamily = FontUtilities.GetFontFamilyOrFallback(TJAPlayer3.ConfigIni.FontName);
+                this.pfTITLE = new CPrivateFastFont(fontFamily, TJAPlayer3.Skin.SongLoading_Title_FontSize);
+                this.pfSUBTITLE = new CPrivateFastFont(fontFamily, TJAPlayer3.Skin.SongLoading_SubTitle_FontSize);
+
+>>>>>>> twopointzero/develop
 				this.nBGM再生開始時刻 = -1;
 				this.nBGMの総再生時間ms = 0;
 				if( this.sd読み込み音 != null )
@@ -52,6 +67,7 @@ namespace TJAPlayer3
 					this.sd読み込み音 = null;
 				}
 
+<<<<<<< HEAD
 			    if (TJAPlayer3.bコンパクトモード)
 			    {
 			        string strDTXファイルパス = TJAPlayer3.strコンパクトモードファイル;
@@ -87,6 +103,27 @@ namespace TJAPlayer3
 			            this.strサブタイトル = 譜面情報.strサブタイトル;
 			        }
 			    }
+=======
+		        string strDTXファイルパス = TJAPlayer3.stage選曲.r確定されたスコア.ファイル情報.ファイルの絶対パス;
+
+		        var strフォルダ名 = Path.GetDirectoryName(strDTXファイルパス) + @"\";
+
+		        if (File.Exists(strフォルダ名 + @"set.def"))
+		        {
+		            var cdtx = new CDTX(strDTXファイルパス, true, 1.0, 0, 1);
+
+		            this.str曲タイトル = cdtx.TITLE;
+		            this.strサブタイトル = cdtx.SUBTITLE;
+
+		            cdtx.On非活性化();
+		        }
+		        else
+		        {
+		            var 譜面情報 = TJAPlayer3.stage選曲.r確定されたスコア.譜面情報;
+		            this.str曲タイトル = 譜面情報.タイトル;
+		            this.strサブタイトル = 譜面情報.strサブタイトル;
+		        }
+>>>>>>> twopointzero/develop
 
 			    // For the moment, detect that we are performing
 			    // calibration via there being an actual single
@@ -128,10 +165,17 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
                 //this.txSongnamePlate = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\6_SongnamePlate.png" ) );
                 this.ct待機 = new CCounter( 0, 600, 5, TJAPlayer3.Timer );
                 this.ct曲名表示 = new CCounter();
                 this.ctどんちゃんIn = new CCounter( 0, 180, 3, TJAPlayer3.Timer );
+=======
+				this.tx背景 = TJAPlayer3.tテクスチャの生成( this.strSTAGEFILE, false );
+                //this.txSongnamePlate = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\6_SongnamePlate.png" ) );
+                this.ct待機 = new CCounter( 0, 600, 5, TJAPlayer3.Timer );
+                this.ct曲名表示 = new CCounter( 1, 30, 30, TJAPlayer3.Timer );
+>>>>>>> twopointzero/develop
 				try
 				{
 				    // When performing calibration, inform the player that
@@ -179,6 +223,10 @@ namespace TJAPlayer3
 					Trace.TraceError( "テクスチャの生成に失敗しました。({0})", new object[] { this.strSTAGEFILE } );
 					this.txタイトル = null;
                     this.txサブタイトル = null;
+<<<<<<< HEAD
+=======
+                    this.tx背景 = null;
+>>>>>>> twopointzero/develop
 				}
 				base.OnManagedリソースの作成();
 			}
@@ -187,16 +235,26 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 				TJAPlayer3.tテクスチャの解放( ref this.txタイトル );
 				//CDTXMania.tテクスチャの解放( ref this.txSongnamePlate );
                 TJAPlayer3.tテクスチャの解放( ref this.txサブタイトル );
+=======
+				TJAPlayer3.t安全にDisposeする(ref this.tx背景);
+				TJAPlayer3.t安全にDisposeする(ref this.txタイトル);
+				//CDTXMania.tテクスチャの解放( ref this.txSongnamePlate );
+                TJAPlayer3.t安全にDisposeする(ref this.txサブタイトル);
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの解放();
 			}
 		}
 		public override int On進行描画()
 		{
+<<<<<<< HEAD
 			string str;
 
+=======
+>>>>>>> twopointzero/develop
 			if( base.b活性化してない )
 				return 0;
 
@@ -229,7 +287,11 @@ namespace TJAPlayer3
 				bitmapFilename = new Bitmap( 640, 24 );
 				graphicsFilename = Graphics.FromImage( bitmapFilename );
 				graphicsFilename.TextRenderingHint = TextRenderingHint.AntiAlias;
+<<<<<<< HEAD
 				ftFilename = new Font("MS UI Gothic", 24f, FontStyle.Bold, GraphicsUnit.Pixel );
+=======
+				ftFilename = new Font(FontUtilities.FallbackFontName, 24f, FontStyle.Bold, GraphicsUnit.Pixel );
+>>>>>>> twopointzero/develop
 			}
 			//-----------------------------
 			#endregion
@@ -251,6 +313,7 @@ namespace TJAPlayer3
 
 			#region [ 背景、音符＋タイトル表示 ]
 			//-----------------------------
+<<<<<<< HEAD
 			ctどんちゃんIn.t進行();
 
 			this.ct曲名表示.t進行();
@@ -332,6 +395,33 @@ namespace TJAPlayer3
 					}
 				}
 			}
+=======
+            this.ct曲名表示.t進行();
+			if( this.tx背景 != null )
+				this.tx背景.t2D描画( TJAPlayer3.app.Device, 0, 0 );
+
+            if (TJAPlayer3.Tx.SongLoading_Plate != null)
+            {
+                TJAPlayer3.Tx.SongLoading_Plate.bスクリーン合成 = TJAPlayer3.Skin.SongLoading_Plate_ScreenBlend; //あまりにも出番が無い
+                TJAPlayer3.Tx.SongLoading_Plate.Opacity = C変換.nParsentTo255((this.ct曲名表示.n現在の値 / 30.0));
+                TJAPlayer3.Tx.SongLoading_Plate.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongLoading_Plate_XY[0], TJAPlayer3.Skin.SongLoading_Plate_XY[1], TJAPlayer3.Skin.SongLoadingPlateHorizontalReferencePoint, VerticalReferencePoint.Center);
+            }
+
+
+			int y = 720 - 45;
+			if( this.txタイトル != null )
+			{
+                int nサブタイトル補正 = string.IsNullOrEmpty(TJAPlayer3.stage選曲.r確定されたスコア.譜面情報.strサブタイトル) ? 15 : 0;
+
+                this.txタイトル.Opacity = C変換.nParsentTo255( ( this.ct曲名表示.n現在の値 / 30.0 ) );
+                this.txタイトル.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongLoading_Title_XY[0], TJAPlayer3.Skin.SongLoading_Title_XY[1] + nサブタイトル補正, TJAPlayer3.Skin.SongLoadingTitleHorizontalReferencePoint, VerticalReferencePoint.Center);
+            }
+			if( this.txサブタイトル != null )
+			{
+                this.txサブタイトル.Opacity = C変換.nParsentTo255( ( this.ct曲名表示.n現在の値 / 30.0 ) );
+                this.txサブタイトル.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongLoading_SubTitle_XY[0], TJAPlayer3.Skin.SongLoading_SubTitle_XY[1], TJAPlayer3.Skin.SongLoadingSubTitleHorizontalReferencePoint, VerticalReferencePoint.Center);
+            }
+>>>>>>> twopointzero/develop
 			//-----------------------------
 			#endregion
 
@@ -347,12 +437,16 @@ namespace TJAPlayer3
 				case CStage.Eフェーズ.NOWLOADING_DTXファイルを読み込む:
 					{
 						timeBeginLoad = DateTime.Now;
+<<<<<<< HEAD
 						TimeSpan span;
 						str = null;
 						if( !TJAPlayer3.bコンパクトモード )
 							str = TJAPlayer3.stage選曲.r確定されたスコア.ファイル情報.ファイルの絶対パス;
 						else
 							str = TJAPlayer3.strコンパクトモードファイル;
+=======
+						var str = TJAPlayer3.stage選曲.r確定されたスコア.ファイル情報.ファイルの絶対パス;
+>>>>>>> twopointzero/develop
 
 						CScoreIni ini = new CScoreIni( str + ".score.ini" );
 						ini.t全演奏記録セクションの整合性をチェックし不整合があればリセットする();
@@ -362,6 +456,7 @@ namespace TJAPlayer3
 
                         //if( CDTXMania.DTX == null )
                         {
+<<<<<<< HEAD
 						    TJAPlayer3.DTX = new CDTX( str, false, 1.0, ini.stファイル.BGMAdjust, 0, 0, true );
                             if( TJAPlayer3.ConfigIni.nPlayerCount == 2 )
 						        TJAPlayer3.DTX_2P = new CDTX( str, false, 1.0, ini.stファイル.BGMAdjust, 0, 1, true );
@@ -373,16 +468,34 @@ namespace TJAPlayer3
                             }
 
 					    	Trace.TraceInformation( "----曲情報-----------------" );
+=======
+							TJAPlayer3.DTX = new CDTX(str, false, 1.0, ini.stファイル.BGMAdjust, 0, 0, true);
+							if ( TJAPlayer3.ConfigIni.nPlayerCount == 2 )
+								TJAPlayer3.DTX_2P = new CDTX(str, false, 1.0, ini.stファイル.BGMAdjust, 0, 1, true);
+							if ( File.Exists( TJAPlayer3.DTX.strフォルダ名 + @"\\set.def" ) )
+                            {
+								TJAPlayer3.DTX = new CDTX(str, false, 1.0, ini.stファイル.BGMAdjust, 0, 1, true);
+								if ( TJAPlayer3.ConfigIni.nPlayerCount == 2 )
+									TJAPlayer3.DTX_2P = new CDTX(str, false, 1.0, ini.stファイル.BGMAdjust, 0, 1, true);
+							}
+
+							Trace.TraceInformation( "----曲情報-----------------" );
+>>>>>>> twopointzero/develop
 				    		Trace.TraceInformation( "TITLE: {0}", TJAPlayer3.DTX.TITLE );
 			    			Trace.TraceInformation( "FILE: {0}",  TJAPlayer3.DTX.strファイル名の絶対パス );
 		    				Trace.TraceInformation( "---------------------------" );
 
+<<<<<<< HEAD
 	    					span = (TimeSpan) ( DateTime.Now - timeBeginLoad );
+=======
+							var span = (TimeSpan) ( DateTime.Now - timeBeginLoad );
+>>>>>>> twopointzero/develop
     						Trace.TraceInformation( "DTX読込所要時間:           {0}", span.ToString() );
 
                             // 段位認定モード用。
                             if (TJAPlayer3.stage選曲.n確定された曲の難易度 == (int)Difficulty.Dan && TJAPlayer3.DTX.List_DanSongs != null)
                             {
+<<<<<<< HEAD
                                 var pfTitle = new CPrivateFont();
                                 var pfSubTitle = new CPrivateFont();
                                 if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
@@ -425,6 +538,38 @@ namespace TJAPlayer3
 
                                 pfTitle?.Dispose();
                                 pfSubTitle?.Dispose();
+=======
+                                var fontFamily = FontUtilities.GetFontFamilyOrFallback(TJAPlayer3.ConfigIni.FontName);
+                                using (var pfTitle = new CPrivateFont(fontFamily, 30))
+                                using (var pfSubTitle = new CPrivateFont(fontFamily, 22))
+                                {
+                                    var titleForeColor = TJAPlayer3.Skin.Game_DanC_Title_ForeColor;
+                                    var titleBackColor = TJAPlayer3.Skin.Game_DanC_Title_BackColor;
+                                    var subtitleForeColor = TJAPlayer3.Skin.Game_DanC_SubTitle_ForeColor;
+                                    var subtitleBackColor = TJAPlayer3.Skin.Game_DanC_SubTitle_BackColor;
+
+                                    foreach (var danSong in TJAPlayer3.DTX.List_DanSongs)
+                                    {
+                                        if (!string.IsNullOrEmpty(danSong.Title))
+                                        {
+                                            using (var bmpSongTitle = pfTitle.DrawPrivateFont(danSong.Title, titleForeColor, titleBackColor))
+                                            {
+                                                danSong.TitleTex = TJAPlayer3.tテクスチャの生成(bmpSongTitle, false);
+                                                danSong.TitleTex.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref danSong.TitleTex, 710);
+                                            }
+                                        }
+
+                                        if (!string.IsNullOrEmpty(danSong.SubTitle))
+                                        {
+                                            using (var bmpSongSubTitle = pfSubTitle.DrawPrivateFont(danSong.SubTitle, subtitleForeColor, subtitleBackColor))
+                                            {
+                                                danSong.SubTitleTex = TJAPlayer3.tテクスチャの生成(bmpSongSubTitle, false);
+                                                danSong.SubTitleTex.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref danSong.SubTitleTex, 710);
+                                            }
+                                        }
+                                    }
+                                }
+>>>>>>> twopointzero/develop
                             }
                         }
 
@@ -515,9 +660,13 @@ namespace TJAPlayer3
 
                         if(TJAPlayer3.ConfigIni.FastRender)
                         {
+<<<<<<< HEAD
                             var fastRender = new FastRender();
                             fastRender.Render();
                             fastRender = null;
+=======
+                            FastRender.Render();
+>>>>>>> twopointzero/develop
                         }
 
 
@@ -551,16 +700,23 @@ namespace TJAPlayer3
 //						if ( ( nCurrentTime - this.nBGM再生開始時刻 ) > ( this.nBGMの総再生時間ms - 1000 ) )
 						if ( ( nCurrentTime - this.nBGM再生開始時刻 ) >= ( this.nBGMの総再生時間ms ) )	// #27787 2012.3.10 yyagi 1000ms == フェードイン分の時間
 						{
+<<<<<<< HEAD
 							if ( !TJAPlayer3.DTXVmode.Enabled )
 							{
 							}
+=======
+>>>>>>> twopointzero/develop
 							base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
 						}
 						return (int) E曲読込画面の戻り値.継続;
 					}
 
 				case CStage.Eフェーズ.共通_フェードアウト:
+<<<<<<< HEAD
 					if ( this.ct待機.b終了値に達してない )		// DTXVモード時は、フェードアウト省略
+=======
+					if ( this.ct待機.b終了値に達してない )
+>>>>>>> twopointzero/develop
 						return (int)E曲読込画面の戻り値.継続;
 
 					if ( txFilename != null )
@@ -621,6 +777,10 @@ namespace TJAPlayer3
         private string strサブタイトル;
 		private CTexture txタイトル;
         private CTexture txサブタイトル;
+<<<<<<< HEAD
+=======
+		private CTexture tx背景;
+>>>>>>> twopointzero/develop
         //private CTexture txSongnamePlate;
 		private DateTime timeBeginLoad;
 		private DateTime timeBeginLoadWAV;
@@ -631,7 +791,10 @@ namespace TJAPlayer3
 		private Font ftFilename;
         private CCounter ct待機;
         private CCounter ct曲名表示;
+<<<<<<< HEAD
         private CCounter ctどんちゃんIn;
+=======
+>>>>>>> twopointzero/develop
 
         private CPrivateFastFont pfTITLE;
         private CPrivateFastFont pfSUBTITLE;

@@ -1,6 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 using SlimDX.Direct3D9;
 using FDK;
@@ -44,7 +47,10 @@ namespace TJAPlayer3
 			if ( !base.b活性化してない )
 			{
 				IDirect3DQuery9.Issue( Issue.End );
+<<<<<<< HEAD
 				DWM.Flush();
+=======
+>>>>>>> twopointzero/develop
 				IDirect3DQuery9.GetData<int>( true );	// flush GPU queue
 			}
 			return 0;

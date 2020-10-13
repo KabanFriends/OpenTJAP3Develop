@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using SlimDX;
 using SlimDX.Direct3D9;
 using SlimDX.Multimedia;
@@ -133,6 +137,7 @@ namespace FDK
 			protected set;
 		}
 		
+<<<<<<< HEAD
 		public long n現在のグラフの再生位置ms
 		{
 			get
@@ -226,6 +231,8 @@ namespace FDK
 				this.BasicAudio.put_Balance( n位置db );
 			}
 		}
+=======
+>>>>>>> twopointzero/develop
 		public IMediaControl MediaCtrl;
 		public IMediaEventEx MediaEventEx;
 		public IMediaSeeking MediaSeeking;
@@ -246,9 +253,12 @@ namespace FDK
 
 		// メソッド
 
+<<<<<<< HEAD
 		public CDirectShow()
 		{
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CDirectShow( string fileName, IntPtr hWnd, bool bオーディオレンダラなし )
 		{
 			// 初期化。
@@ -424,6 +434,7 @@ namespace FDK
 				this.b再生中 = true;
 			}
 		}
+<<<<<<< HEAD
 		public void t再生一時停止()
 		{
 			if( this.MediaCtrl != null && this.n再生一時停止呼び出しの累積回数 == 0 )
@@ -467,6 +478,9 @@ namespace FDK
 			this.t再生位置を変更( 0.0 );
 			this.t再生開始();
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		public Eグラフの状態 t遷移完了まで待って状態を取得する()
 		{
 			var status = Eグラフの状態.未定;
@@ -603,6 +617,7 @@ namespace FDK
 
 		private IntPtr ip = IntPtr.Zero;
 
+<<<<<<< HEAD
 		public static void tグラフを解析しデバッグ出力する( IGraphBuilder graphBuilder )
 		{
 			if( graphBuilder == null )
@@ -688,6 +703,8 @@ namespace FDK
 
 			Debug.Flush();
 		}
+=======
+>>>>>>> twopointzero/develop
 		public static void tオーディオレンダラをNullレンダラに変えてフォーマットを取得する( IGraphBuilder graphBuilder, out WaveFormat wfx, out byte[] wfx拡張データ )
 		{
 			int hr = 0;
@@ -843,6 +860,7 @@ namespace FDK
 				C共通.tCOMオブジェクトを解放する( ref audioRenderer );
 			}
 		}
+<<<<<<< HEAD
 		public static void ConnectNullRendererFromSampleGrabber(IGraphBuilder graphBuilder, IBaseFilter sampleGrabber)
 		{
 			int hr = 0;
@@ -945,6 +963,9 @@ namespace FDK
 				C共通.tCOMオブジェクトを解放する(ref grabberOutputConnectedPin);
 			}
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		private static void SearchMMRenderers( IFilterGraph graph, out IBaseFilter videoRenderer, out IPin inputVPin, out IBaseFilter audioRenderer, out IPin inputAPin )
 		{
 			int hr = 0;

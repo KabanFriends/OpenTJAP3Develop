@@ -21,11 +21,17 @@
 */
 using System;
 using System.ComponentModel;
+<<<<<<< HEAD
 using System.Threading;
 using System.Windows.Forms;
 using SlimDX;
 using SlimDX.Direct3D9;
 using System.Collections.ObjectModel;
+=======
+using System.Windows.Forms;
+using SlimDX;
+using SlimDX.Direct3D9;
+>>>>>>> twopointzero/develop
 
 namespace SampleFramework
 {
@@ -387,6 +393,7 @@ namespace SampleFramework
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Resets the elapsed time.
         /// </summary>
         public void ResetElapsedTime()
@@ -397,6 +404,8 @@ namespace SampleFramework
         }
 
         /// <summary>
+=======
+>>>>>>> twopointzero/develop
         /// Allows the game to perform logic processing.
         /// </summary>
         /// <param name="gameTime">The time passed since the last update.</param>

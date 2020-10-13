@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
+=======
+﻿using System.Drawing;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -42,6 +46,7 @@ namespace TJAPlayer3
                 // 通常のモード。
                 // ここでフルコンボフラグをチェックするが現時点ではない。
                 // 今の段階では魂ゲージ80%以上でチェック。
+<<<<<<< HEAD
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                 {
                     if (TJAPlayer3.stage演奏ドラム画面.actGauge.db現在のゲージ値[i] >= 80)
@@ -51,6 +56,30 @@ namespace TJAPlayer3
                     else
                     {
                         this.Mode[i] = EndMode.StageFailed;
+=======
+
+                //ハードゲージの場合、完奏=クリアなので、
+                //EndModeチェックのタイミングでは常にクリアになってもいい気がするけど、一応↓
+                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+                {
+                    if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard || TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+                    {
+                        if (TJAPlayer3.stage演奏ドラム画面.actGauge.db現在のゲージ値[i] > 0)
+                            this.Mode[i] = EndMode.StageCleared;
+                        else
+                            this.Mode[i] = EndMode.StageFailed;
+                    }
+                    else
+                    {
+                        if (TJAPlayer3.stage演奏ドラム画面.actGauge.db現在のゲージ値[i] >= 80)
+                        {
+                            this.Mode[i] = EndMode.StageCleared;
+                        }
+                        else
+                        {
+                            this.Mode[i] = EndMode.StageFailed;
+                        }
+>>>>>>> twopointzero/develop
                     }
                 }
             }
@@ -89,7 +118,11 @@ namespace TJAPlayer3
             {
                 base.b初めての進行描画 = false;
             }
+<<<<<<< HEAD
             if (this.ct進行メイン != null && (TJAPlayer3.stage演奏ドラム画面.eフェーズID == CStage.Eフェーズ.演奏_演奏終了演出 || TJAPlayer3.stage演奏ドラム画面.eフェーズID == CStage.Eフェーズ.演奏_STAGE_CLEAR_フェードアウト))
+=======
+            if (this.ct進行メイン != null && (TJAPlayer3.stage演奏ドラム画面.eフェーズID == CStage.Eフェーズ.演奏_演奏終了演出 || TJAPlayer3.stage演奏ドラム画面.eフェーズID == CStage.Eフェーズ.演奏_STAGE_CLEAR_フェードアウト || TJAPlayer3.stage演奏ドラム画面.eフェーズID == CStage.Eフェーズ.演奏_STAGE_FAILED_ハード))
+>>>>>>> twopointzero/develop
             {
                 this.ct進行メイン.t進行();
 
@@ -197,7 +230,11 @@ namespace TJAPlayer3
                                         TJAPlayer3.Tx.End_Clear_Text.t2D描画(TJAPlayer3.app.Device, 890, y[i] + 2, new Rectangle(360, 0, 90, 90));
                                     }
                                 }
+<<<<<<< HEAD
                                 if (this.ct進行メイン.n現在の値 >= 50 && this.ct進行メイン.n現在の値 < 90)
+=======
+                                if (this.ct進行メイン.n現在の値 >= 50 && this.ct進行メイン.n現在の値 < 90 && TJAPlayer3.Tx.End_Clear_Text_Effect != null)
+>>>>>>> twopointzero/develop
                                 {
                                     if (this.ct進行メイン.n現在の値 < 70)
                                     {
@@ -227,6 +264,7 @@ namespace TJAPlayer3
                                 }
                                 else if (this.ct進行メイン.n現在の値 <= 35)
                                 {
+<<<<<<< HEAD
                                     if (TJAPlayer3.Tx.End_Clear_L[0] != null)
                                         TJAPlayer3.Tx.End_Clear_L[0].t2D描画(TJAPlayer3.app.Device, 697 - (int)((this.ct進行メイン.n現在の値 - 12) * 10), y[i] - 30);
                                     if (TJAPlayer3.Tx.End_Clear_R[0] != null)
@@ -241,12 +279,31 @@ namespace TJAPlayer3
                                         TJAPlayer3.Tx.End_Clear_L[0].t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
                                         TJAPlayer3.Tx.End_Clear_L[0].vc拡大縮小倍率 = new SlimDX.Vector3(fRet[this.ct進行メイン.n現在の値 - 36], 1.0f, 1.0f);
                                         //CDTXMania.Tx.End_Clear_R[ 0 ].t2D描画( CDTXMania.app.Device, 956 + (( this.ct進行メイン.n現在の値 - 36 ) / 2), 180 );
+=======
+                                    TJAPlayer3.Tx.End_Clear_L[0]?.t2D描画(TJAPlayer3.app.Device, 697 - (int)((this.ct進行メイン.n現在の値 - 12) * 10), y[i] - 30);
+                                    TJAPlayer3.Tx.End_Clear_R[0]?.t2D描画(TJAPlayer3.app.Device, 738 + (int)((this.ct進行メイン.n現在の値 - 12) * 10), y[i] - 30);
+                                }
+                                else if (this.ct進行メイン.n現在の値 <= 46)
+                                {
+                                    //2016.07.16 kairera0467 またも原始的...
+                                    float[] fRet = { 1.0f, 0.99f, 0.98f, 0.97f, 0.96f, 0.95f, 0.96f, 0.97f, 0.98f, 0.99f, 1.0f };
+
+                                    if (TJAPlayer3.Tx.End_Clear_L[0] != null)
+                                    {
+                                        TJAPlayer3.Tx.End_Clear_L[0].t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
+                                        TJAPlayer3.Tx.End_Clear_L[0].vc拡大縮小倍率 = new SlimDX.Vector3(fRet[this.ct進行メイン.n現在の値 - 36], 1.0f, 1.0f);
+                                    }
+
+                                    if (TJAPlayer3.Tx.End_Clear_R[0] != null)
+                                    {
+>>>>>>> twopointzero/develop
                                         TJAPlayer3.Tx.End_Clear_R[0].t2D描画(TJAPlayer3.app.Device, 1136 - 180 * fRet[this.ct進行メイン.n現在の値 - 36], y[i] - 30);
                                         TJAPlayer3.Tx.End_Clear_R[0].vc拡大縮小倍率 = new SlimDX.Vector3(fRet[this.ct進行メイン.n現在の値 - 36], 1.0f, 1.0f);
                                     }
                                 }
                                 else if (this.ct進行メイン.n現在の値 <= 49)
                                 {
+<<<<<<< HEAD
                                     if (TJAPlayer3.Tx.End_Clear_L[1] != null)
                                         TJAPlayer3.Tx.End_Clear_L[1].t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
                                     if (TJAPlayer3.Tx.End_Clear_R[1] != null)
@@ -272,6 +329,25 @@ namespace TJAPlayer3
                                         TJAPlayer3.Tx.End_Clear_L[4].t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
                                     if (TJAPlayer3.Tx.End_Clear_R[4] != null)
                                         TJAPlayer3.Tx.End_Clear_R[4].t2D描画(TJAPlayer3.app.Device, 956, y[i] - 30);
+=======
+                                    TJAPlayer3.Tx.End_Clear_L[1]?.t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
+                                    TJAPlayer3.Tx.End_Clear_R[1]?.t2D描画(TJAPlayer3.app.Device, 956, y[i] - 30);
+                                }
+                                else if (this.ct進行メイン.n現在の値 <= 54)
+                                {
+                                    TJAPlayer3.Tx.End_Clear_L[2]?.t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
+                                    TJAPlayer3.Tx.End_Clear_R[2]?.t2D描画(TJAPlayer3.app.Device, 956, y[i] - 30);
+                                }
+                                else if (this.ct進行メイン.n現在の値 <= 58)
+                                {
+                                    TJAPlayer3.Tx.End_Clear_L[3]?.t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
+                                    TJAPlayer3.Tx.End_Clear_R[3]?.t2D描画(TJAPlayer3.app.Device, 956, y[i] - 30);
+                                }
+                                else
+                                {
+                                    TJAPlayer3.Tx.End_Clear_L[4]?.t2D描画(TJAPlayer3.app.Device, 466, y[i] - 30);
+                                    TJAPlayer3.Tx.End_Clear_R[4]?.t2D描画(TJAPlayer3.app.Device, 956, y[i] - 30);
+>>>>>>> twopointzero/develop
                                 }
                                 #endregion
                             }
@@ -288,6 +364,14 @@ namespace TJAPlayer3
 
                 if (this.ct進行メイン.b終了値に達した)
                 {
+<<<<<<< HEAD
+=======
+                    if (!this.bリザルトボイス再生済み)
+                    {
+                        TJAPlayer3.Skin.sound成績発表.t再生する();
+                        this.bリザルトボイス再生済み = true;
+                    }
+>>>>>>> twopointzero/develop
                     return 1;
                 }
             }

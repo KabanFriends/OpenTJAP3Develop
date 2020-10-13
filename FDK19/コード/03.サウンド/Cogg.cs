@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -6,6 +7,10 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 
+=======
+using System.Text;
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
@@ -26,8 +31,11 @@ namespace FDK
 		private static extern uint oggGetTotalPCMSize( int nHandle );
 		[DllImport( "SoundDecoder.dll" )]
 		private static extern int oggOpen( string fileName );
+<<<<<<< HEAD
 		[DllImport( "SoundDecoder.dll" )]
 		private static extern int oggSeek( int nHandle, uint dwPosition );
+=======
+>>>>>>> twopointzero/develop
 		//-----------------
 		#endregion
 
@@ -44,10 +52,13 @@ namespace FDK
 		{
 			return oggGetTotalPCMSize( nHandle );
 		}
+<<<<<<< HEAD
 		public override int Seek( int nHandle, uint dwPosition )
 		{
 			return oggSeek( nHandle, dwPosition );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public override int Decode( int nHandle, IntPtr pDest, uint szDestSize, int bLoop )
 		{
 			return oggDecode( nHandle, pDest, szDestSize, bLoop );

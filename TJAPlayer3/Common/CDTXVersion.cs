@@ -1,5 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> twopointzero/develop
 using System.Text;
 
 namespace TJAPlayer3
@@ -40,6 +43,7 @@ namespace TJAPlayer3
 
 		// コンストラクタ
 
+<<<<<<< HEAD
 		public CDTXVersion()
 		{
 			this.n整数部 = 0;
@@ -52,6 +56,8 @@ namespace TJAPlayer3
 			this.n小数部 = 0;
 			this.Unknown = false;
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CDTXVersion( string Version )
 		{
 			this.n整数部 = 0;
@@ -111,6 +117,7 @@ namespace TJAPlayer3
 				}
 			}
 		}
+<<<<<<< HEAD
 		public CDTXVersion( int n整数部, int n小数部 )
 		{
 			this.n整数部 = n整数部;
@@ -118,6 +125,8 @@ namespace TJAPlayer3
 			this.Unknown = false;
 		}
 
+=======
+>>>>>>> twopointzero/develop
 	
 		// メソッド
 		

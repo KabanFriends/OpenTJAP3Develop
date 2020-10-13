@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
+=======
+using System.Runtime.InteropServices;
+using System.Drawing;
+>>>>>>> twopointzero/develop
 using FDK;
 
 
@@ -82,6 +87,10 @@ namespace TJAPlayer3
 			    }
 				lciMenuItems[ i ] = stqm;
 			}
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
 			bShowAllItems = showAllItems;
 			n現在の選択行 = defaultPos;
 		}
@@ -103,8 +112,12 @@ namespace TJAPlayer3
 				if ( this.n現在の選択行 != lciMenuItems.Length - 1 )
 				{
 					if ( lciMenuItems[ n現在の選択行 ].cItem.e種別 == CItemBase.E種別.リスト ||
+<<<<<<< HEAD
 						 lciMenuItems[ n現在の選択行 ].cItem.e種別 == CItemBase.E種別.ONorOFFトグル ||
 						 lciMenuItems[ n現在の選択行 ].cItem.e種別 == CItemBase.E種別.ONorOFFor不定スリーステート	)
+=======
+						 lciMenuItems[ n現在の選択行 ].cItem.e種別 == CItemBase.E種別.ONorOFFトグル )
+>>>>>>> twopointzero/develop
 					{
 						lciMenuItems[ n現在の選択行 ].cItem.t項目値を次へ移動();
 					}
@@ -317,11 +330,18 @@ namespace TJAPlayer3
 					#endregion
 				}
 				#region [ ポップアップメニュー 背景描画 ]
+<<<<<<< HEAD
 				if ( TJAPlayer3.Tx.Menu_Title != null )
 				{
                     TJAPlayer3.Tx.Menu_Title.t2D描画( TJAPlayer3.app.Device, 160, 40 );
 				}
 				#endregion
+=======
+
+                TJAPlayer3.Tx.Menu_Title?.t2D描画(TJAPlayer3.app.Device, 160, 40);
+
+                #endregion
+>>>>>>> twopointzero/develop
 				#region [ ソートメニュータイトル描画 ]
 				int x = 240, y = 44;
 				stqMenuTitle.txName.t2D描画( TJAPlayer3.app.Device, x, y );
@@ -368,7 +388,11 @@ namespace TJAPlayer3
                                 break;
                             case "ばいそく":
                                 {
+<<<<<<< HEAD
                                     double d = (double)((((int)lciMenuItems[i].cItem.obj現在値() + 1)) / 2.0);
+=======
+                                    double d = (double)((((int)lciMenuItems[i].cItem.obj現在値()) + 1) / 2.0);
+>>>>>>> twopointzero/develop
                                     s = "x" + d.ToString("0.0");
                                 }
                                 break;

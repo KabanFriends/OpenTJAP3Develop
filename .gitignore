@@ -4,7 +4,10 @@
 */bin
 */obj
 *.exe
+<<<<<<< HEAD
 *.exe.config
+=======
+>>>>>>> twopointzero/develop
 *.log
 *.pdb
 *.db
@@ -12,9 +15,22 @@
 *.DotSettings.user
 /packages
 /Test/Capture_img
+<<<<<<< HEAD
 /Test/Config.ini
 /Test/bs1770gain**
 /Test/dll/CSharpTest.Net.Collections.*
 /Test/dll/SlimDX.*
 /Test/Songs
 Test/dll/FDK.dll
+=======
+/Test/Config*.ini
+/Test/bs1770gain**
+/Test/dll/CSharpTest.Net.Collections.*
+/Test/dll/FDK.*
+/Test/dll/Newtonsoft.Json.*
+/Test/dll/Sentry.*
+/Test/dll/SlimDX.*
+/Test/dll/System.*
+/Test/TJAPlayer3.exe.config
+/Test/Songs
+>>>>>>> twopointzero/develop

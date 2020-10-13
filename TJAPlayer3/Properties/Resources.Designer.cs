@@ -63,6 +63,7 @@ namespace TJAPlayer3.Properties {
         /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Icon dtx {
             get {
                 object obj = ResourceManager.GetObject("dtx", resourceCulture);
@@ -73,6 +74,8 @@ namespace TJAPlayer3.Properties {
         /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
+=======
+>>>>>>> twopointzero/develop
         internal static System.Drawing.Icon tjap3 {
             get {
                 object obj = ResourceManager.GetObject("tjap3", resourceCulture);

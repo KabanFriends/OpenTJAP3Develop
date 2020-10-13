@@ -1,6 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Runtime.InteropServices;
 using System.Globalization;
 using SlimDX;
@@ -15,6 +18,7 @@ namespace FDK
 		public int		Color;
 		public Vector2	TextureCoordinates;
 
+<<<<<<< HEAD
 		public static int SizeInBytes
 		{
 			get
@@ -22,6 +26,8 @@ namespace FDK
 				return Marshal.SizeOf( typeof( PositionColoredTexturedVertex ) );
 			}
 		}
+=======
+>>>>>>> twopointzero/develop
 		public static VertexFormat Format
 		{
 			get
@@ -29,6 +35,7 @@ namespace FDK
 				return ( VertexFormat.Texture1 | VertexFormat.Diffuse | VertexFormat.Position );
 			}
 		}
+<<<<<<< HEAD
 		public PositionColoredTexturedVertex( Vector3 position, int color, Vector2 textureCoordinates )
 		{
 			this = new PositionColoredTexturedVertex();
@@ -36,6 +43,8 @@ namespace FDK
 			this.Color = color;
 			this.TextureCoordinates = textureCoordinates;
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		public static bool operator ==( PositionColoredTexturedVertex left, PositionColoredTexturedVertex right )
 		{

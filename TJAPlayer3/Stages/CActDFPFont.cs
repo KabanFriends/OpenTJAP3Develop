@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using System.Drawing;
 using SlimDX;
 using FDK;
@@ -494,6 +498,7 @@ namespace TJAPlayer3
 
 		// メソッド
 
+<<<<<<< HEAD
 		public int n文字列長dot( string str )
 		{
 			return this.n文字列長dot( str, 1f );
@@ -526,6 +531,8 @@ namespace TJAPlayer3
 		{
 			this.t文字列描画( x, y, str, b強調, 1f );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public void t文字列描画( int x, int y, string str, bool b強調, float fScale )
 		{
 			if( !base.b活性化してない && !string.IsNullOrEmpty( str ) )
@@ -562,6 +569,7 @@ namespace TJAPlayer3
 				base.OnManagedリソースの作成();
 			}
 		}
+<<<<<<< HEAD
 		public override void OnManagedリソースの解放()
 		{
 			//if( !base.b活性化してない )
@@ -579,6 +587,8 @@ namespace TJAPlayer3
 				base.OnManagedリソースの解放();
 			//}
 		}
+=======
+>>>>>>> twopointzero/develop
 		
 
 		// その他

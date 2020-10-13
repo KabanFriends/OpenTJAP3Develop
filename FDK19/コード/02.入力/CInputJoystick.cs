@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 using SlimDX;
 using SlimDX.DirectInput;
@@ -538,6 +541,7 @@ namespace FDK
 		{
 			return this.bButtonState[ nButton ];
 		}
+<<<<<<< HEAD
 		public bool bキーが離された( int nButton )
 		{
 			return this.bButtonPullUp[ nButton ];
@@ -546,6 +550,8 @@ namespace FDK
 		{
 			return !this.bButtonState[ nButton ];
 		}
+=======
+>>>>>>> twopointzero/develop
 		//-----------------
 		#endregion
 

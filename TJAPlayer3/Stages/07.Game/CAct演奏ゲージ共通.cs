@@ -1,10 +1,13 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Diagnostics;
 using SlimDX;
+=======
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -16,6 +19,7 @@ namespace TJAPlayer3
     /// _STAGE FAILED OFF時にゲージ回復を止める
     /// _黒→閉店までの差を大きくする。
 	/// </summary>
+<<<<<<< HEAD
 	internal class CAct演奏ゲージ共通 : CActivity
 	{
 		// プロパティ
@@ -43,11 +47,20 @@ namespace TJAPlayer3
 			base.On非活性化();
 		}
 		
+=======
+	internal abstract class CAct演奏ゲージ共通 : CActivity
+	{
+		// CActivity 実装
+
+>>>>>>> twopointzero/develop
 		const double GAUGE_MAX = 100.0;
 		const double GAUGE_INITIAL =  2.0 / 3;
 		const double GAUGE_MIN = -0.1;
 		const double GAUGE_ZERO = 0.0;
+<<<<<<< HEAD
 		const double GAUGE_DANGER = 0.3;
+=======
+>>>>>>> twopointzero/develop
 	
 		public bool bRisky							// Riskyモードか否か
 		{
@@ -66,11 +79,16 @@ namespace TJAPlayer3
 		}
 		public bool IsFailed( E楽器パート part )	// 閉店状態になったかどうか
 		{
+<<<<<<< HEAD
 			if ( bRisky ) {
+=======
+			if ( bRisky) {
+>>>>>>> twopointzero/develop
 				return ( nRiskyTimes <= 0 );
 			}
 			return this.db現在のゲージ値[ (int) part ] <= GAUGE_MIN;
 		}
+<<<<<<< HEAD
 		public bool IsDanger( E楽器パート part )	// DANGERかどうか
 		{
 			if ( bRisky )
@@ -87,6 +105,8 @@ namespace TJAPlayer3
 			}
 			return ( this.db現在のゲージ値[ (int) part ] <= GAUGE_DANGER );
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		public double dbゲージ値	// Drums専用
 		{
@@ -104,6 +124,7 @@ namespace TJAPlayer3
 			}
 		}
 
+<<<<<<< HEAD
 		public double dbゲージ値2P	// Drums専用
 		{
 			get
@@ -121,11 +142,15 @@ namespace TJAPlayer3
 		}
 
 		/// <summary>
+=======
+        /// <summary>
+>>>>>>> twopointzero/develop
 		/// ゲージの初期化
 		/// </summary>
 		/// <param name="nRiskyTimes_Initial_">Riskyの初期値(0でRisky未使用)</param>
 		public void Init(int nRiskyTimes_InitialVal )		// ゲージ初期化
 		{
+<<<<<<< HEAD
 			//ダメージ値の計算は太鼓の達人譜面Wikiのものを参考にしました。
 
 			for ( int i = 0; i < 4; i++ )
@@ -135,6 +160,36 @@ namespace TJAPlayer3
 
             this.dbゲージ値 = 0;
 
+=======
+            //ダメージ値の計算は太鼓の達人譜面Wikiのものを参考にしました。
+            if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard || TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    this.db現在のゲージ値[i] = 100.0;
+                }
+
+                this.dbゲージ値 = 100.0;
+            }
+            else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Groove)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    this.db現在のゲージ値[i] = 22.0;
+                }
+
+                this.dbゲージ値 = 22.0;
+            }
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    this.db現在のゲージ値[i] = 0;
+                }
+
+                this.dbゲージ値 = 0;
+            }
+>>>>>>> twopointzero/develop
             //ゲージのMAXまでの最低コンボ数を計算
             float dbGaugeMaxComboValue = 0;
             float[] dbGaugeMaxComboValue_branch = new float[3];
@@ -160,9 +215,15 @@ namespace TJAPlayer3
                         if (TJAPlayer3.DTX.bチップがある.Branch)
                         {
                             dbGaugeMaxComboValue = TJAPlayer3.DTX.nノーツ数[ 3 ] * ( this.fGaugeMaxRate[ 0 ] / 100.0f );
+<<<<<<< HEAD
                             for( int i = 0; i < 3; i++ )
                             {
                                 dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * ( this.fGaugeMaxRate[ 0 ] / 100.0f );
+=======
+                            for (int i = 0; i < 3; i++)
+                            {
+                                dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * (this.fGaugeMaxRate[0] / 100.0f);
+>>>>>>> twopointzero/develop
                             }
                             dbDamageRate = 0.625f;
                         }
@@ -182,7 +243,11 @@ namespace TJAPlayer3
                             dbGaugeMaxComboValue = TJAPlayer3.DTX.nノーツ数[ 3 ] * ( this.fGaugeMaxRate[ 1 ] / 100.0f );
                             for( int i = 0; i < 3; i++ )
                             {
+<<<<<<< HEAD
                                 dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * ( this.fGaugeMaxRate[ 1 ] / 100.0f );
+=======
+                                dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * (this.fGaugeMaxRate[1] / 100.0f);
+>>>>>>> twopointzero/develop
                             }
                             dbDamageRate = 0.625f;
                         }
@@ -202,7 +267,11 @@ namespace TJAPlayer3
                             dbGaugeMaxComboValue = TJAPlayer3.DTX.nノーツ数[ 3 ] * ( this.fGaugeMaxRate[ 2 ] / 100.0f );
                             for( int i = 0; i < 3; i++ )
                             {
+<<<<<<< HEAD
                                 dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * ( this.fGaugeMaxRate[ 2 ] / 100.0f );
+=======
+                                dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * (this.fGaugeMaxRate[2] / 100.0f);
+>>>>>>> twopointzero/develop
                             }
                         }
                         else
@@ -219,7 +288,11 @@ namespace TJAPlayer3
                             dbGaugeMaxComboValue = TJAPlayer3.DTX.nノーツ数[ 3 ] * ( this.fGaugeMaxRate[ 2 ] / 100.0f );
                             for( int i = 0; i < 3; i++ )
                             {
+<<<<<<< HEAD
                                 dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数[i] * ( this.fGaugeMaxRate[ 2 ] / 100.0f );
+=======
+                                dbGaugeMaxComboValue_branch[i] = TJAPlayer3.DTX.nノーツ数_Branch[i] * (this.fGaugeMaxRate[2] / 100.0f);
+>>>>>>> twopointzero/develop
                             }
                         }
                         else
@@ -257,6 +330,10 @@ namespace TJAPlayer3
             #region [ 計算結果がInfintyだった場合も考えて ]
             float fIsDontInfinty = 0.4f;//適当に0.4で
             float[] fAddVolume = new float[] { 1.0f, 0.5f, dbDamageRate };
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
             for (int i = 0; i < 3; i++)
             {
                 for (int l = 0; l < 3; l++)
@@ -285,6 +362,10 @@ namespace TJAPlayer3
             this.dbゲージ増加量[0] = (float)nGaugeRankValue / 100.0f;
             this.dbゲージ増加量[1] = (float)(nGaugeRankValue / 100.0f) * 0.5f;
             this.dbゲージ増加量[2] = (float)(nGaugeRankValue / 100.0f) * dbDamageRate;
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
             //2015.03.26 kairera0467 計算を初期化時にするよう修正。
 
             #region ゲージの丸め処理
@@ -357,6 +438,10 @@ namespace TJAPlayer3
             #endregion
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
         #region [ DAMAGE ]
 #if true       // DAMAGELEVELTUNING
         #region [ DAMAGELEVELTUNING ]
@@ -386,6 +471,7 @@ namespace TJAPlayer3
             75.0f //9～10
         };//おおよその値。
 
+<<<<<<< HEAD
 		// ----------------------------------
 #endregion
 #endif
@@ -397,22 +483,61 @@ namespace TJAPlayer3
             // 現在のコースを当てるのではなくヒットしたノーツのコースを当ててあげる.2020.04.21.akasoko26
             var nコース = eHitCourse;
 
+=======
+        // ----------------------------------
+        #endregion
+#endif
+
+        public void Damage(CDTX.ECourse eHitCourse, E楽器パート screenmode, E楽器パート part, E判定 e今回の判定, int player)
+        {
+			float fDamage;
+            //現在のコースを当てるのではなくヒットしたノーツのコースを当ててあげる.2020.04.21.akasoko26
+            var nコース = eHitCourse;
+
+
+>>>>>>> twopointzero/develop
 #if true  // DAMAGELEVELTUNING
             switch ( e今回の判定 )
 			{
 				case E判定.Perfect:
 				case E判定.Great:
                     {
+<<<<<<< HEAD
                         if( TJAPlayer3.DTX.bチップがある.Branch )
                         {
                             fDamage = this.dbゲージ増加量_Branch[(int)nコース, 0 ];
                         }
                         else
 					        fDamage = this.dbゲージ増加量[ 0 ];
+=======
+                        if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard || TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+                        {
+                            fDamage = 0.24f;
+                        }
+                        else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Groove)
+                        { 
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 0];
+                            }
+                            else
+                                fDamage = 4.5f * this.dbゲージ増加量[0];
+                        }       
+                        else
+                        {
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 0];
+                            }
+                            else
+                                fDamage = this.dbゲージ増加量[0];
+                        }
+>>>>>>> twopointzero/develop
                     }
                     break;
 				case E判定.Good:
                     {
+<<<<<<< HEAD
                         if( TJAPlayer3.DTX.bチップがある.Branch )
                         {
                             fDamage = this.dbゲージ増加量_Branch[(int)nコース, 1 ];
@@ -441,6 +566,105 @@ namespace TJAPlayer3
                         {
                             this.nRiskyTimes--;
                         }
+=======
+                        if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard || TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+                        {
+                            fDamage = 0f;
+                        }
+                        else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Groove)
+                        {
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 2];
+                            }
+                            else
+                                fDamage = 4.5f * this.dbゲージ増加量[1];
+                        }
+                        else
+                        {
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 2];
+                            }
+                            else
+                                fDamage = this.dbゲージ増加量[1];
+                        }
+                    }
+					break;
+				case E判定.Poor:
+                    {
+                        if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+                        {
+                            fDamage = -10.0f;
+                        }
+                        else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard)
+                        {
+                            if (this.db現在のゲージ値[player] < 30)
+                            { fDamage = -2.5f; }
+                            else { fDamage = -5.0f; }
+                        }
+                        else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Groove)
+                        {
+                            fDamage = 2.0f;
+                        }
+                        else
+                        {
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 0];
+                            }
+                            else
+                                fDamage = this.dbゲージ増加量[2];
+                        }
+
+                        if (fDamage >= 0)
+                        {
+                            fDamage = -fDamage;
+                        }
+                        if (this.bRisky)
+                        {
+                            this.nRiskyTimes--;
+                        }
+
+                    }
+                    break;
+                case E判定.Miss:
+                    {
+                        if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.ExHard)
+                        {
+                            fDamage = -18.0f;
+                        }
+                        else if (TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Hard)
+                        {
+                            if (this.db現在のゲージ値[player] < 30)
+                                 { fDamage = -4.5f; }
+                            else { fDamage = -9.0f; }
+
+                        }
+                        else if(TJAPlayer3.ConfigIni.eGaugeMode == EGaugeMode.Groove)
+                        {
+                            fDamage = -6.0f;
+                        }
+                        else
+                        {
+                            if (TJAPlayer3.DTX.bチップがある.Branch)
+                            {
+                                fDamage = this.dbゲージ増加量_Branch[(int)nコース, 0];
+                            }
+                            else
+                                fDamage = this.dbゲージ増加量[2];
+                        }
+
+                        if (fDamage >= 0)
+                        {
+                            fDamage = -fDamage;
+                        }
+                        if (this.bRisky)
+                        {
+                            this.nRiskyTimes--;
+                        }
+
+>>>>>>> twopointzero/develop
                     }
 
 					break;

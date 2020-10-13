@@ -1,6 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Runtime.Serialization;
 
 namespace FDK

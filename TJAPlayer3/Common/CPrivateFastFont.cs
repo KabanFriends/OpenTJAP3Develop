@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+=======
+﻿using System.Collections.Generic;
+using System.Drawing;
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 
 namespace TJAPlayer3
@@ -36,26 +41,35 @@ namespace TJAPlayer3
 
 
 		#region [ コンストラクタ ]
+<<<<<<< HEAD
 		public CPrivateFastFont( FontFamily fontfamily, int pt, FontStyle style )
 		{
 			Initialize( null, fontfamily, pt, style );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CPrivateFastFont( FontFamily fontfamily, int pt )
 		{
 			Initialize( null, fontfamily, pt, FontStyle.Regular );
 		}
+<<<<<<< HEAD
 		public CPrivateFastFont( string fontpath, int pt, FontStyle style )
 		{
 			Initialize( fontpath, null, pt, style );
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CPrivateFastFont( string fontpath, int pt )
 		{
 			Initialize( fontpath, null, pt, FontStyle.Regular );
 		}
+<<<<<<< HEAD
 		public CPrivateFastFont()
 		{
 			throw new ArgumentException("CPrivateFastFont: 引数があるコンストラクタを使用してください。");
 		}
+=======
+>>>>>>> twopointzero/develop
 		#endregion
 		#region [ コンストラクタから呼ばれる初期化処理 ]
 		protected new void Initialize( string fontpath, FontFamily fontfamily, int pt, FontStyle style )
@@ -73,6 +87,7 @@ namespace TJAPlayer3
 		/// </summary>
 		/// <param name="drawstr">描画文字列</param>
 		/// <param name="fontColor">描画色</param>
+<<<<<<< HEAD
 		/// <returns>描画済テクスチャ</returns>
 		public new Bitmap DrawPrivateFont( string drawstr, Color fontColor )
 		{
@@ -84,6 +99,8 @@ namespace TJAPlayer3
 		/// </summary>
 		/// <param name="drawstr">描画文字列</param>
 		/// <param name="fontColor">描画色</param>
+=======
+>>>>>>> twopointzero/develop
 		/// <param name="edgeColor">縁取色</param>
 		/// <returns>描画済テクスチャ</returns>
 		public new Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color edgeColor )
@@ -97,6 +114,7 @@ namespace TJAPlayer3
 		/// <param name="drawstr">描画文字列</param>
 		/// <param name="fontColor">描画色</param>
 		/// <param name="edgeColor">縁取色</param>
+<<<<<<< HEAD
 		/// <returns>描画済テクスチャ</returns>
 		public Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color edgeColor, DrawMode dMode )
 		{
@@ -121,6 +139,8 @@ namespace TJAPlayer3
 		/// <param name="drawstr">描画文字列</param>
 		/// <param name="fontColor">描画色</param>
 		/// <param name="edgeColor">縁取色</param>
+=======
+>>>>>>> twopointzero/develop
 		/// <param name="gradationTopColor">グラデーション 上側の色</param>
 		/// <param name="gradationBottomColor">グラデーション 下側の色</param>
 		/// <returns>描画済テクスチャ</returns>
@@ -143,6 +163,7 @@ namespace TJAPlayer3
 			return DrawPrivateFont_V( drawstr, fontColor, edgeColor, bVertical );
 		}
 
+<<<<<<< HEAD
 #if こちらは使わない // (Bitmapではなく、CTextureを返す版)
 		/// <summary>
 		/// 文字列を描画したテクスチャを返す
@@ -198,6 +219,8 @@ namespace TJAPlayer3
 			return CDTXMania.tテクスチャの生成( bmp, false );
 		}
 #endif
+=======
+>>>>>>> twopointzero/develop
 		#endregion
 
 		protected new Bitmap DrawPrivateFont( string drawstr, DrawMode drawmode, Color fontColor, Color edgeColor, Color gradationTopColor, Color gradationBottomColor )

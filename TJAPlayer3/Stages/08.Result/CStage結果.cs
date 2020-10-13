@@ -21,7 +21,10 @@ namespace TJAPlayer3
                                                 //        10.11.17 change (int to bool) ikanick
 		public STDGBVALUE<int> nランク値;
 		public STDGBVALUE<int> n演奏回数;
+<<<<<<< HEAD
 		public STDGBVALUE<int> nScoreRank;
+=======
+>>>>>>> twopointzero/develop
 		public int n総合ランク値;
 		public CDTX.CChip[] r空うちドラムチップ;
 		public STDGBVALUE<CScoreIni.C演奏記録> st演奏記録;
@@ -55,11 +58,15 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
+<<<<<<< HEAD
 			TJAPlayer3.Skin.bgmリザルトイン音.t再生する();
+=======
+>>>>>>> twopointzero/develop
 			Trace.TraceInformation( "結果ステージを活性化します。" );
 			Trace.Indent();
 			try
 			{
+<<<<<<< HEAD
 				{
 					#region [ 初期化 ]
 					//---------------------
@@ -233,6 +240,171 @@ namespace TJAPlayer3
 					if (cスコア.譜面情報.nスコアランク[TJAPlayer3.stage選曲.n確定された曲の難易度] <= st演奏記録[0].nScoreRank[TJAPlayer3.stage選曲.n確定された曲の難易度] + 1)
 						cスコア.譜面情報.nスコアランク[TJAPlayer3.stage選曲.n確定された曲の難易度] = st演奏記録[0].nScoreRank[TJAPlayer3.stage選曲.n確定された曲の難易度] + 1;
 				} 
+=======
+				#region [ 初期化 ]
+				//---------------------
+				this.eフェードアウト完了時の戻り値 = E戻り値.継続;
+				this.bアニメが完了 = false;
+				this.bIsCheckedWhetherResultScreenShouldSaveOrNot = false;				// #24609 2011.3.14 yyagi
+				this.n最後に再生したHHのWAV番号 = -1;
+				this.n最後に再生したHHのチャンネル番号 = 0;
+				for( int i = 0; i < 3; i++ )
+				{
+					this.b新記録スキル[ i ] = false;
+                    this.b新記録スコア[ i ] = false;
+                    this.b新記録ランク[ i ] = false;
+				}
+				//---------------------
+				#endregion
+
+				#region [ 結果の計算 ]
+				//---------------------
+				for( int i = 0; i < 3; i++ )
+				{
+					this.nランク値[ i ] = -1;
+					this.fPerfect率[ i ] = this.fGreat率[ i ] = this.fGood率[ i ] = this.fPoor率[ i ] = this.fMiss率[ i ] = 0.0f;	// #28500 2011.5.24 yyagi
+					if ( ( ( ( i != 0 ) || ( TJAPlayer3.DTX.bチップがある.Drums  ) ) ) )
+					{
+						CScoreIni.C演奏記録 part = this.st演奏記録[ i ];
+						bool bIsAutoPlay = true;
+						switch( i )
+						{
+							case 0:
+                                bIsAutoPlay = TJAPlayer3.ConfigIni.b太鼓パートAutoPlay;
+								break;
+
+							case 1:
+								bIsAutoPlay = TJAPlayer3.ConfigIni.b太鼓パートAutoPlay;
+								break;
+
+							case 2:
+								bIsAutoPlay = TJAPlayer3.ConfigIni.b太鼓パートAutoPlay;
+								break;
+						}
+						this.fPerfect率[ i ] = bIsAutoPlay ? 0f : ( ( 100f * part.nPerfect数 ) / ( (float) part.n全チップ数 ) );
+						this.fGreat率[ i ] = bIsAutoPlay ? 0f : ( ( 100f * part.nGreat数 ) / ( (float) part.n全チップ数 ) );
+						this.fGood率[ i ] = bIsAutoPlay ? 0f : ( ( 100f * part.nGood数 ) / ( (float) part.n全チップ数 ) );
+						this.fPoor率[ i ] = bIsAutoPlay ? 0f : ( ( 100f * part.nPoor数 ) / ( (float) part.n全チップ数 ) );
+						this.fMiss率[ i ] = bIsAutoPlay ? 0f : ( ( 100f * part.nMiss数 ) / ( (float) part.n全チップ数 ) );
+						this.bオート[ i ] = bIsAutoPlay;	// #23596 10.11.16 add ikanick そのパートがオートなら1
+															//        10.11.17 change (int to bool) ikanick
+						this.nランク値[ i ] = CScoreIni.tランク値を計算して返す( part );
+					}
+				}
+				this.n総合ランク値 = CScoreIni.t総合ランク値を計算して返す( this.st演奏記録.Drums, this.st演奏記録.Guitar, this.st演奏記録.Bass );
+				//---------------------
+				#endregion
+
+                #region [ .score.ini の作成と出力 ]
+				//---------------------
+				string str = TJAPlayer3.DTX.strファイル名の絶対パス + ".score.ini";
+				CScoreIni ini = new CScoreIni( str );
+
+				bool[] b今までにフルコンボしたことがある = new bool[] { false, false, false };
+
+				for( int i = 0; i < 3; i++ )
+				{
+					// フルコンボチェックならびに新記録ランクチェックは、ini.Record[] が、スコアチェックや演奏型スキルチェックの IF 内で書き直されてしまうよりも前に行う。(2010.9.10)
+					
+					b今までにフルコンボしたことがある[ i ] = ini.stセクション[ i * 2 ].bフルコンボである | ini.stセクション[ i * 2 + 1 ].bフルコンボである;
+
+					#region [deleted by #24459]
+			//		if( this.nランク値[ i ] <= CScoreIni.tランク値を計算して返す( ini.stセクション[ ( i * 2 ) + 1 ] ) )
+			//		{
+			//			this.b新記録ランク[ i ] = true;
+					//		}
+					#endregion
+					// #24459 上記の条件だと[HiSkill.***]でのランクしかチェックしていないので、BestRankと比較するよう変更。
+					if ( this.nランク値[ i ] >= 0 && ini.stファイル.BestRank[ i ] > this.nランク値[ i ] )		// #24459 2011.3.1 yyagi update BestRank
+					{
+						this.b新記録ランク[ i ] = true;
+						ini.stファイル.BestRank[ i ] = this.nランク値[ i ];
+					}
+
+					// 新記録スコアチェック
+					if( ( this.st演奏記録[ i ].nスコア > ini.stセクション[ i * 2 ].nスコア ) && !TJAPlayer3.ConfigIni.b太鼓パートAutoPlay )
+					{
+						this.b新記録スコア[ i ] = true;
+						ini.stセクション[ i * 2 ] = this.st演奏記録[ i ];
+					}
+
+                    // 新記録スキルチェック
+                    if (this.st演奏記録[i].db演奏型スキル値 > ini.stセクション[(i * 2) + 1].db演奏型スキル値)
+                    {
+                        this.b新記録スキル[ i ] = true;
+                        ini.stセクション[(i * 2) + 1] = this.st演奏記録[ i ];
+                    }
+
+					// ラストプレイ #23595 2011.1.9 ikanick
+                    // オートじゃなければプレイ結果を書き込む
+                    if( TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == false ) {
+                        ini.stセクション[i + 6] = this.st演奏記録[ i ];
+                    }
+
+                    // #23596 10.11.16 add ikanick オートじゃないならクリア回数を1増やす
+                    //        11.02.05 bオート to t更新条件を取得する use      ikanick
+					bool[] b更新が必要か否か = new bool[ 3 ];
+					CScoreIni.t更新条件を取得する( out b更新が必要か否か[ 0 ], out b更新が必要か否か[ 1 ], out b更新が必要か否か[ 2 ] );
+
+                    if (b更新が必要か否か[ i ])
+                    {
+                        switch ( i )
+                        {
+                            case 0:
+                                ini.stファイル.ClearCountDrums++;
+                                break;
+                            case 1:
+                                ini.stファイル.ClearCountGuitar++;
+                                break;
+                            case 2:
+                                ini.stファイル.ClearCountBass++;
+                                break;
+                            default:
+                                throw new Exception("クリア回数増加のk(0-2)が範囲外です。");
+                        }
+                    }
+                    //---------------------------------------------------------------------/
+				}
+                if( TJAPlayer3.ConfigIni.bScoreIniを出力する )
+				    ini.t書き出し( str );
+				//---------------------
+				#endregion
+
+				#region [ リザルト画面への演奏回数の更新 #24281 2011.1.30 yyagi]
+                if( TJAPlayer3.ConfigIni.bScoreIniを出力する )
+                {
+                    this.n演奏回数.Drums = ini.stファイル.PlayCountDrums;
+                    this.n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+                    this.n演奏回数.Bass = ini.stファイル.PlayCountBass;
+                }
+				#endregion
+				#region [ 選曲画面の譜面情報の更新 ]
+				//---------------------
+				{
+					Cスコア cスコア = TJAPlayer3.stage選曲.r確定されたスコア;
+					bool[] b更新が必要か否か = new bool[ 3 ];
+					CScoreIni.t更新条件を取得する( out b更新が必要か否か[ 0 ], out b更新が必要か否か[ 1 ], out b更新が必要か否か[ 2 ] );
+					for( int m = 0; m < 3; m++ )
+					{
+						if( b更新が必要か否か[ m ] )
+						{
+							// FullCombo した記録を FullCombo なしで超えた場合、FullCombo マークが消えてしまう。
+							// → FullCombo は、最新記録と関係なく、一度達成したらずっとつくようにする。(2010.9.11)
+							cスコア.譜面情報.フルコンボ[ m ] = this.st演奏記録[ m ].bフルコンボである | b今までにフルコンボしたことがある[ m ];
+
+							if( this.b新記録スキル[ m ] )
+							{
+								cスコア.譜面情報.最大スキル[ m ] = this.st演奏記録[ m ].db演奏型スキル値;
+		                    }
+
+                            if (this.b新記録ランク[ m ])
+                            {
+                                cスコア.譜面情報.最大ランク[ m ] = this.nランク値[ m ];
+                            }
+						}
+					}
+				}
+>>>>>>> twopointzero/develop
                 //---------------------
                 #endregion
 
@@ -260,8 +432,11 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 				b音声再生 = false;
 				this.EndAnime = false;
+=======
+>>>>>>> twopointzero/develop
 				//this.tx背景 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\8_background.png" ) );
 				//this.tx上部パネル = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\8_header.png" ) );
 				//this.tx下部パネル = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\8_footer panel.png" ), true );
@@ -288,7 +463,10 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
+<<<<<<< HEAD
 				int num;
+=======
+>>>>>>> twopointzero/develop
 				if( base.b初めての進行描画 )
 				{
 					this.ct登場用 = new CCounter( 0, 100, 5, TJAPlayer3.Timer );
@@ -316,6 +494,7 @@ namespace TJAPlayer3
 
 				// 描画
 
+<<<<<<< HEAD
 				if (TJAPlayer3.Tx.Result_Background != null)
 				{
 					if (this.actParameterPanel.ct全体アニメ.n現在の値 >= 2000 + (this.actParameterPanel.ctゲージアニメーション.n終了値 * 66) + 8360 - 85)
@@ -383,6 +562,12 @@ namespace TJAPlayer3
 				{
                     TJAPlayer3.Tx.Result_Header.t2D描画( TJAPlayer3.app.Device, 0, 0 );
 				}
+=======
+                TJAPlayer3.Tx.Result_Background?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+
+                TJAPlayer3.Tx.Result_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+
+>>>>>>> twopointzero/develop
                 if ( this.actResultImage.On進行描画() == 0 )
 				{
 					this.bアニメが完了 = false;
@@ -398,12 +583,18 @@ namespace TJAPlayer3
 				}
 
                 #region ネームプレート
+<<<<<<< HEAD
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                 {
                     if (TJAPlayer3.Tx.NamePlate[i] != null)
                     {
                         TJAPlayer3.Tx.NamePlate[i].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i]);
                     }
+=======
+                for (int i = 0; i < Math.Min(TJAPlayer3.ConfigIni.nPlayerCount, TJAPlayer3.Tx.NamePlate.Length); i++)
+                {
+                    TJAPlayer3.Tx.NamePlate[i]?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i]);
+>>>>>>> twopointzero/develop
                 }
                 #endregion
 
@@ -412,6 +603,10 @@ namespace TJAPlayer3
 					if( this.actFI.On進行描画() != 0 )
 					{
 						base.eフェーズID = CStage.Eフェーズ.共通_通常状態;
+<<<<<<< HEAD
+=======
+                        TJAPlayer3.Skin.bgm結果画面.t再生する();
+>>>>>>> twopointzero/develop
 					}
 				}
 				else if( ( base.eフェーズID == CStage.Eフェーズ.共通_フェードアウト ) )			//&& ( this.actFO.On進行描画() != 0 ) )
@@ -430,15 +625,28 @@ namespace TJAPlayer3
 
 				// キー入力
 
+<<<<<<< HEAD
 				if( TJAPlayer3.act現在入力を占有中のプラグイン == null )
 				{
 					#region [ #24609 2011.4.7 yyagi リザルト画面で[F12]を押下すると、リザルト画像をpngで保存する機能は、CDTXManiaに移管。 ]
+=======
+				if( ( ( TJAPlayer3.Pad.b押されたDGB( Eパッド.CY ) || TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.RD ) ) || ( TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.LC ) || TJAPlayer3.Input管理.Keyboard.bキーが押された( (int)SlimDX.DirectInput.Key.Return ) ) ) && !this.bアニメが完了 )
+				{
+					this.actFI.tフェードイン完了();					// #25406 2011.6.9 yyagi
+					this.actResultImage.tアニメを完了させる();
+					this.actParameterPanel.tアニメを完了させる();
+					this.actSongBar.tアニメを完了させる();
+					this.ct登場用.t停止();
+				}
+				#region [ #24609 2011.4.7 yyagi リザルト画面で[F12]を押下すると、リザルト画像をpngで保存する機能は、CDTXManiaに移管。 ]
+>>>>>>> twopointzero/develop
 //					if ( CDTXMania.Input管理.Keyboard.bキーが押された( (int) SlimDX.DirectInput.Key.F12 ) &&
 //						CDTXMania.ConfigIni.bScoreIniを出力する )
 //					{
 //						CheckAndSaveResultScreen(false);
 //						this.bIsCheckedWhetherResultScreenShouldSaveOrNot = true;
 //					}
+<<<<<<< HEAD
 					#endregion
 					if ( base.eフェーズID == CStage.Eフェーズ.共通_通常状態 )
 					{
@@ -469,6 +677,24 @@ namespace TJAPlayer3
 								this.eフェードアウト完了時の戻り値 = E戻り値.完了;
 							}
 						}
+=======
+				#endregion
+				if ( base.eフェーズID == CStage.Eフェーズ.共通_通常状態 )
+				{
+					if ( TJAPlayer3.Input管理.Keyboard.bキーが押された( (int)SlimDX.DirectInput.Key.Escape ) )
+					{
+						TJAPlayer3.Skin.sound取消音.t再生する();
+						this.actFO.tフェードアウト開始();
+						base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+						this.eフェードアウト完了時の戻り値 = E戻り値.完了;
+					}
+					if ( ( ( TJAPlayer3.Pad.b押されたDGB( Eパッド.CY ) || TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.RD ) ) || ( TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.LC ) || TJAPlayer3.Input管理.Keyboard.bキーが押された( (int) SlimDX.DirectInput.Key.Return ) ) ) && this.bアニメが完了 )
+					{
+						TJAPlayer3.Skin.sound取消音.t再生する();
+//						this.actFO.tフェードアウト開始();
+						base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+						this.eフェードアウト完了時の戻り値 = E戻り値.完了;
+>>>>>>> twopointzero/develop
 					}
 				}
 			}
@@ -486,8 +712,11 @@ namespace TJAPlayer3
 
 		#region [ private ]
 		//-----------------
+<<<<<<< HEAD
 		public bool b音声再生;
 		public bool EndAnime;
+=======
+>>>>>>> twopointzero/develop
 		private CCounter ct登場用;
 		private E戻り値 eフェードアウト完了時の戻り値;
 		private CActFIFOResult actFI;

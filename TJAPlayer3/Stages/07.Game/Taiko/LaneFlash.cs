@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TJAPlayer3;
 using FDK;
+=======
+﻿using FDK;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -13,7 +17,11 @@ namespace TJAPlayer3
     public class LaneFlash : CActivity
     {
 
+<<<<<<< HEAD
         public LaneFlash(ref CTexture texture, int player)
+=======
+        public LaneFlash(CTexture texture, int player)
+>>>>>>> twopointzero/develop
         {
             Texture = texture;
             Player = player;
@@ -46,7 +54,11 @@ namespace TJAPlayer3
                 if (Counter.b終了値に達した) Counter.t停止();
                 int opacity = (((150 - Counter.n現在の値) * 255) / 100);
                 Texture.Opacity = opacity;
+<<<<<<< HEAD
                 Texture.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.nScrollFieldBGX[Player], TJAPlayer3.Skin.nScrollFieldY[Player]);
+=======
+                Texture.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lane_Background_X[Player], TJAPlayer3.Skin.Game_Lane_Background_Y[Player]);
+>>>>>>> twopointzero/develop
             }
             return base.On進行描画();
         }

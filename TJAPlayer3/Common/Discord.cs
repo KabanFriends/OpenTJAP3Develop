@@ -50,6 +50,7 @@ namespace TJAPlayer3
         [DllImport("discord-rpc", EntryPoint = "Discord_Shutdown", CallingConvention = CallingConvention.Cdecl)]
         public static extern void Shutdown();
 
+<<<<<<< HEAD
         [DllImport("discord-rpc", EntryPoint = "Discord_RunCallbacks", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RunCallbacks();
 
@@ -61,6 +62,10 @@ namespace TJAPlayer3
 
         [DllImport("discord-rpc", EntryPoint = "Discord_UpdateHandlers", CallingConvention = CallingConvention.Cdecl)]
         public static extern void UpdateHandlers(ref EventHandlers handlers);
+=======
+        [DllImport("discord-rpc", EntryPoint = "Discord_UpdatePresence", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void UpdatePresence(ref RichPresence presence);
+>>>>>>> twopointzero/develop
     }
 
     public static class Discord
@@ -100,8 +105,13 @@ namespace TJAPlayer3
 
             if (startTimeStamp != 0) presence.startTimestamp = startTimeStamp;
             if (endTimeStamp != 0) presence.endTimestamp = endTimeStamp;
+<<<<<<< HEAD
             presence.largeImageKey = StrToPtr("tjaplayer3");
             presence.largeImageText = StrToPtr("Ver." + TJAPlayer3.VERSION);
+=======
+            presence.largeImageKey = StrToPtr(TJAPlayer3.AppDisplayName.ToLowerInvariant());
+            presence.largeImageText = StrToPtr(TJAPlayer3.AppDisplayThreePartVersion);
+>>>>>>> twopointzero/develop
             if (!string.IsNullOrEmpty(smallImageKey)) presence.smallImageKey = StrToPtr(smallImageKey);
             if (!string.IsNullOrEmpty(smallImageText)) presence.smallImageText = StrToPtr(smallImageText);
 

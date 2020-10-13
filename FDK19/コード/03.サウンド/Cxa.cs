@@ -1,11 +1,17 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> twopointzero/develop
 using System.Text;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Diagnostics;
+<<<<<<< HEAD
 using System.Threading;
 
+=======
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
@@ -163,10 +169,13 @@ namespace FDK
 
 			return dlen;
 		}
+<<<<<<< HEAD
 		public override int Seek( int nHandle, uint dwPosition )
 		{
 			return 0;
 		}
+=======
+>>>>>>> twopointzero/develop
 		public override int Decode( int nHandle, IntPtr pDest, uint szDestSize, int bLoop )
 		{
 			#region [ xaデータのデコード ]

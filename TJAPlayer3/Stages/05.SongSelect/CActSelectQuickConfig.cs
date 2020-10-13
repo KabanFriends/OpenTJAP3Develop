@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -5,6 +6,10 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using SlimDX;
+=======
+﻿using System.Collections.Generic;
+using System.Drawing;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -53,7 +58,11 @@ namespace TJAPlayer3
 			#region [ 共通 Target/AutoMode/AutoLane ]
 			#endregion
 			#region [ 個別 ScrollSpeed ]
+<<<<<<< HEAD
 			l.Add( new CItemInteger("スクロール速度", 0, 1999, TJAPlayer3.ConfigIni.n譜面スクロール速度[ nInst ],
+=======
+			l.Add( new CItemInteger( "ばいそく", 0, 1999, TJAPlayer3.ConfigIni.n譜面スクロール速度[ nInst ],
+>>>>>>> twopointzero/develop
 				"演奏時のドラム譜面のスクロールの\n" +
 				"速度を指定します。\n" +
 				"x0.5 ～ x1000.0 を指定可能です。",
@@ -75,11 +84,19 @@ namespace TJAPlayer3
 				"Note: It also changes the songs' pitch." ) );
 			#endregion
 			#region [ 個別 Sud/Hid ]
+<<<<<<< HEAD
             l.Add( new CItemList( "ノーツの配置", CItemBase.Eパネル種別.通常, (int) TJAPlayer3.ConfigIni.eRandom.Taiko,
 				"いわゆるランダム。\n  RANDOM: ちょっと変わる\n  MIRROR: あべこべ \n  SUPER: そこそこヤバい\n  HYPER: 結構ヤバい\nなお、実装は適当な模様",
 				"Guitar chips come randomly.\n\n Part: swapping lanes randomly for each\n  measures.\n Super: swapping chip randomly\n Hyper: swapping randomly\n  (number of lanes also changes)",
 				new string[] { "OFF", "RANDOM", "あべこべ", "SUPER", "HYPER" } ) );
             l.Add( new CItemList( "ノーツの表示", CItemBase.Eパネル種別.通常, (int) TJAPlayer3.ConfigIni.eSTEALTH,
+=======
+            l.Add( new CItemList( "ランダム", CItemBase.Eパネル種別.通常, (int) TJAPlayer3.ConfigIni.eRandom.Taiko,
+				"いわゆるランダム。\n  RANDOM: ちょっと変わる\n  MIRROR: あべこべ \n  SUPER: そこそこヤバい\n  HYPER: 結構ヤバい\nなお、実装は適当な模様",
+				"Guitar chips come randomly.\n\n Part: swapping lanes randomly for each\n  measures.\n Super: swapping chip randomly\n Hyper: swapping randomly\n  (number of lanes also changes)",
+				new string[] { "OFF", "RANDOM", "あべこべ", "SUPER", "HYPER" } ) );
+            l.Add( new CItemList( "ドロン", CItemBase.Eパネル種別.通常, (int) TJAPlayer3.ConfigIni.eSTEALTH,
+>>>>>>> twopointzero/develop
 				"",
 				new string[] { "OFF", "ドロン", "ステルス" } ) );
             l.Add( new CItemList( "ゲーム", CItemBase.Eパネル種別.通常, (int)TJAPlayer3.ConfigIni.eGameMode,
@@ -91,12 +108,23 @@ namespace TJAPlayer3
                 " \n" +
                 " ",
                 new string[] { "OFF", "完走!", "完走!激辛" }) );
+<<<<<<< HEAD
 
+=======
+            l.Add( new CItemList("ゲージモード", CItemBase.Eパネル種別.通常, (int)TJAPlayer3.ConfigIni.eGaugeMode,
+                "",
+                "",
+                new string[] {"Normal", "Groove","Hard", "Ex Hard" }) );
+>>>>>>> twopointzero/develop
             l.Add(new CItemList(nameof(TJAPlayer3.ConfigIni.ShinuchiMode), CItemBase.Eパネル種別.通常, TJAPlayer3.ConfigIni.ShinuchiMode ? 1 : 0, "", "", new string[] { "OFF", "ON" }));
 
 			#endregion
 			#region [ 共通 SET切り替え/More/Return ]
+<<<<<<< HEAD
 			l.Add( new CSwitchItemList( "Config", CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "" } ) );
+=======
+			l.Add( new CSwitchItemList( "More...", CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "" } ) );
+>>>>>>> twopointzero/develop
 			l.Add( new CSwitchItemList( "戻る", CItemBase.Eパネル種別.通常, 0, "", "", new string[] { "", "" } ) );
 			#endregion
 
@@ -146,6 +174,20 @@ namespace TJAPlayer3
                     }
 					TJAPlayer3.ConfigIni.eGameMode = game;
 					break;
+<<<<<<< HEAD
+=======
+                case (int) EOrder.GaugeMode:
+                    EGaugeMode gauge = EGaugeMode.Normal;
+                    switch((int)GetIndex((int)EOrder.GaugeMode))
+                    {
+                        case 0: gauge = EGaugeMode.Normal; break;
+                        case 1: gauge = EGaugeMode.Groove; break;
+                        case 2: gauge = EGaugeMode.Hard; break;
+                        case 3: gauge = EGaugeMode.ExHard; break;
+                    }
+                    TJAPlayer3.ConfigIni.eGaugeMode = gauge;
+                    break;
+>>>>>>> twopointzero/develop
                 case (int)EOrder.ShinuchiMode:
                     TJAPlayer3.ConfigIni.ShinuchiMode = !TJAPlayer3.ConfigIni.ShinuchiMode;
                     break;
@@ -172,6 +214,7 @@ namespace TJAPlayer3
 		}
 
 		/// <summary>
+<<<<<<< HEAD
 		/// 1つの値を、全targetに適用する。RiskyやDarkなど、全tatgetで共通の設定となるもので使う。
 		/// </summary>
 		/// <param name="order">設定項目リストの順番</param>
@@ -189,6 +232,11 @@ namespace TJAPlayer3
 		/// ConfigIni.bAutoPlayに簡易CONFIGの状態を反映する
 		/// </summary>
 		private void SetAutoParameters()
+=======
+		/// ConfigIni.bAutoPlayに簡易CONFIGの状態を反映する
+		/// </summary>
+		private static void SetAutoParameters()
+>>>>>>> twopointzero/develop
 		{
 			for ( int target = 0; target < 3; target++ )
 			{
@@ -232,7 +280,11 @@ namespace TJAPlayer3
 			if ( !base.b活性化してない )
 			{
 				//CDTXMania.tテクスチャの解放( ref this.txパネル本体 );
+<<<<<<< HEAD
 				TJAPlayer3.tテクスチャの解放( ref this.tx文字列パネル );
+=======
+				TJAPlayer3.t安全にDisposeする(ref this.tx文字列パネル);
+>>>>>>> twopointzero/develop
 				base.OnManagedリソースの解放();
 			}
 		}
@@ -249,6 +301,10 @@ namespace TJAPlayer3
 			Random,
             Stealth,
             GameMode,
+<<<<<<< HEAD
+=======
+            GaugeMode,
+>>>>>>> twopointzero/develop
             ShinuchiMode,
 			More,
 			Return, END,

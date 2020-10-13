@@ -9,7 +9,12 @@ namespace TJAPlayer3
 	{
 		// プロパティ
 
+<<<<<<< HEAD
 		public Eノード種別 eノード種別 = Eノード種別.UNKNOWN;
+=======
+        public int? nIndex;
+        public Eノード種別 eノード種別 = Eノード種別.UNKNOWN;
+>>>>>>> twopointzero/develop
 		public enum Eノード種別
 		{
 			SCORE,
@@ -23,6 +28,7 @@ namespace TJAPlayer3
 		public Cスコア[] arスコア = new Cスコア[(int)Difficulty.Total];
 		public string[] ar難易度ラベル = new string[(int)Difficulty.Total];
 		public bool bDTXFilesで始まるフォルダ名のBOXである;
+<<<<<<< HEAD
 		public bool bBoxDefで作成されたBOXである
 		{
 			get
@@ -39,6 +45,10 @@ namespace TJAPlayer3
         public Color BackColor = Color.Black;
         public bool IsChangedForeColor;
         public bool IsChangedBackColor;
+=======
+        public Color ForeColor = TJAPlayer3.Skin.SongSelect_ForeColor;
+        public Color BackColor = TJAPlayer3.Skin.SongSelect_BackColor;
+>>>>>>> twopointzero/develop
 		public List<C曲リストノード> listランダム用ノードリスト;
 		public List<C曲リストノード> list子リスト;
 		public int nGood範囲ms = -1;
@@ -50,6 +60,7 @@ namespace TJAPlayer3
 		public Stack<int> stackランダム演奏番号 = new Stack<int>();
 		public string strジャンル = "";
 		public string strタイトル = "";
+<<<<<<< HEAD
 		public string[] strボックス説明 = new string[3];
         public string strサブタイトル = "";
 		public string strBreadcrumbs = "";		// #27060 2011.2.27 yyagi; MUSIC BOXのパンくずリスト (曲リスト構造内の絶対位置捕捉のために使う)
@@ -59,6 +70,13 @@ namespace TJAPlayer3
         public Eジャンル eジャンル = Eジャンル.None;
 		public int Openindex;
 
+=======
+        public string strサブタイトル = "";
+		public string strBreadcrumbs = "";		// #27060 2011.2.27 yyagi; MUSIC BOXのパンくずリスト (曲リスト構造内の絶対位置捕捉のために使う)
+		public string strSkinPath = "";			// #28195 2012.5.4 yyagi; box.defでのスキン切り替え対応
+        public int[] nLevel = new int[(int)Difficulty.Total]{ 0, 0, 0, 0, 0, 0, 0 };
+		
+>>>>>>> twopointzero/develop
 		// コンストラクタ
 
 		public C曲リストノード()

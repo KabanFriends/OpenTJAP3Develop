@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
@@ -12,6 +13,14 @@ using SlimDX;
 using SlimDX.Direct3D9;
 using FDK;
 using SampleFramework;
+=======
+using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using SlimDX;
+using FDK;
+using TJAPlayer3.Common;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -87,7 +96,11 @@ namespace TJAPlayer3
 
 			try
 			{
+<<<<<<< HEAD
 				System.Drawing.Font ftMessage = new System.Drawing.Font("MS UI Gothic", 40f, FontStyle.Bold, GraphicsUnit.Pixel );
+=======
+				System.Drawing.Font ftMessage = new System.Drawing.Font(FontUtilities.FallbackFontName, 40f, FontStyle.Bold, GraphicsUnit.Pixel );
+>>>>>>> twopointzero/develop
 				string[] strMessage = 
 				{
 					"     曲データの一覧を\n       取得しています。\n   しばらくお待ちください。",

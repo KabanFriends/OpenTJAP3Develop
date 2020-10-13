@@ -1,14 +1,23 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+=======
+using System.Globalization;
+>>>>>>> twopointzero/develop
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
+<<<<<<< HEAD
 using FDK;
 using System.Reflection;
+=======
+using TJAPlayer3.ErrorReporting;
+using TJAPlayer3.Updates;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -43,11 +52,14 @@ namespace TJAPlayer3
 			}
 			return true;
 		}
+<<<<<<< HEAD
 		private static bool tDLLの存在チェック( string strDll名, string str存在しないときに表示するエラー文字列jp, string str存在しないときに表示するエラー文字列en )
 		{
 			return true;
 			//return tDLLの存在チェック( strDll名, str存在しないときに表示するエラー文字列jp, str存在しないときに表示するエラー文字列en, false );
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		#region [DllImport]
 		[DllImport( "kernel32", CharSet = CharSet.Unicode, SetLastError = true )]
@@ -59,9 +71,22 @@ namespace TJAPlayer3
 		//-----------------------------
 		#endregion
 
+<<<<<<< HEAD
 		[STAThread] 
 		private static void Main()
 		{
+=======
+        [STAThread]
+        private static void Main()
+        {
+            ErrorReporter.WithErrorReporting(MainImpl);
+        }
+
+        private static void MainImpl()
+		{
+            //UpdateChecker.CheckForAndOfferUpdate();
+
+>>>>>>> twopointzero/develop
 			mutex二重起動防止用 = new Mutex( false, "DTXManiaMutex" );
 
 			if ( mutex二重起動防止用.WaitOne( 0, false ) )
@@ -76,6 +101,7 @@ namespace TJAPlayer3
 
 
                 #region [DLLの存在チェック]
+<<<<<<< HEAD
                 if ( !tDLLの存在チェック( "dll\\SlimDX" + TJAPlayer3.SLIMDXDLL + ".dll",
 					"SlimDX" + TJAPlayer3.SLIMDXDLL + ".dll またはその依存するdllが存在しません。" + newLine + "DTXManiaをダウンロードしなおしてください。",
 					"SlimDX" + TJAPlayer3.SLIMDXDLL + ".dll, or its depended DLL, is not found." + newLine + "Please download DTXMania again."
@@ -93,10 +119,14 @@ namespace TJAPlayer3
 					"SoundDecoder.dll, or its depended DLL, is not found." + newLine + "Please download DTXMania again."
 					) ) bDLLnotfound = true;
 				if ( !tDLLの存在チェック( TJAPlayer3.D3DXDLL,
+=======
+                if ( !tDLLの存在チェック( TJAPlayer3.D3DXDLL,
+>>>>>>> twopointzero/develop
 					TJAPlayer3.D3DXDLL + " が存在しません。" + newLine + "DirectX Redist フォルダの DXSETUP.exe を実行し、" + newLine + "必要な DirectX ランタイムをインストールしてください。",
 					TJAPlayer3.D3DXDLL + " is not found." + newLine + "Please execute DXSETUP.exe in \"DirectX Redist\" folder, to install DirectX runtimes required for DTXMania.",
 					true
 					) ) bDLLnotfound = true;
+<<<<<<< HEAD
 				if ( !tDLLの存在チェック( "dll\\bass.dll",
 					"bass.dll が存在しません。" + newLine + "DTXManiaをダウンロードしなおしてください。",
 					"baas.dll is not found." + newLine + "Please download DTXMania again."
@@ -126,12 +156,16 @@ namespace TJAPlayer3
 					"DirectShowLib-2005.dll is not found." + newLine + "Please download DTXMania again."
 					) ) bDLLnotfound = true;
 				#endregion
+=======
+                #endregion
+>>>>>>> twopointzero/develop
 				if ( !bDLLnotfound )
 				{
 #if DEBUG && TEST_ENGLISH
 					Thread.CurrentThread.CurrentCulture = new CultureInfo( "en-US" );
 #endif
 
+<<<<<<< HEAD
 					DWM.EnableComposition( false );	// Disable AeroGrass temporally
 
 					// BEGIN #23670 2010.11.13 from: キャッチされない例外は放出せずに、ログに詳細を出力する。
@@ -162,6 +196,15 @@ namespace TJAPlayer3
 #endif
 					// END #24606 2011.03.08 from
 					// END #23670 2010.11.13 from
+=======
+                    using (var mania = new TJAPlayer3())
+                    {
+                        mania.Run();
+                    }
+
+					Trace.WriteLine( "" );
+					Trace.WriteLine( "遊んでくれてありがとう！" );
+>>>>>>> twopointzero/develop
 
 					if ( Trace.Listeners.Count > 1 )
 						Trace.Listeners.RemoveAt( 1 );
@@ -174,6 +217,7 @@ namespace TJAPlayer3
 
 				// END #24615 2011.03.09 from
 			}
+<<<<<<< HEAD
 			else		// DTXManiaが既に起動中
 			{
 				
@@ -241,6 +285,8 @@ namespace TJAPlayer3
 					}
 				}
 			}
+=======
+>>>>>>> twopointzero/develop
 		}
 	}
 }

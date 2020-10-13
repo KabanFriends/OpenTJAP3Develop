@@ -1,6 +1,9 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 using System.Runtime.InteropServices;
 
 namespace TJAPlayer3
@@ -27,6 +30,7 @@ namespace TJAPlayer3
         BMSCROLL,
         HBSCROLL
     }
+<<<<<<< HEAD
     public enum Eジャンル
     {
         None = 0,
@@ -39,6 +43,17 @@ namespace TJAPlayer3
         ボーカロイド = 7,
         アニメ = 8
     }
+=======
+
+    public enum EGaugeMode
+    {
+        Normal,
+        Groove,
+        Hard,
+        ExHard
+    }
+
+>>>>>>> twopointzero/develop
     public enum EGame
     {
         OFF = 0,
@@ -57,12 +72,15 @@ namespace TJAPlayer3
 		HALF,
 		FULL
 	}
+<<<<<<< HEAD
     public enum EWindowMovieMode
     {
         OFF = 0,
         左下 = 1,
         中央下 = 2
     }
+=======
+>>>>>>> twopointzero/develop
 	public enum Eダメージレベル
 	{
 		少ない	= 0,
@@ -192,11 +210,14 @@ namespace TJAPlayer3
 		UNKNOWN	= E楽器パート.UNKNOWN
 	}
 
+<<<<<<< HEAD
 	public enum E打ち分け時の再生の優先順位
 	{
 		ChipがPadより優先,
 		PadがChipより優先
 	}
+=======
+>>>>>>> twopointzero/develop
 	internal enum E入力デバイス
 	{
 		キーボード		= 0,
@@ -239,6 +260,7 @@ namespace TJAPlayer3
 		AVI,
 		AVIPAN
 	}
+<<<<<<< HEAD
 	internal enum EBGA種別
 	{
 		Unknown,
@@ -247,6 +269,8 @@ namespace TJAPlayer3
 		BGA,
 		BGAPAN
 	}
+=======
+>>>>>>> twopointzero/develop
 	internal enum EFIFOモード
 	{
 		フェードイン,
@@ -280,6 +304,7 @@ namespace TJAPlayer3
 		MAX,	// 要素数取得のための定義 ("BGM"は使わない前提で)
 		BGM
 	}
+<<<<<<< HEAD
 	internal enum Eレーン数
 	{
 		物理 = 8,	   // LC, HH,             SD, BD, HT, LT, FT, CY
@@ -293,12 +318,18 @@ namespace TJAPlayer3
 		ON通常,
 		ON詳細あり
 	}
+=======
+>>>>>>> twopointzero/develop
 	internal enum E演奏画面の戻り値
 	{
 		継続,
 		演奏中断,
 		ステージ失敗,
 		ステージクリア,
+<<<<<<< HEAD
+=======
+        ステージ失敗_ハード,
+>>>>>>> twopointzero/develop
 		再読込_再演奏,
 		再演奏
 	}
@@ -440,6 +471,7 @@ namespace TJAPlayer3
 		public T BsPick;
 		public T BsW;
 		public T BGM;
+<<<<<<< HEAD
 
 		public T this[ int index ]
 		{
@@ -574,6 +606,9 @@ namespace TJAPlayer3
 			}
 		}
 	}
+=======
+    }
+>>>>>>> twopointzero/develop
 
 
 	[StructLayout( LayoutKind.Sequential )]
@@ -767,8 +802,11 @@ namespace TJAPlayer3
         OFF                = 0
     }
     #endregion
+<<<<<<< HEAD
 
     internal class C定数
 	{
 	}
+=======
+>>>>>>> twopointzero/develop
 }

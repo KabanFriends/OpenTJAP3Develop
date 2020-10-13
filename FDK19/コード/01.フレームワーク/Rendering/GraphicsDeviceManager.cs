@@ -24,10 +24,15 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Threading;
+<<<<<<< HEAD
 using System.Windows.Forms;
 using SlimDX;
 using SlimDX.Direct3D9;
 using SlimDX.DXGI;
+=======
+using SlimDX;
+using SlimDX.Direct3D9;
+>>>>>>> twopointzero/develop
 using System.Diagnostics;
 
 namespace SampleFramework
@@ -51,11 +56,15 @@ namespace SampleFramework
         long windowedStyle;
         bool savedTopmost;
 
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 		internal static Direct3DEx Direct3D9Object			// yyagi
 #else
 		internal static Direct3D Direct3D9Object
 #endif
+=======
+		internal static Direct3D Direct3D9Object
+>>>>>>> twopointzero/develop
 		{
             get;
             private set;
@@ -82,7 +91,11 @@ namespace SampleFramework
         {
             get { return new Size(CurrentSettings.BackBufferWidth, CurrentSettings.BackBufferHeight); }
         }
+<<<<<<< HEAD
         public Direct3D9Manager Direct3D9
+=======
+        public DeviceCache Device
+>>>>>>> twopointzero/develop
         {
             get;
             private set;
@@ -110,8 +123,11 @@ namespace SampleFramework
 
 			game.FrameStart += game_FrameStart;
 			game.FrameEnd += game_FrameEnd;
+<<<<<<< HEAD
 
 			Direct3D9 = new Direct3D9Manager( this );
+=======
+>>>>>>> twopointzero/develop
 		}
 
         public void Dispose()
@@ -133,6 +149,7 @@ namespace SampleFramework
 
 			CreateDevice( validSettings );
 		}
+<<<<<<< HEAD
         public void ChangeDevice(bool windowed, int desiredWidth, int desiredHeight)
         {
             DeviceSettings desiredSettings = new DeviceSettings();
@@ -142,11 +159,15 @@ namespace SampleFramework
 
             ChangeDevice(desiredSettings, null);
         }
+=======
+
+>>>>>>> twopointzero/develop
         public void ChangeDevice(DeviceSettings settings)
         {
             ChangeDevice(settings, null);
         }
 
+<<<<<<< HEAD
         public void ToggleFullScreen()
         {
             if (!EnsureDevice())
@@ -167,6 +188,11 @@ namespace SampleFramework
         public bool EnsureDevice()
         {
             if (Direct3D9.Device != null && !deviceLost)
+=======
+        public bool EnsureDevice()
+        {
+            if (Device != null && !deviceLost)
+>>>>>>> twopointzero/develop
                 return true;
 
             return false;
@@ -412,7 +438,11 @@ namespace SampleFramework
 			Result result = SlimDX.Direct3D9.ResultCode.Success;
 			try
 			{
+<<<<<<< HEAD
 				result = Direct3D9.Device.Present();
+=======
+				result = Device.Present();
+>>>>>>> twopointzero/develop
 			}
 			catch (Direct3D9Exception)				// #23842 2011.1.6 yyagi: catch D3D9Exception to avoid unexpected termination by changing VSyncWait in fullscreen.
 			{
@@ -423,7 +453,11 @@ namespace SampleFramework
 		}
         void game_FrameStart(object sender, CancelEventArgs e)
         {
+<<<<<<< HEAD
             if (Direct3D9.Device == null )
+=======
+            if (Device == null )
+>>>>>>> twopointzero/develop
             {
                 e.Cancel = true;
                 return;
@@ -437,7 +471,11 @@ namespace SampleFramework
 
             if (deviceLost)
             {
+<<<<<<< HEAD
                 Result result = Direct3D9.Device.TestCooperativeLevel();
+=======
+                Result result = Device.TestCooperativeLevel();
+>>>>>>> twopointzero/develop
                 if (result == SlimDX.Direct3D9.ResultCode.DeviceLost)
                 {
                     e.Cancel = true;
@@ -474,7 +512,11 @@ namespace SampleFramework
 			if( oldSettings == null )
 				return false;
 
+<<<<<<< HEAD
 			return Direct3D9.Device != null &&
+=======
+			return Device != null &&
+>>>>>>> twopointzero/develop
 				oldSettings.Direct3D9.AdapterOrdinal == newSettings.Direct3D9.AdapterOrdinal &&
 				oldSettings.Direct3D9.DeviceType == newSettings.Direct3D9.DeviceType &&
 				oldSettings.Direct3D9.CreationFlags == newSettings.Direct3D9.CreationFlags;
@@ -486,6 +528,7 @@ namespace SampleFramework
 			{
 				EnsureD3D9();
 
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 				// 2011.4.26 yyagi
 				// Direct3D9.DeviceExを呼ぶ際(IDirect3D9Ex::CreateDeviceExを呼ぶ際)、
@@ -519,14 +562,22 @@ namespace SampleFramework
 					CurrentSettings.Direct3D9.DeviceType, game.Window.Handle,
 					CurrentSettings.Direct3D9.CreationFlags, CurrentSettings.Direct3D9.PresentParameters ) );
 #endif
+=======
+				Device = new DeviceCache( new SlimDX.Direct3D9.Device( Direct3D9Object, CurrentSettings.Direct3D9.AdapterOrdinal,
+					CurrentSettings.Direct3D9.DeviceType, game.Window.Handle,
+					CurrentSettings.Direct3D9.CreationFlags, CurrentSettings.Direct3D9.PresentParameters ) );
+>>>>>>> twopointzero/develop
 				if ( Result.Last == SlimDX.Direct3D9.ResultCode.DeviceLost )
 				{
 					deviceLost = true;
 					return;
 				}
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 				Direct3D9.Device.MaximumFrameLatency = 1;			// yyagi
 #endif
+=======
+>>>>>>> twopointzero/develop
 			}
 			catch( Exception e )
 			{
@@ -545,7 +596,11 @@ namespace SampleFramework
 		{
 			game.UnloadContent();
 
+<<<<<<< HEAD
 			Result result = Direct3D9.Device.Reset( CurrentSettings.Direct3D9.PresentParameters );
+=======
+			Result result = Device.Reset( CurrentSettings.Direct3D9.PresentParameters );
+>>>>>>> twopointzero/develop
 			if( result == SlimDX.Direct3D9.ResultCode.DeviceLost )
 				return result;
 
@@ -562,7 +617,11 @@ namespace SampleFramework
         }
         void ReleaseDevice9()
         {
+<<<<<<< HEAD
             if (Direct3D9.Device == null)
+=======
+            if (Device == null)
+>>>>>>> twopointzero/develop
                 return;
 
             if (game != null)
@@ -573,7 +632,11 @@ namespace SampleFramework
 
 			try
 			{
+<<<<<<< HEAD
 				Direct3D9.Device.Dispose();
+=======
+				Device.Dispose();
+>>>>>>> twopointzero/develop
 			}
 			catch( ObjectDisposedException e )
 			{
@@ -584,7 +647,11 @@ namespace SampleFramework
             Direct3D9Object.Dispose();
 
             Direct3D9Object = null;
+<<<<<<< HEAD
             Direct3D9.Device = null;
+=======
+            Device = null;
+>>>>>>> twopointzero/develop
         }
 		void PropogateSettings()
 		{
@@ -691,11 +758,15 @@ namespace SampleFramework
         internal static void EnsureD3D9()
         {
 			if ( Direct3D9Object == null )
+<<<<<<< HEAD
 #if TEST_Direct3D9Ex
 				Direct3D9Object = new Direct3DEx();		// yyagi
 #else
 				Direct3D9Object = new Direct3D();
 #endif
+=======
+				Direct3D9Object = new Direct3D();
+>>>>>>> twopointzero/develop
         }
     }
 }

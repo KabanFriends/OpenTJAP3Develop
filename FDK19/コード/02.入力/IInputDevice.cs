@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 
 namespace FDK
 {
@@ -31,7 +34,10 @@ namespace FDK
 		void tポーリング( bool bWindowがアクティブ中, bool bバッファ入力を使用する );
 		bool bキーが押された( int nKey );
 		bool bキーが押されている( int nKey );
+<<<<<<< HEAD
 		bool bキーが離された( int nKey );
 		bool bキーが離されている( int nKey );
+=======
+>>>>>>> twopointzero/develop
 	}
 }

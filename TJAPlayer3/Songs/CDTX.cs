@@ -10,7 +10,10 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using FDK;
 using FDK.ExtensionMethods;
+<<<<<<< HEAD
 using TJAPlayer3;
+=======
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -205,7 +208,11 @@ namespace TJAPlayer3
             public double dbBPM値;
             public double bpm_change_time;
             public double bpm_change_bmscroll_time;
+<<<<<<< HEAD
             public ECourse bpm_change_course;
+=======
+            public ECourse bpm_change_course = ECourse.eNormal;
+>>>>>>> twopointzero/develop
             public int n内部番号;
             public int n表記上の番号;
 
@@ -253,6 +260,10 @@ namespace TJAPlayer3
         {
             public double db移動時間;
             public int n移動距離px;
+<<<<<<< HEAD
+=======
+            public int n移動距離Ypx;
+>>>>>>> twopointzero/develop
             public int n移動方向; //移動方向は0(左)、1(右)の2つだけ。
             public int n内部番号;
             public int n表記上の番号;
@@ -264,6 +275,10 @@ namespace TJAPlayer3
                 {
                     builder.Append(string.Format("CJPOSSCROLL{0}(内部{1})", CDTX.tZZ(this.n表記上の番号), this.n内部番号));
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
                 else
                 {
                     builder.Append(string.Format("CJPOSSCROLL{0}", CDTX.tZZ(this.n表記上の番号)));
@@ -281,7 +296,11 @@ namespace TJAPlayer3
             public double delay_time;
             public double delay_bmscroll_time;
             public double delay_bpm;
+<<<<<<< HEAD
             public ECourse delay_course;
+=======
+            public ECourse delay_course = ECourse.eNormal;
+>>>>>>> twopointzero/develop
 
             public override string ToString()
             {
@@ -298,6 +317,10 @@ namespace TJAPlayer3
                 return builder.ToString();
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
         public enum E分岐種類
         {
             e精度分岐,
@@ -305,9 +328,16 @@ namespace TJAPlayer3
             eスコア分岐,
             e大音符のみ精度分岐
         }
+<<<<<<< HEAD
         public class CBRANCH
         {
             public E分岐種類 e分岐の種類; //0:精度分岐 1:連打分岐 2:スコア分岐 3:大音符のみの精度分岐
+=======
+
+        public class CBRANCH
+        {
+            public E分岐種類 e分岐の種類;  //0:精度分岐 1:連打分岐 2:スコア分岐 3:大音符のみの精度分岐
+>>>>>>> twopointzero/develop
             public double n条件数値A;
             public double n条件数値B;
             public double db分岐時間;
@@ -343,7 +373,11 @@ namespace TJAPlayer3
         {
             public bool bHit;
             public bool b可視 = true;
+<<<<<<< HEAD
             public bool bShow; 
+=======
+            public bool bShow;
+>>>>>>> twopointzero/develop
             public bool bShowRoll;
             public bool bBranch = false;
             public double dbチップサイズ倍率 = 1.0;
@@ -369,19 +403,34 @@ namespace TJAPlayer3
             public STDGBVALUE<int> nバーからの距離dot;
             public STDGBVALUE<int> nバーからのノーツ末端距離dot;
             public int n整数値;
+<<<<<<< HEAD
             public int n整数値_内部番号; 
             public int n文字数 = 16;
             public int n総移動時間;
             public int n透明度 = 0xff;
             public int n発声位置;
             public double db発声位置;  // 発声時刻を格納していた変数のうちの１つをfloat型からdouble型に変更。(kairera0467)
+=======
+            public int n文字数 = 16;
+            public int n整数値_内部番号;
+            public int n総移動時間;
+            public int n透明度 = 0xff;
+            public int n発声位置;
+>>>>>>> twopointzero/develop
             public double n条件数値A;
             public double n条件数値B;
             public double db分岐時間のズレ;
             public E分岐種類 e分岐の種類;
+<<<<<<< HEAD
             public double fBMSCROLLTime;
             public double fBMSCROLLTime_end;
             public int n発声時刻ms; 
+=======
+            public double db発声位置;  // 発声時刻を格納していた変数のうちの１つをfloat型からdouble型に変更。(kairera0467)
+            public double fBMSCROLLTime;
+            public double fBMSCROLLTime_end;
+            public int n発声時刻ms;
+>>>>>>> twopointzero/develop
             public double n分岐時刻ms;
             public double db発声時刻ms;
             public int nノーツ終了位置;
@@ -455,6 +504,7 @@ namespace TJAPlayer3
                     Bass = 0,
                 };
             }
+<<<<<<< HEAD
             public void t初期化()
             {
                 this.bBranch = false;
@@ -496,6 +546,9 @@ namespace TJAPlayer3
                 this.dbSCROLL = 1.0;
                 this.dbSCROLL_Y = 0.0f;
             }
+=======
+
+>>>>>>> twopointzero/develop
             public override string ToString()
             {
 
@@ -603,8 +656,12 @@ namespace TJAPlayer3
                     }
                 }
 
+<<<<<<< HEAD
                 double _db再生速度 = (TJAPlayer3.DTXVmode.Enabled) ? TJAPlayer3.DTX.dbDTXVPlaySpeed : TJAPlayer3.DTX.db再生速度;
                 return (int)(nDuration / _db再生速度);
+=======
+                return (int)(nDuration / TJAPlayer3.DTX.db再生速度);
+>>>>>>> twopointzero/develop
             }
 
             #region [ IComparable 実装 ]
@@ -950,6 +1007,7 @@ namespace TJAPlayer3
                 }
             }
         }
+<<<<<<< HEAD
         public struct STRESULT
         {
             public string SS;
@@ -1025,6 +1083,9 @@ namespace TJAPlayer3
                 }
             }
         }
+=======
+
+>>>>>>> twopointzero/develop
         public struct STチップがある
         {
             public bool Drums;
@@ -1038,6 +1099,7 @@ namespace TJAPlayer3
             public bool OpenBass;
 
             public bool Branch;
+<<<<<<< HEAD
 
             public bool this[int index]
             {
@@ -1118,12 +1180,20 @@ namespace TJAPlayer3
                 }
             }
         }
+=======
+        }
+
+>>>>>>> twopointzero/develop
         public enum ECourse
         {
             eNormal,
             eExpert,
             eMaster
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
         public class CLine
         {
             public int n小節番号;
@@ -1136,7 +1206,10 @@ namespace TJAPlayer3
 
         // プロパティ
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> twopointzero/develop
         public class CBranchStartInfo
         {
             public int nMeasureCount;
@@ -1162,20 +1235,34 @@ namespace TJAPlayer3
             get;
             private set;
         }
+<<<<<<< HEAD
         public bool b分岐を一回でも開始した = false; //2020.04.22 akasoko26 分岐譜面のみ値を代入するように。
         public int nPlayerSide; //2017.08.14 kairera0467 引数で指定する
         public bool bSession譜面を読み込む;
 
         public string ARTIST;
+=======
+        public bool b分岐を一回でも開始した = false;
+        public int nPlayerSide; //2017.08.14 kairera0467 引数で指定する
+        public bool bDP譜面が存在する;
+        public bool IsDanChallenge; // 2018/8/24 段位チャレンジが存在するか否か (AioiLight)
+
+        public bool bSession譜面を読み込む;
+>>>>>>> twopointzero/develop
         public string BACKGROUND;
         public string BACKGROUND_GR;
         public double BASEBPM;
         public double BPM;
         public STチップがある bチップがある;
+<<<<<<< HEAD
         public string COMMENT;
         public double db再生速度;
         public string GENRE;
         public Eジャンル eジャンル;
+=======
+        public double db再生速度;
+        public string GENRE;
+>>>>>>> twopointzero/develop
         public bool HIDDENLEVEL;
         public STDGBVALUE<int> LEVEL;
         public int[] LEVELtaiko = new int[(int)Difficulty.Total] { -1, -1, -1, -1, -1, -1, -1 };
@@ -1212,7 +1299,10 @@ namespace TJAPlayer3
         public string strフォルダ名;
         public string SUBTITLE;
         public string TITLE;
+<<<<<<< HEAD
         public double dbDTXVPlaySpeed;
+=======
+>>>>>>> twopointzero/develop
         public double dbScrollSpeed;
         public int nデモBGMオフセット;
 
@@ -1234,14 +1324,25 @@ namespace TJAPlayer3
         //分岐関連
         private ECourse n現在のコース = ECourse.eNormal;
 
+<<<<<<< HEAD
         private List<CLine> listLine;
         private int nLineCountTemp; //分岐開始時の小節数を記録。
         private ECourse nLineCountCourseTemp = ECourse.eNormal; //現在カウント中のコースを記録。
 
+=======
+>>>>>>> twopointzero/develop
         private bool b最初の分岐である;
         public int[] nノーツ数 = new int[4]; //3:共通
         public int[] nノーツ数_Branch = new int[4]; //
         public int[] n風船数 = new int[4]; //0～2:各コース 3:共通
+<<<<<<< HEAD
+=======
+
+        private List<CLine> listLine;
+        private int nLineCountTemp; //分岐開始時の小節数を記録。
+        private ECourse nLineCountCourseTemp = ECourse.eNormal; //現在カウント中のコースを記録。
+
+>>>>>>> twopointzero/develop
         public int n参照中の難易度 = 3;
         public int nScoreModeTmp = 99; //2017.01.28 DD
         public int[,] nScoreInit = new int[2, (int)Difficulty.Total]; //[ x, y ] x=通常or真打 y=コース
@@ -1323,16 +1424,25 @@ namespace TJAPlayer3
 #endif
         // コンストラクタ
 
+<<<<<<< HEAD
         public CDTX()
+=======
+        private CDTX()
+>>>>>>> twopointzero/develop
         {
             this.nPlayerSide = 0;
             this.TITLE = "";
             this.SUBTITLE = "";
+<<<<<<< HEAD
             this.ARTIST = "";
             this.COMMENT = "";
             this.PANEL = "";
             this.GENRE = "";
             this.eジャンル = Eジャンル.None;
+=======
+            this.PANEL = "";
+            this.GENRE = "";
+>>>>>>> twopointzero/develop
             this.PREVIEW = "";
             this.PREIMAGE = "";
             this.BACKGROUND = "";
@@ -1397,7 +1507,10 @@ namespace TJAPlayer3
             #endregion
             this.nBGMAdjust = 0;
             this.nPolyphonicSounds = TJAPlayer3.ConfigIni.nPoliphonicSounds;
+<<<<<<< HEAD
             this.dbDTXVPlaySpeed = 1.0f;
+=======
+>>>>>>> twopointzero/develop
 
             //this.nScoreModeTmp = 1;
             for (int y = 0; y < (int)Difficulty.Total; y++)
@@ -1428,6 +1541,7 @@ namespace TJAPlayer3
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture; // Change default culture to invariant, fixes (Purota)
             Dan_C = new Dan_C[3];
         }
+<<<<<<< HEAD
         public CDTX(string str全入力文字列)
             : this()
         {
@@ -1452,6 +1566,8 @@ namespace TJAPlayer3
             this.On活性化();
             this.t入力(strファイル名, bヘッダのみ, db再生速度, nBGMAdjust, 0, 0, false);
         }
+=======
+>>>>>>> twopointzero/develop
         public CDTX(string strファイル名, bool bヘッダのみ, double db再生速度, int nBGMAdjust, int nReadVersion)
             : this()
         {
@@ -1585,7 +1701,11 @@ namespace TJAPlayer3
                 #region [ 同時発音数を、チャンネルによって変える ]
 
                 int nPoly = nPolyphonicSounds;
+<<<<<<< HEAD
                 if (TJAPlayer3.Sound管理.GetCurrentSoundDeviceType() != "DirectSound") // DShowでの再生の場合はミキシング負荷が高くないため、
+=======
+                if (CSound管理.GetCurrentSoundDeviceType() != "DirectSound") // DShowでの再生の場合はミキシング負荷が高くないため、
+>>>>>>> twopointzero/develop
                 {
                     // チップのライフタイム管理を行わない
                     if (cwav.bIsBassSound) nPoly = (nPolyphonicSounds >= 2) ? 2 : 1;
@@ -1647,9 +1767,13 @@ namespace TJAPlayer3
             string str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             return new string(new char[] { str[n / 36], str[n % 36] });
         }
+<<<<<<< HEAD
         public void tギターとベースのランダム化(E楽器パート part, Eランダムモード eRandom)
         {
         }
+=======
+
+>>>>>>> twopointzero/develop
         public void t太鼓チップのランダム化(Eランダムモード eRandom)
         {
             //2016.02.11 kairera0467
@@ -1902,10 +2026,13 @@ namespace TJAPlayer3
         }
         #endregion
 
+<<<<<<< HEAD
         public void t入力(string strファイル名, bool bヘッダのみ)
         {
             this.t入力(strファイル名, bヘッダのみ, 1.0, 0, 0, 0, false);
         }
+=======
+>>>>>>> twopointzero/develop
         public void t入力(string strファイル名, bool bヘッダのみ, double db再生速度, int nBGMAdjust, int nReadVersion, int nPlayerSide, bool bSession)
         {
             this.bヘッダのみ = bヘッダのみ;
@@ -1972,10 +2099,14 @@ namespace TJAPlayer3
                 }
             }
         }
+<<<<<<< HEAD
         public void t入力_全入力文字列から(string str全入力文字列)
         {
             this.t入力_全入力文字列から(str全入力文字列, str全入力文字列, 1.0, 0);
         }
+=======
+
+>>>>>>> twopointzero/develop
         public void t入力_全入力文字列から(string str全入力文字列, string str1, double db再生速度, int nBGMAdjust)
         {
             //DateTime timeBeginLoad = DateTime.Now;
@@ -2018,6 +2149,10 @@ namespace TJAPlayer3
                 this.dbNowSCROLL_Normal = new double[] { 1.0, 0.0 };
                 this.dbNowSCROLL_Expert = new double[] { 1.0, 0.0 };
                 this.dbNowSCROLL_Master = new double[] { 1.0, 0.0 };
+<<<<<<< HEAD
+=======
+                this.n現在のコース = 0;
+>>>>>>> twopointzero/develop
                 this.n現在のコース = ECourse.eNormal;
                 #endregion
                 CharEnumerator ce = str全入力文字列.GetEnumerator();
@@ -2284,7 +2419,11 @@ namespace TJAPlayer3
                                 chip.n発声時刻ms = ms + ((int)(((625 * (chip.n発声位置 - n発声位置)) * this.dbBarLength) / bpm));
                             else if ((chip.nチャンネル番号 > 0x9F && chip.nチャンネル番号 < 0xA0) || (chip.nチャンネル番号 >= 0xF0 && chip.nチャンネル番号 < 0xFE))
                                 chip.n発声時刻ms = ms + ((int)(((625 * (chip.n発声位置 - n発声位置)) * this.dbBarLength) / bpm));
+<<<<<<< HEAD
                             
+=======
+
+>>>>>>> twopointzero/develop
                             nBar = chip.n発声位置 / 384;
                             ch = chip.nチャンネル番号;
 
@@ -2359,6 +2498,10 @@ namespace TJAPlayer3
                                     {
                                         if (this.bOFFSETの値がマイナスである)
                                             chip.n発声時刻ms += this.nOFFSET;
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
                                         //chip.n発声時刻ms += this.nDELAY;
                                         //chip.dbBPM = this.dbNowBPM;
                                         //chip.dbSCROLL = this.dbNowSCROLL;
@@ -2569,6 +2712,10 @@ namespace TJAPlayer3
                                             chip.n発声時刻ms += this.nOFFSET;
                                             chip.n分岐時刻ms += this.nOFFSET;
                                         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
                                         this.n現在のコース = chip.nコース;
                                         continue;
                                     }
@@ -2609,12 +2756,20 @@ namespace TJAPlayer3
                         }
                         if (this.db再生速度 > 0.0)
                         {
+<<<<<<< HEAD
                             double _db再生速度 = (TJAPlayer3.DTXVmode.Enabled) ? this.dbDTXVPlaySpeed : this.db再生速度;
                             foreach (CChip chip in this.listChip)
                             {
                                 chip.n発声時刻ms = (int)(((double)chip.n発声時刻ms) / _db再生速度);
                                 chip.db発声時刻ms = (((double)chip.n発声時刻ms) / _db再生速度);
                                 chip.nノーツ終了時刻ms = (int)(((double)chip.nノーツ終了時刻ms) / _db再生速度);
+=======
+                            foreach (CChip chip in this.listChip)
+                            {
+                                chip.n発声時刻ms = (int)(((double)chip.n発声時刻ms) / db再生速度);
+                                chip.db発声時刻ms = (((double)chip.n発声時刻ms) / db再生速度);
+                                chip.nノーツ終了時刻ms = (int)(((double)chip.nノーツ終了時刻ms) / db再生速度);
+>>>>>>> twopointzero/develop
                             }
                         }
                         #endregion
@@ -2722,6 +2877,10 @@ namespace TJAPlayer3
                         //        this.listChip[n].dbSCROLL = nRan / 10.0;
                         //    }
                         //}
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
                         int n整数値管理 = 0;
                         foreach (CChip chip in this.listChip)
                         {
@@ -2742,11 +2901,14 @@ namespace TJAPlayer3
             return strOutput;
         }
 
+<<<<<<< HEAD
         private string[] tコマンド行を削除したTJAを返す(string[] input)
         {
             return this.tコマンド行を削除したTJAを返す(input, 0);
         }
 
+=======
+>>>>>>> twopointzero/develop
         private string[] tコマンド行を削除したTJAを返す(string[] input, int nMode)
         {
             var sb = new StringBuilder();
@@ -2827,11 +2989,15 @@ namespace TJAPlayer3
             return strOutput;
         }
 
+<<<<<<< HEAD
         private string StringArrayToString(string[] input)
         {
             return this.StringArrayToString(input, "");
         }
         private string StringArrayToString(string[] input, string strデリミタ文字)
+=======
+        private static string StringArrayToString(string[] input, string strデリミタ文字)
+>>>>>>> twopointzero/develop
         {
             var sb = new StringBuilder();
 
@@ -2848,6 +3014,7 @@ namespace TJAPlayer3
         /// </summary>
         /// <param name="InputText"></param>
         /// <returns>1小節内の文字数</returns>
+<<<<<<< HEAD
         private int t1小節の文字数をカウントする(string InputText)
         {
             return InputText.Length - 1;
@@ -2858,6 +3025,8 @@ namespace TJAPlayer3
         /// </summary>
         /// <param name="InputText"></param>
         /// <returns>1小節内の文字数</returns>
+=======
+>>>>>>> twopointzero/develop
         private void t1小節の文字数をカウントしてリストに追加する(string InputText)
         {
             int nCount = 0;
@@ -3047,7 +3216,11 @@ namespace TJAPlayer3
                 bool b新処理 = false;
 
                 //まずはコースごとに譜面を分割。
+<<<<<<< HEAD
                 strSplitした譜面 = this.tコースで譜面を分割する(this.StringArrayToString(strSplitした譜面, "\n"));
+=======
+                strSplitした譜面 = this.tコースで譜面を分割する(StringArrayToString(strSplitした譜面, "\n"));
+>>>>>>> twopointzero/develop
                 string strTest = "";
                 //存在するかのフラグ作成。
                 for (int i = 0; i < strSplitした譜面.Length; i++)
@@ -3060,7 +3233,11 @@ namespace TJAPlayer3
                     else
                         this.b譜面が存在する[i] = false;
                 }
+<<<<<<< HEAD
                 #region[ 読み込ませ#region[ 読み込ませるコースを決定 ]
+=======
+                #region[ 読み込ませるコースを決定 ]
+>>>>>>> twopointzero/develop
                 if (this.b譜面が存在する[TJAPlayer3.stage選曲.n確定された曲の難易度] == false)
                 {
                     n読み込むコース = TJAPlayer3.stage選曲.n確定された曲の難易度;
@@ -3227,6 +3404,7 @@ namespace TJAPlayer3
             }
         }
 
+<<<<<<< HEAD
         private CChip t発声位置から過去方向で一番近くにある指定チャンネルのチップを返す(int n発声時刻, int nチャンネル番号)
         {
             //過去方向への検索
@@ -3260,6 +3438,8 @@ namespace TJAPlayer3
             return n文字数;
         }
 
+=======
+>>>>>>> twopointzero/develop
         private static readonly Regex CommandAndArgumentRegex =
             new Regex(@"^(#[A-Z]+)(?:\s?)(.+?)?$", RegexOptions.Compiled);
 
@@ -3313,6 +3493,10 @@ namespace TJAPlayer3
 
             char[] chDelimiter = new char[] { ' ' };
             string[] strArray = null;
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
             if (command == "#START")
             {
                 //#STARTと同時に鳴らすのはどうかと思うけどしゃーなしだな。
@@ -3681,9 +3865,15 @@ namespace TJAPlayer3
 					var f連打の長さの半分 = (c小節前の小節線情報.n発声時刻ms - c小節前の連打開始位置.n発声時刻ms) / 2.0f;
 					*/
 
+<<<<<<< HEAD
                     chip.n発声時刻ms = (int)(this.dbNowTime - ((15000.0 / this.dbNowBPM * (this.fNow_Measure_s / this.fNow_Measure_m)) * 16.0));
                 }
                 else chip.n発声時刻ms = (int)(this.dbNowTime - ((15000.0 / this.dbNowBPM * (this.fNow_Measure_s / this.fNow_Measure_m)) * 16.0));
+=======
+                    chip.n発声時刻ms = c小節前の小節線情報.n発声時刻ms;
+                }
+                else chip.n発声時刻ms = c小節前の小節線情報.n発声時刻ms;
+>>>>>>> twopointzero/develop
 
                 chip.nチャンネル番号 = 0xDE;
                 chip.fNow_Measure_m = c小節前の小節線情報.fNow_Measure_m;
@@ -4015,10 +4205,16 @@ namespace TJAPlayer3
 
             //もし、nReturnChipがnullだったらlistChipのCount - 1にセットする。
             return listChips[nReturnChip == null ? listChips.Count - 1 : (int)nReturnChip];
+<<<<<<< HEAD
         
     }
 
     private void WarnSplitLength(string name, string[] strArray, int minimumLength)
+=======
+        }
+
+        private void WarnSplitLength(string name, string[] strArray, int minimumLength)
+>>>>>>> twopointzero/develop
         {
             if (strArray.Length < minimumLength)
             {
@@ -4153,6 +4349,10 @@ namespace TJAPlayer3
 
 
                         int nObjectNum = this.CharConvertNote(InputText.Substring(n, 1));
+<<<<<<< HEAD
+=======
+
+>>>>>>> twopointzero/develop
                         if (nObjectNum != 0)
                         {
                             if ((nObjectNum >= 5 && nObjectNum <= 7) || nObjectNum == 9)
@@ -4176,8 +4376,12 @@ namespace TJAPlayer3
                             {
                                 var chip = new CChip();
 
+<<<<<<< HEAD
                                 chip.IsMissed = false;
                                 chip.bHit = false; 
+=======
+                                chip.bHit = false;
+>>>>>>> twopointzero/develop
                                 chip.b可視 = true;
                                 chip.bShow = true;
                                 chip.bShowRoll = true;
@@ -4338,6 +4542,7 @@ namespace TJAPlayer3
 
                                 if (nObjectNum < 5)
                                 {
+<<<<<<< HEAD
                                     if (this.b最初の分岐である == false)
                                         this.nノーツ数[(int)this.n現在のコース]++;
                                     else
@@ -4348,6 +4553,11 @@ namespace TJAPlayer3
                                         this.nノーツ数_Branch[i]++;
                                     else this.nノーツ数_Branch[(int)chip.nコース]++;
 
+=======
+                                    #region [ 作り直し ]
+                                    //譜面分岐がない譜面でも値は加算されてしまうがしゃあない
+                                    //分岐を開始しない間は共通譜面としてみなす。
+>>>>>>> twopointzero/develop
                                     if (this.b分岐を一回でも開始した)//一回も分岐していないのに加算させるのはおかしいだろハゲFu**
                                     {
                                         if (IsEndedBranching)
@@ -4366,6 +4576,10 @@ namespace TJAPlayer3
                                 }
                                 else if (nObjectNum == 7)
                                 {
+<<<<<<< HEAD
+=======
+                                    //風船はこのままでも機能しているので何もしない.
+>>>>>>> twopointzero/develop
                                     if (this.b最初の分岐である == false)
                                         this.n風船数[(int)this.n現在のコース]++;
                                     else
@@ -4377,7 +4591,10 @@ namespace TJAPlayer3
                             }
                         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> twopointzero/develop
                         if (IsEnabledFixSENote) IsEnabledFixSENote = false;
 
                         this.dbLastTime = this.dbNowTime;
@@ -5004,6 +5221,23 @@ namespace TJAPlayer3
                 this.nScoreModeTmp = TJAPlayer3.ConfigIni.nScoreMode;
             }
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+		/// 指定した文字が数値かを返すメソッド
+		/// </summary>
+		/// <param name="str"></param>
+		/// <returns></returns>
+		public bool bIsNumber(char Char)
+        {
+            if ((Char >= '0') && (Char <= '9'))
+                return true;
+            else
+                return false;
+        }
+
+>>>>>>> twopointzero/develop
         /// <summary>
         /// string型からint型に変換する。
         /// TJAP2から持ってきた。
@@ -5081,6 +5315,7 @@ namespace TJAPlayer3
         }
 
         /// <summary>
+<<<<<<< HEAD
 		/// 指定した文字が数値かを返すメソッド
 		/// </summary>
 		/// <param name="str"></param>
@@ -5094,6 +5329,8 @@ namespace TJAPlayer3
         }
 
         /// <summary>
+=======
+>>>>>>> twopointzero/develop
         /// 複素数のパースもどき
         /// </summary>
         private void tParsedComplexNumber(string strScroll, ref double[] dbScroll)
@@ -5551,6 +5788,7 @@ namespace TJAPlayer3
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// コア部分。譜面分岐時の処理実装にあたって分離。
         /// </summary>
         private void tSenotes_Core(List<CChip> list音符のみのリスト)
@@ -6434,6 +6672,23 @@ namespace TJAPlayer3
             for (int i = 0; i < list音符のみのリスト.Count; i++)
             {
                 for (int j = 0; j < 7; j++)
+=======
+        /// コア部分Ver2。TJAP2から移植しただけ。
+        /// </summary>
+        /// <param name="list音符のみのリスト"></param>
+        private void tSenotes_Core_V2(List<CChip> list音符のみのリスト, bool ignoreSENote = false)
+        {
+            const int DATA = 3;
+            int doco_count = 0;
+            int[] sort = new int[7];
+            double[] time = new double[7];
+            double[] scroll = new double[7];
+            double time_tmp;
+
+            for (int i = 0; i < list音符のみのリスト.Count; i++)
+            {
+                for (int j = 0; j < 7; j++)
+>>>>>>> twopointzero/develop
                 {
                     if (i + (j - 3) < 0)
                     {
@@ -6612,7 +6867,11 @@ namespace TJAPlayer3
         /// </summary>
         public void PlanToAddMixerChannel()
         {
+<<<<<<< HEAD
             if (TJAPlayer3.Sound管理.GetCurrentSoundDeviceType() == "DirectSound") // DShowでの再生の場合はミキシング負荷が高くないため、
+=======
+            if (CSound管理.GetCurrentSoundDeviceType() == "DirectSound") // DShowでの再生の場合はミキシング負荷が高くないため、
+>>>>>>> twopointzero/develop
             {                                                                       // チップのライフタイム管理を行わない
                 return;
             }
@@ -6701,8 +6960,12 @@ namespace TJAPlayer3
                         int duration = 0;
                         if (listWAV.TryGetValue(pChip.n整数値_内部番号, out CDTX.CWAV wc))
                         {
+<<<<<<< HEAD
                             double _db再生速度 = (TJAPlayer3.DTXVmode.Enabled) ? this.dbDTXVPlaySpeed : this.db再生速度;
                             duration = (wc.rSound[0] == null) ? 0 : (int)(wc.rSound[0].n総演奏時間ms / _db再生速度); // #23664 durationに再生速度が加味されておらず、低速再生でBGMが途切れる問題を修正 (発声時刻msは、DTX読み込み時に再生速度加味済)
+=======
+                            duration = (wc.rSound[0] == null) ? 0 : (int)(wc.rSound[0].n総演奏時間ms / db再生速度); // #23664 durationに再生速度が加味されておらず、低速再生でBGMが途切れる問題を修正 (発声時刻msは、DTX読み込み時に再生速度加味済)
+>>>>>>> twopointzero/develop
                         }
                         //Debug.WriteLine("duration=" + duration );
                         int n新RemoveMixer時刻ms, n新RemoveMixer位置;
@@ -6803,6 +7066,7 @@ namespace TJAPlayer3
             listChip.AddRange(listRemoveTiming);
             listChip.Sort();
         }
+<<<<<<< HEAD
         private void DebugOut_CChipList(List<CChip> c)
         {
             //Debug.WriteLine( "Count=" + c.Count );
@@ -6811,6 +7075,9 @@ namespace TJAPlayer3
                 Debug.WriteLine(i + ": ch=" + c[i].nチャンネル番号.ToString("x2") + ", WAV番号=" + c[i].n整数値 + ", time=" + c[i].n発声時刻ms);
             }
         }
+=======
+
+>>>>>>> twopointzero/develop
         private bool t発声時刻msと発声位置を取得する(int n希望発声時刻ms, out int n新発声時刻ms, out int n新発声位置)
         {
             // 発声時刻msから発声位置を逆算することはできないため、近似計算する。
@@ -6856,12 +7123,15 @@ namespace TJAPlayer3
             return true;
         }
 
+<<<<<<< HEAD
         public void SwapGuitarBassInfos()
         {
         }
 
         // SwapGuitarBassInfos_AutoFlags()は、CDTXからCConfigIniに移動。
 
+=======
+>>>>>>> twopointzero/develop
         // CActivity 実装
 
         public override void On活性化()
@@ -7067,6 +7337,7 @@ namespace TJAPlayer3
         private int[] nRESULTMOVIE用優先順位;
         private int[] nRESULTSOUND用優先順位;
 
+<<<<<<< HEAD
         private void t行のコメント処理(ref string strText)
         {
             int nCommentPos = strText.IndexOf("//");
@@ -7074,6 +7345,8 @@ namespace TJAPlayer3
                 strText = strText.Remove(nCommentPos);
         }
 
+=======
+>>>>>>> twopointzero/develop
         private bool t入力_コマンド文字列を抜き出す(ref CharEnumerator ce, ref StringBuilder sb文字列)
         {
             if (!this.t入力_空白をスキップする(ref ce))
@@ -7268,6 +7541,7 @@ namespace TJAPlayer3
                 }
                 //-----------------
                 #endregion
+<<<<<<< HEAD
                 #region [ ARTIST ]
                 //-----------------
                 else if (strコマンド.StartsWith("ARTIST", StringComparison.OrdinalIgnoreCase))
@@ -7286,6 +7560,8 @@ namespace TJAPlayer3
                 }
                 //-----------------
                 #endregion
+=======
+>>>>>>> twopointzero/develop
                 #region [ GENRE ]
                 //-----------------
                 else if (strコマンド.StartsWith("GENRE", StringComparison.OrdinalIgnoreCase))
@@ -7344,6 +7620,7 @@ namespace TJAPlayer3
                 }
                 //-----------------
                 #endregion
+<<<<<<< HEAD
                 #region [ DTXVPLAYSPEED ]
                 //-----------------
                 else if (strコマンド.StartsWith("DTXVPLAYSPEED", StringComparison.OrdinalIgnoreCase))
@@ -7358,6 +7635,8 @@ namespace TJAPlayer3
                 }
                 //-----------------
                 #endregion
+=======
+>>>>>>> twopointzero/develop
                 else if (!this.bヘッダのみ)      // ヘッダのみの解析の場合、以下は無視。
                 {
                     #region [ PANEL ]
@@ -7715,6 +7994,7 @@ namespace TJAPlayer3
 
             return true;
         }
+<<<<<<< HEAD
         private bool t入力_行解析_BPM_BPMzz(string strコマンド, string strパラメータ, string strコメント)
         {
             // (1) コマンドを処理。
@@ -7806,6 +8086,8 @@ namespace TJAPlayer3
 
             return true;
         }
+=======
+>>>>>>> twopointzero/develop
 
         private bool t入力_行解析_SIZE(string strコマンド, string strパラメータ, string strコメント)
         {
@@ -7942,16 +8224,24 @@ namespace TJAPlayer3
             int nチャンネル番号 = -1;
 
             // ファイルフォーマットによって処理が異なる。
+<<<<<<< HEAD
 
+=======
+>>>>>>> twopointzero/develop
             #region [ (B) その他の場合：チャンネル番号は16進数2桁。]
             //-----------------
             nチャンネル番号 = C変換.n16進数2桁の文字列を数値に変換して返す(strコマンド.Substring(3, 2));
 
             if (nチャンネル番号 < 0)
                 return false;
+<<<<<<< HEAD
             //-----------------
             #endregion
 
+=======
+
+            #endregion
+>>>>>>> twopointzero/develop
             //-----------------
             #endregion
             #region [ 取得したチャンネル番号で、this.bチップがある に該当があれば設定する。]

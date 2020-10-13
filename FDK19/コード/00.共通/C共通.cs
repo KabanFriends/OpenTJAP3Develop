@@ -1,9 +1,13 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
+=======
+using System.Diagnostics;
+>>>>>>> twopointzero/develop
 using System.Runtime.InteropServices;
 
 namespace FDK
@@ -65,6 +69,7 @@ namespace FDK
 
 		// ログ
 
+<<<<<<< HEAD
 		public static void LogBlock( string str処理名, MethodInvoker method )
 		{
 			Trace.TraceInformation( "--------------------" );
@@ -81,6 +86,8 @@ namespace FDK
 				Trace.TraceInformation( "--------------------" );
 			}
 		}
+=======
+>>>>>>> twopointzero/develop
 		public static void t例外の詳細をログに出力する( Exception e )
 		{
 			Trace.WriteLine( "---例外ここから----" );
@@ -88,6 +95,7 @@ namespace FDK
 			Trace.WriteLine( "---例外ここまで----" );
 		}
 
+<<<<<<< HEAD
 
 		// IO
 
@@ -169,6 +177,8 @@ namespace FDK
 			return (float) RadianToDegree( (double) angle );
 		}
 
+=======
+>>>>>>> twopointzero/develop
         public static bool bToggleBoolian( ref bool bFlag )
         {
             if( bFlag == true ) bFlag = false;

@@ -61,6 +61,7 @@ namespace TJAPlayer3
                 switch (i)
                 {
                     case (int)FlashType.Red:
+<<<<<<< HEAD
                         Flash[i] = new LaneFlash(ref TJAPlayer3.Tx.Lane_Red, player);
                         break;
                     case (int)FlashType.Blue:
@@ -68,6 +69,15 @@ namespace TJAPlayer3
                         break;
                     case (int)FlashType.Hit:
                         Flash[i] = new LaneFlash(ref TJAPlayer3.Tx.Lane_Yellow, player);
+=======
+                        Flash[i] = new LaneFlash(TJAPlayer3.Tx.Lane_Red, player);
+                        break;
+                    case (int)FlashType.Blue:
+                        Flash[i] = new LaneFlash(TJAPlayer3.Tx.Lane_Blue, player);
+                        break;
+                    case (int)FlashType.Hit:
+                        Flash[i] = new LaneFlash(TJAPlayer3.Tx.Lane_Yellow, player);
+>>>>>>> twopointzero/develop
                         break;
                     default:
                         break;

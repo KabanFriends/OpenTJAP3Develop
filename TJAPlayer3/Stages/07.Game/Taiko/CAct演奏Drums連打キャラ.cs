@@ -1,9 +1,13 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using SlimDX;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -145,6 +149,7 @@ namespace TJAPlayer3
 				base.OnManagedリソースの解放();
 			}
 		}
+<<<<<<< HEAD
 		public override int On進行描画()
 		{
 			if( !base.b活性化してない )
@@ -209,6 +214,66 @@ namespace TJAPlayer3
 		
 
 		// その他
+=======
+
+        public override int On進行描画()
+        {
+            if (base.b活性化してない)
+            {
+                return 0;
+            }
+
+            for (int i = 0; i < 128; i++)
+            {
+                var rollChara = RollCharas[i];
+
+                if (!rollChara.IsUsing)
+                {
+                    continue;
+                }
+
+                rollChara.OldValue = rollChara.Counter.n現在の値;
+                rollChara.Counter.t進行();
+                if (rollChara.Counter.b終了値に達した)
+                {
+                    rollChara.Counter.t停止();
+                    rollChara.IsUsing = false;
+                }
+
+                for (int l = rollChara.OldValue; l < rollChara.Counter.n現在の値; l++)
+                {
+                    rollChara.X += rollChara.XAdd;
+                    rollChara.Y += rollChara.YAdd;
+                }
+
+                var txRollCharaEffect = TJAPlayer3.Tx.Effects_Roll[rollChara.Type];
+
+                if (txRollCharaEffect == null)
+                {
+                    continue;
+                }
+
+                txRollCharaEffect.t2D描画(TJAPlayer3.app.Device, rollChara.X, rollChara.Y);
+                // 画面外にいたら描画をやめさせる
+                if (rollChara.X < 0 - txRollCharaEffect.szテクスチャサイズ.Width || rollChara.X > 1280)
+                {
+                    rollChara.Counter.t停止();
+                    rollChara.IsUsing = false;
+                }
+
+                if (rollChara.Y < 0 - txRollCharaEffect.szテクスチャサイズ.Height || rollChara.Y > 720)
+                {
+                    rollChara.Counter.t停止();
+                    rollChara.IsUsing = false;
+                }
+            }
+
+            return 0;
+        }
+
+
+        // その他
+>>>>>>> twopointzero/develop
 
 		#region [ private ]
 		//-----------------

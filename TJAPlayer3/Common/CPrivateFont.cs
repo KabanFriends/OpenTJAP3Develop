@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -56,10 +57,25 @@ namespace TJAPlayer3
 		{
 			Initialize( null, fontfamily, pt, style );
 		}
+=======
+using System.IO;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using FDK.ExtensionMethods;
+using TJAPlayer3.Common;
+
+namespace TJAPlayer3
+{
+    public class CPrivateFont : IDisposable
+	{
+		#region [ コンストラクタ ]
+>>>>>>> twopointzero/develop
 		public CPrivateFont( FontFamily fontfamily, int pt )
 		{
 			Initialize( null, fontfamily, pt, FontStyle.Regular );
 		}
+<<<<<<< HEAD
 		public CPrivateFont( string fontpath, int pt, FontStyle style )
 		{
 			Initialize( fontpath, null, pt, style );
@@ -69,6 +85,10 @@ namespace TJAPlayer3
 			Initialize( fontpath, null, pt, FontStyle.Regular );
 		}
 		public CPrivateFont()
+=======
+
+		protected CPrivateFont()
+>>>>>>> twopointzero/develop
 		{
 			//throw new ArgumentException("CPrivateFont: 引数があるコンストラクタを使用してください。");
 		}
@@ -96,6 +116,7 @@ namespace TJAPlayer3
 					this._pfc.AddFontFile(fontpath);								//PrivateFontCollectionにフォントを追加する
 					_fontfamily = _pfc.Families[0];
 				}
+<<<<<<< HEAD
 				catch (System.IO.FileNotFoundException)
 				{
 					Trace.TraceWarning("プライベートフォントの追加に失敗しました({0})。代わりにMS UI Gothicの使用を試みます。", fontpath);
@@ -118,6 +139,13 @@ namespace TJAPlayer3
 				//	Trace.TraceError( "プライベートフォントの追加後、検索に失敗しました。({0})", fontpath );
 				//	return;
 				//}
+=======
+				catch
+				{
+					Trace.TraceWarning($"プライベートフォントの追加に失敗しました({fontpath})。代わりに{FontUtilities.FallbackFontName}の使用を試みます。");
+					_fontfamily = null;
+				}
+>>>>>>> twopointzero/develop
 			}
 
 			// 指定されたフォントスタイルが適用できない場合は、フォント内で定義されているスタイルから候補を選んで使用する
@@ -148,6 +176,7 @@ namespace TJAPlayer3
 				//HighDPI対応のため、pxサイズで指定
 			}
 			else
+<<<<<<< HEAD
 			// フォントファイルが見つからなかった場合 (MS PGothicを代わりに指定する)
 			{
 				float emSize = pt * 96.0f / 72.0f;
@@ -166,6 +195,21 @@ namespace TJAPlayer3
 				}
 				throw new FileNotFoundException("プライベートフォントの追加に失敗し、MS UI Gothicでの代替処理にも失敗しました。({0})", Path.GetFileName(fontpath));
 			}
+=======
+            {
+                try
+                {
+                    _fontfamily = new FontFamily(FontUtilities.FallbackFontName);
+                    float emSize = pt * 96.0f / 72.0f;
+                    _font = new Font(_fontfamily, emSize, style, GraphicsUnit.Pixel);
+                    Trace.TraceInformation($"{FontUtilities.FallbackFontName}を代わりに指定しました。");
+                }
+                catch (Exception e)
+                {
+                    throw new FileNotFoundException($"プライベートフォントの追加に失敗し、{FontUtilities.FallbackFontName}での代替処理にも失敗しました。({Path.GetFileName(fontpath)})", e);
+                }
+            }
+>>>>>>> twopointzero/develop
 		}
 
 		[Flags]
@@ -178,6 +222,7 @@ namespace TJAPlayer3
 		}
 
 		#region [ DrawPrivateFontのオーバーロード群 ]
+<<<<<<< HEAD
 		/// <summary>
 		/// 文字列を描画したテクスチャを返す
 		/// </summary>
@@ -188,6 +233,8 @@ namespace TJAPlayer3
 		{
 			return DrawPrivateFont( drawstr, DrawMode.Normal, fontColor, Color.White, Color.White, Color.White );
 		}
+=======
+>>>>>>> twopointzero/develop
 
 		/// <summary>
 		/// 文字列を描画したテクスチャを返す
@@ -201,6 +248,7 @@ namespace TJAPlayer3
 			return DrawPrivateFont( drawstr, DrawMode.Edge, fontColor, edgeColor, Color.White, Color.White );
 		}
 
+<<<<<<< HEAD
 		/// <summary>
 		/// 文字列を描画したテクスチャを返す
 		/// </summary>
@@ -283,6 +331,8 @@ namespace TJAPlayer3
 			return CDTXMania.tテクスチャの生成( bmp, false );
 		}
 #endif
+=======
+>>>>>>> twopointzero/develop
 		#endregion
 
 
@@ -300,7 +350,11 @@ namespace TJAPlayer3
 		/// <returns>描画済テクスチャ</returns>
 		protected Bitmap DrawPrivateFont( string drawstr, DrawMode drawmode, Color fontColor, Color edgeColor, Color gradationTopColor, Color gradationBottomColor )
 		{
+<<<<<<< HEAD
 			if ( this._fontfamily == null || drawstr == null || drawstr == "" )
+=======
+			if ( this._fontfamily == null || _font == null || drawstr == null || drawstr == "" )
+>>>>>>> twopointzero/develop
 			{
 				// nullを返すと、その後bmp→texture処理や、textureのサイズを見て__の処理で全部例外が発生することになる。
 				// それは非常に面倒なので、最小限のbitmapを返してしまう。
@@ -322,6 +376,7 @@ namespace TJAPlayer3
             int nEdgePt = (bEdge) ? (10 * _pt / TJAPlayer3.Skin.Font_Edge_Ratio) : 0; //SkinConfigにて設定可能に(rhimm)
 
             // 描画サイズを測定する
+<<<<<<< HEAD
             Size stringSize;
             using (Bitmap bmptmp = new Bitmap(1, 1))
             {
@@ -343,6 +398,12 @@ namespace TJAPlayer3
                     }
                 }
             }
+=======
+            Size stringSize = System.Windows.Forms.TextRenderer.MeasureText( drawstr, this._font, new Size( int.MaxValue, int.MaxValue ),
+				System.Windows.Forms.TextFormatFlags.NoPrefix |
+				System.Windows.Forms.TextFormatFlags.NoPadding
+			);
+>>>>>>> twopointzero/develop
             stringSize.Width += 10; //2015.04.01 kairera0467 ROTTERDAM NATIONの描画サイズがうまくいかんので。
 
 			//取得した描画サイズを基に、描画先のbitmapを作成する
@@ -351,6 +412,7 @@ namespace TJAPlayer3
 			Graphics g = Graphics.FromImage( bmp );
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
+<<<<<<< HEAD
 			// レイアウト枠
 			Rectangle r = new Rectangle( 0, 0, stringSize.Width + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_X * stringSize.Width / 100), stringSize.Height + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_Y * stringSize.Height / 100));
 
@@ -365,6 +427,21 @@ namespace TJAPlayer3
                 // DrawPathで、ポイントサイズを使って描画するために、DPIを使って単位変換する
                 // (これをしないと、単位が違うために、小さめに描画されてしまう)
                 float sizeInPixels = _font.SizeInPoints * g.DpiY / 72;  // 1 inch = 72 points
+=======
+			StringFormat sf = new StringFormat();
+			sf.LineAlignment = StringAlignment.Far;	// 画面下部（垂直方向位置）
+			sf.Alignment = StringAlignment.Center;	// 画面中央（水平方向位置）     
+            sf.FormatFlags = StringFormatFlags.NoWrap; // どんなに長くて単語の区切りが良くても改行しない (AioiLight)
+            sf.Trimming = StringTrimming.None; // どんなに長くてもトリミングしない (AioiLight)
+			// レイアウト枠
+			Rectangle r = new Rectangle( 0, 0, stringSize.Width + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_XY[0] * stringSize.Width / 100), stringSize.Height + nEdgePt * 2 + (TJAPlayer3.Skin.Text_Correction_XY[1] * stringSize.Height / 100));
+
+			if ( bEdge )	// 縁取り有りの描画
+			{
+				// DrawPathで、ポイントサイズを使って描画するために、DPIを使って単位変換する
+				// (これをしないと、単位が違うために、小さめに描画されてしまう)
+				float sizeInPixels = _font.SizeInPoints * g.DpiY / 72;  // 1 inch = 72 points
+>>>>>>> twopointzero/develop
 
 				System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
 				gp.AddString( drawstr, this._fontfamily, (int) this._font.Style, sizeInPixels, r, sf );
@@ -389,8 +466,12 @@ namespace TJAPlayer3
 				if ( br != null ) br.Dispose(); br = null;
 				if ( p != null ) p.Dispose(); p = null;
 				if ( gp != null ) gp.Dispose(); gp = null;
+<<<<<<< HEAD
                 if (sf != null) sf.Dispose(); sf = null;
             }
+=======
+			}
+>>>>>>> twopointzero/develop
 			else
 			{
 				// 縁取りなしの描画
@@ -405,6 +486,10 @@ namespace TJAPlayer3
 			
 
 			#region [ リソースを解放する ]
+<<<<<<< HEAD
+=======
+			if ( sf != null )	sf.Dispose();	sf = null;
+>>>>>>> twopointzero/develop
 			if ( g != null )	g.Dispose();	g = null;
 			#endregion
 
@@ -425,7 +510,11 @@ namespace TJAPlayer3
 		/// <returns>描画済テクスチャ</returns>
 		protected Bitmap DrawPrivateFont_V( string drawstr, Color fontColor, Color edgeColor, bool bVertical )
 		{
+<<<<<<< HEAD
 			if ( this._fontfamily == null || drawstr == null || drawstr == "" )
+=======
+			if ( this._fontfamily == null || _font == null || drawstr == null || drawstr == "" )
+>>>>>>> twopointzero/develop
 			{
 				// nullを返すと、その後bmp→texture処理や、textureのサイズを見て__の処理で全部例外が発生することになる。
 				// それは非常に面倒なので、最小限のbitmapを返してしまう。
@@ -456,6 +545,11 @@ namespace TJAPlayer3
 
             #region[ キャンバスの大きさ予測 ]
             //大きさを計算していく。
+<<<<<<< HEAD
+=======
+		    Bitmap bmpDummy = new Bitmap( 1, 1 );
+		    Graphics gCal = Graphics.FromImage( bmpDummy );
+>>>>>>> twopointzero/develop
             int nHeight = 0;
             for( int i = 0; i < strName.Length; i++ )
             {
@@ -470,9 +564,13 @@ namespace TJAPlayer3
 
 
                 //できるだけ正確な値を計算しておきたい...!
+<<<<<<< HEAD
                 Bitmap bmpDummy = new Bitmap( 150, 150 ); //とりあえず150
                 Graphics gCal = Graphics.FromImage( bmpDummy );
                 Rectangle rect正確なサイズ = this.MeasureStringPrecisely( gCal, strName[ i ], this._font, strSize, sFormat );
+=======
+                Rectangle rect正確なサイズ = CPreciseStringMeasurer.MeasureStringPrecisely( gCal, strName[ i ], this._font, strSize, sFormat );
+>>>>>>> twopointzero/develop
                 int n余白サイズ = strSize.Height - rect正確なサイズ.Height;
 
                 Rectangle rect = new Rectangle( 0, -n余白サイズ + 2, 46, ( strSize.Height + 16 ));
@@ -486,10 +584,13 @@ namespace TJAPlayer3
                 { nHeight += ( 12 ); }
                 else { nHeight += ( rect正確なサイズ.Height ) + 10; }
 
+<<<<<<< HEAD
                 //念のため解放
                 bmpDummy.Dispose();
                 gCal.Dispose();
 
+=======
+>>>>>>> twopointzero/develop
                 //stream.WriteLine( "文字の大きさ{0},大きさ合計{1}", ( rect正確なサイズ.Height ) + 6, nHeight );
                 
             }
@@ -518,9 +619,13 @@ namespace TJAPlayer3
                 sFormat.Alignment = StringAlignment.Near;	// 画面中央（水平方向位置）
 
                 //できるだけ正確な値を計算しておきたい...!
+<<<<<<< HEAD
                 Bitmap bmpDummy = new Bitmap(150, 150); //とりあえず150
                 Graphics gCal = Graphics.FromImage(bmpDummy);
                 Rectangle rect正確なサイズ = this.MeasureStringPrecisely(gCal, strName[i], this._font, strSize, sFormat);
+=======
+                Rectangle rect正確なサイズ = CPreciseStringMeasurer.MeasureStringPrecisely(gCal, strName[i], this._font, strSize, sFormat);
+>>>>>>> twopointzero/develop
                 int n余白サイズ = strSize.Height - rect正確なサイズ.Height;
 
                 //Bitmap bmpV = new Bitmap( 36, ( strSize.Height + 12 ) - 6 );
@@ -531,18 +636,48 @@ namespace TJAPlayer3
                 Graphics gV = Graphics.FromImage(bmpV);
                 gV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
+<<<<<<< HEAD
 
                 if (strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionX_Chara))
                 {
                     nEdge補正X = TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value;
+=======
+                //SongSelect_Correction*_Charaの何番目に当該の文字があるかを取得(20181222 rhimm)
+                int IndexX = Array.IndexOf(TJAPlayer3.Skin.SongSelect_CorrectionX_Chara, strName[i]);
+                int IndexY = Array.IndexOf(TJAPlayer3.Skin.SongSelect_CorrectionY_Chara, strName[i]);
+
+                //取得した*_Charaの配列上の位置にある*_Chara_Valueの値で補正
+                //補正文字の数に比べて補正値の数が足りない時、配列の一番最後の補正値で足りない分の文字を補正
+                //例えば　補正文字あ,い,う,え,おに対して補正値が10,13,15の3つだった時、
+                //あ　は補正値10、い　は補正値13、　う,え,お　は補正値15　となるようにする(20181222 rhimm)
+
+                if (-1 < IndexX && IndexX < TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value.Length && strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionX_Chara))
+                {
+                    nEdge補正X = TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value[IndexX];
+                }
+                else if(-1 < IndexX && TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value.Length <= IndexX && strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionX_Chara))
+                {
+                    nEdge補正X = TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value[TJAPlayer3.Skin.SongSelect_CorrectionX_Chara_Value.Length - 1];
+>>>>>>> twopointzero/develop
                 }
                 else
                 {
                     nEdge補正X = 0;
                 }
+<<<<<<< HEAD
                 if (strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionY_Chara))
                 {
                     nEdge補正Y = TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value;
+=======
+
+                if (-1 < IndexY && IndexY < TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value.Length && strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionY_Chara))
+                {
+                    nEdge補正Y = TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value[IndexY];
+                }
+                else if (-1 < IndexY && TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value.Length <= IndexY && strName[i].In(TJAPlayer3.Skin.SongSelect_CorrectionY_Chara))
+                {
+                    nEdge補正Y = TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value[TJAPlayer3.Skin.SongSelect_CorrectionY_Chara_Value.Length - 1];
+>>>>>>> twopointzero/develop
                 }
                 else
                 {
@@ -655,7 +790,10 @@ namespace TJAPlayer3
                 nNowPos += bmpV.Size.Height - 6;
 
                 if( bmpV != null ) bmpV.Dispose(); bmpV = null;
+<<<<<<< HEAD
                 if( gCal != null ) gCal.Dispose(); gCal = null;
+=======
+>>>>>>> twopointzero/develop
 
                 //bmpCambus.Save( "test.png" );
                 //if( this._pt < 20 )
@@ -672,10 +810,18 @@ namespace TJAPlayer3
 
             if( Gcambus != null ) Gcambus.Dispose();
 
+<<<<<<< HEAD
+=======
+		    //念のため解放
+		    bmpDummy.Dispose();
+		    gCal.Dispose();
+
+>>>>>>> twopointzero/develop
 			//return bmp;
             return bmpCambus;
 		}
 
+<<<<<<< HEAD
         ///// <summary>
         ///// 文字列を描画したテクスチャを返す(メイン処理)
         ///// </summary>
@@ -976,6 +1122,8 @@ namespace TJAPlayer3
             return MeasureForegroundArea(bmp, bmp.GetPixel(0, 0));
         }
 
+=======
+>>>>>>> twopointzero/develop
         //------------------------------------------------
 
 		/// <summary>

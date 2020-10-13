@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using FDK;
+=======
+﻿using FDK;
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -9,6 +13,7 @@ namespace TJAPlayer3
 	{
 		// プロパティ
 
+<<<<<<< HEAD
 		internal enum Eヒット判定
 		{
 			PERFECT,
@@ -20,6 +25,8 @@ namespace TJAPlayer3
 			AUTO
 		}
 
+=======
+>>>>>>> twopointzero/develop
 		internal Eステージ eステージID;
 		public enum Eステージ
 		{
@@ -64,9 +71,15 @@ namespace TJAPlayer3
 			NOWLOADING_システムサウンドBGMの完了を待つ,
 			演奏_STAGE_FAILED,
 			演奏_STAGE_FAILED_フェードアウト,
+<<<<<<< HEAD
 			演奏_STAGE_CLEAR_フェードアウト,
             演奏_演奏終了演出, //2016.07.15 kairera0467
 			演奏_再読込
+=======
+            演奏_STAGE_FAILED_ハード,
+			演奏_STAGE_CLEAR_フェードアウト,
+            演奏_演奏終了演出, //2016.07.15 kairera0467
+>>>>>>> twopointzero/develop
 		}
 	}
 }

@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+=======
+﻿using System.Windows.Forms;
+>>>>>>> twopointzero/develop
 using SlimDX.DirectInput;
 
 namespace FDK
@@ -448,6 +452,7 @@ namespace FDK
 			}
 			return Key.Unknown;
 		}
+<<<<<<< HEAD
 		public static int KeyToDIK( Key key )
 		{
 			switch( key )
@@ -886,6 +891,9 @@ namespace FDK
 			}
 			return 0;
 		}
+=======
+
+>>>>>>> twopointzero/develop
 		public static Keys KeyToKeyCode( Key key )
 		{
 			switch ( key )

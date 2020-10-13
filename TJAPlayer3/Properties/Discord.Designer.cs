@@ -70,7 +70,11 @@ namespace TJAPlayer3.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Playing に類似しているローカライズされた文字列を検索します。
+=======
+        ///   Playing a song に類似しているローカライズされた文字列を検索します。
+>>>>>>> twopointzero/develop
         /// </summary>
         internal static string Stage_InGame {
             get {
@@ -97,7 +101,11 @@ namespace TJAPlayer3.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   SongSelect に類似しているローカライズされた文字列を検索します。
+=======
+        ///   Selecting a song に類似しているローカライズされた文字列を検索します。
+>>>>>>> twopointzero/develop
         /// </summary>
         internal static string Stage_SongSelect {
             get {
@@ -106,7 +114,11 @@ namespace TJAPlayer3.Properties {
         }
         
         /// <summary>
+<<<<<<< HEAD
         ///   Startup に類似しているローカライズされた文字列を検索します。
+=======
+        ///   Starting up... に類似しているローカライズされた文字列を検索します。
+>>>>>>> twopointzero/develop
         /// </summary>
         internal static string Stage_StartUp {
             get {

@@ -1,6 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
+=======
+>>>>>>> twopointzero/develop
 
 namespace TJAPlayer3
 {
@@ -21,6 +24,7 @@ namespace TJAPlayer3
 			base.e種別 = CItemBase.E種別.ONorOFFトグル;
 			this.bON = false;
 		}
+<<<<<<< HEAD
 		public CItemToggle( string str項目名, bool b初期状態 )
 			: this()
 		{
@@ -30,10 +34,13 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, b初期状態, str説明文jp);
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CItemToggle(string str項目名, bool b初期状態, string str説明文jp, string str説明文en)
 			: this() {
 			this.t初期化(str項目名, b初期状態, str説明文jp, str説明文en);
 		}
+<<<<<<< HEAD
 		public CItemToggle(string str項目名, bool b初期状態, CItemBase.Eパネル種別 eパネル種別)
 			: this()
 		{
@@ -43,6 +50,8 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, b初期状態, eパネル種別, str説明文jp);
 		}
+=======
+>>>>>>> twopointzero/develop
 		public CItemToggle(string str項目名, bool b初期状態, CItemBase.Eパネル種別 eパネル種別, string str説明文jp, string str説明文en)
 			: this() {
 			this.t初期化(str項目名, b初期状態, eパネル種別, str説明文jp, str説明文en);
@@ -63,6 +72,7 @@ namespace TJAPlayer3
 		{
 			this.t項目値を次へ移動();
 		}
+<<<<<<< HEAD
 		public void t初期化( string str項目名, bool b初期状態 )
 		{
 			this.t初期化( str項目名, b初期状態, CItemBase.Eパネル種別.通常 );
@@ -82,6 +92,14 @@ namespace TJAPlayer3
 			this.t初期化(str項目名, b初期状態, eパネル種別, str説明文jp, str説明文jp);
 		}
 		public void t初期化(string str項目名, bool b初期状態, CItemBase.Eパネル種別 eパネル種別, string str説明文jp, string str説明文en) {
+=======
+
+        private void t初期化(string str項目名, bool b初期状態, string str説明文jp, string str説明文en) {
+			this.t初期化(str項目名, b初期状態, CItemBase.Eパネル種別.通常, str説明文jp, str説明文en);
+		}
+
+        private void t初期化(string str項目名, bool b初期状態, CItemBase.Eパネル種別 eパネル種別, string str説明文jp, string str説明文en) {
+>>>>>>> twopointzero/develop
 			base.t初期化(str項目名, eパネル種別, str説明文jp, str説明文en);
 			this.bON = b初期状態;
 		}

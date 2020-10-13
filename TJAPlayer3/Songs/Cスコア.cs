@@ -1,8 +1,12 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+=======
+using System.Runtime.InteropServices;
+>>>>>>> twopointzero/develop
 using FDK;
 
 namespace TJAPlayer3
@@ -52,9 +56,12 @@ namespace TJAPlayer3
 		public struct ST譜面情報
 		{
 			public string タイトル;
+<<<<<<< HEAD
 			public string アーティスト名;
 			public string コメント;
 			public string ジャンル;
+=======
+>>>>>>> twopointzero/develop
 			public string Preimage;
 			public string Premovie;
 			public string Presound;
@@ -62,10 +69,14 @@ namespace TJAPlayer3
 			public STDGBVALUE<int> レベル;
 			public STRANK 最大ランク;
 			public STSKILL 最大スキル;
+<<<<<<< HEAD
 			public bool[] ドンダフルコンボ;
 			public bool[] フルコンボ;
 			public bool[] クリア;
 			public int[] nスコアランク;
+=======
+			public STDGBVALUE<bool> フルコンボ;
+>>>>>>> twopointzero/develop
 			public STDGBVALUE<int> 演奏回数;
 			public STHISTORY 演奏履歴;
 			public bool レベルを非表示にする;
@@ -81,6 +92,10 @@ namespace TJAPlayer3
             public int[] nハイスコア;
             public string strサブタイトル;
             public int[] nレベル;
+<<<<<<< HEAD
+=======
+		    public SongRating? Rating;
+>>>>>>> twopointzero/develop
 
 			[Serializable]
 			[StructLayout( LayoutKind.Sequential )]
@@ -273,9 +288,12 @@ namespace TJAPlayer3
 			this.ファイル情報 = new STファイル情報( "", "", DateTime.MinValue, 0L );
 			this.譜面情報 = new ST譜面情報();
 			this.譜面情報.タイトル = "";
+<<<<<<< HEAD
 			this.譜面情報.アーティスト名 = "";
 			this.譜面情報.コメント = "";
 			this.譜面情報.ジャンル = "";
+=======
+>>>>>>> twopointzero/develop
 			this.譜面情報.Preimage = "";
 			this.譜面情報.Premovie = "";
 			this.譜面情報.Presound = "";
@@ -285,10 +303,14 @@ namespace TJAPlayer3
 			this.譜面情報.最大ランク.Drums =  (int)CScoreIni.ERANK.UNKNOWN;
 			this.譜面情報.最大ランク.Guitar = (int)CScoreIni.ERANK.UNKNOWN;
 			this.譜面情報.最大ランク.Bass =   (int)CScoreIni.ERANK.UNKNOWN;
+<<<<<<< HEAD
 			this.譜面情報.クリア = new bool[5];
 			this.譜面情報.フルコンボ = new bool[5];
 			this.譜面情報.ドンダフルコンボ = new bool[5];
 			this.譜面情報.nスコアランク = new int[5];
+=======
+			this.譜面情報.フルコンボ = new STDGBVALUE<bool>();
+>>>>>>> twopointzero/develop
 			this.譜面情報.演奏回数 = new STDGBVALUE<int>();
 			this.譜面情報.演奏履歴 = new ST譜面情報.STHISTORY();
 			this.譜面情報.演奏履歴.行1 = "";
@@ -312,6 +334,10 @@ namespace TJAPlayer3
             this.譜面情報.nハイスコア = new int[(int)Difficulty.Total];
             this.譜面情報.strサブタイトル = "";
             this.譜面情報.nレベル = new int[(int)Difficulty.Total] { -1, -1, -1, -1, -1, -1, -1};
+<<<<<<< HEAD
+=======
+		    this.譜面情報.Rating = null;
+>>>>>>> twopointzero/develop
 		}
 	}
 }
